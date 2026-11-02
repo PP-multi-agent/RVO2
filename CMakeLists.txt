@@ -285,6 +285,7 @@ option(ENABLE_INSTALLATION "Enable installation" ${PROJECT_IS_TOP_LEVEL})
 
 add_subdirectory(src)
 add_subdirectory(examples)
+add_subdirectory(profiling)
 add_subdirectory(doc)
 
 if(ENABLE_INSTALLATION)

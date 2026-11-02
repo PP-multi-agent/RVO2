@@ -48,6 +48,7 @@
 *.cff                text linguist-documentation whitespace-2
 *.cfg                text whitespace-2
 *.cmake              text whitespace-2
+*.sh                 text eol=lf whitespace-2
 *.cmake.in           text whitespace-2
 *.css                text diff=css linguist-documentation whitespace=trailing-space
 *.h                  text diff=cpp linguist-language=c++ whitespace-2

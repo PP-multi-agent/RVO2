@@ -35,6 +35,7 @@
 #
 
 /_build/
+/_build-*/
 /.idea/
 /.user.bazelrc
 /.venv/
