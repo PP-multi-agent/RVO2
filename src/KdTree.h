@@ -130,6 +130,27 @@ class KdTree {
                                std::size_t node) const;
 
   /**
+   * @brief         The agent search of computeAgentNeighbors for agent, with
+   *                the neighbor list written to out instead of to agent. The
+   *                parallel step computes into a per-thread agent so that a
+   *                second thread can redo the work of a stalled one. Must
+   *                stay identical to queryAgentTreeRecursive and
+   *                Agent::insertAgentNeighbor.
+   * @param[in]     agent   The agent whose neighbors are searched; only its
+   *                        identity is used.
+   * @param[in,out] out     Holds the position, maxNeighbors and the result.
+   * @param[in,out] rangeSq The squared range around the agent.
+   */
+  void computeAgentNeighborsInto(
+      const Agent *agent, Agent *out,
+      float &rangeSq) const; /* NOLINT(runtime/references) */
+
+  void queryAgentTreeRecursiveInto(
+      const Agent *agent, Agent *out,
+      float &rangeSq, /* NOLINT(runtime/references) */
+      std::size_t node) const;
+
+  /**
    * @brief         Recursive function to compute the neighbors of the specified
    *                obstacle.
    * @param[in]     agent   A pointer to the agent for which neighbors are to be

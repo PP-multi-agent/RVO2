@@ -63,30 +63,58 @@ const std::size_t kWarmupSteps = 5U;
 const std::size_t kLoadCount = 4U;
 const std::size_t kLoads[kLoadCount] = {100U, 400U, 1000U, 2000U};
 
+int threadCount() {
+#ifdef _OPENMP
+  return omp_get_max_threads();
+#else
+  return 1;
+#endif
+}
+
+struct GoalContext {
+  const std::vector<RVO::Vector2> *goals;
+  bool perturb;
+};
+
+RVO::Vector2 goalPrefVelocity(const RVO::RVOSimulator *simulator,
+                              std::size_t i, void *context) {
+  const GoalContext *const data = static_cast<GoalContext *>(context);
+  RVO::Vector2 goalVector = (*data->goals)[i] - simulator->getAgentPosition(i);
+
+  if (RVO::absSq(goalVector) > 1.0F) {
+    goalVector = RVO::normalize(goalVector);
+  }
+
+  /* Deterministic nudge. Blocks uses noise to break symmetry; a fixed
+   * angle keeps repeated benchmark runs comparable. */
+  if (data->perturb) {
+    const float angle = static_cast<float>(i) * 0.01F;
+    const float dist = 0.0001F;
+    return goalVector + dist * RVO::Vector2(std::cos(angle), std::sin(angle));
+  }
+
+  return goalVector;
+}
+
 void setPreferredVelocities(RVO::RVOSimulator *simulator,
                             const std::vector<RVO::Vector2> &goals,
                             bool perturb) {
+  GoalContext context;
+  context.goals = &goals;
+  context.perturb = perturb;
+
+  /* With more than one thread, this runs on the same workers as doStep(),
+   * instead of on a second OpenMP team. */
+  if (threadCount() > 1) {
+    simulator->setAgentPrefVelocities(&goalPrefVelocity, &context);
+    return;
+  }
+
 #ifdef _OPENMP
 #pragma omp parallel for
 #endif /* _OPENMP */
   for (std::size_t i = 0U; i < simulator->getNumAgents(); ++i) {
-    RVO::Vector2 goalVector = goals[i] - simulator->getAgentPosition(i);
-
-    if (RVO::absSq(goalVector) > 1.0F) {
-      goalVector = RVO::normalize(goalVector);
-    }
-
-    simulator->setAgentPrefVelocity(i, goalVector);
-
-    /* Deterministic nudge. Blocks uses noise to break symmetry; a fixed
-     * angle keeps repeated benchmark runs comparable. */
-    if (perturb) {
-      const float angle = static_cast<float>(i) * 0.01F;
-      const float dist = 0.0001F;
-      simulator->setAgentPrefVelocity(
-          i, simulator->getAgentPrefVelocity(i) +
-                 dist * RVO::Vector2(std::cos(angle), std::sin(angle)));
-    }
+    simulator->setAgentPrefVelocity(i, goalPrefVelocity(simulator, i, &context));
   }
 }
 
@@ -315,46 +343,70 @@ void buildRoadmap(
   }
 }
 
+struct RoadmapContext {
+  const std::vector<RoadmapVertex> *roadmap;
+  const std::vector<std::size_t> *goals;
+};
+
+RVO::Vector2 roadmapPrefVelocity(const RVO::RVOSimulator *simulator,
+                                 std::size_t i, void *context) {
+  const RoadmapContext *const data = static_cast<RoadmapContext *>(context);
+  const std::vector<RoadmapVertex> &roadmap = *data->roadmap;
+  const std::vector<std::size_t> &goals = *data->goals;
+  float minDist = std::numeric_limits<float>::infinity();
+  std::size_t minVertex = std::numeric_limits<std::size_t>::max();
+
+  for (std::size_t j = 0U; j < roadmap.size(); ++j) {
+    const float dist =
+        RVO::abs(roadmap[j].position - simulator->getAgentPosition(i)) +
+        roadmap[j].distToGoal[goals[i]];
+    const bool visible = simulator->queryVisibility(
+        simulator->getAgentPosition(i), roadmap[j].position,
+        simulator->getAgentRadius(i));
+
+    if (dist < minDist && visible) {
+      minDist = dist;
+      minVertex = j;
+    }
+  }
+
+  const std::size_t missing = std::numeric_limits<std::size_t>::max();
+  if (minVertex == missing) {
+    return RVO::Vector2(0.0F, 0.0F);
+  }
+
+  if (RVO::absSq(roadmap[minVertex].position -
+                 simulator->getAgentPosition(i)) == 0.0F) {
+    if (minVertex == goals[i]) {
+      return RVO::Vector2();
+    }
+
+    return RVO::normalize(roadmap[goals[i]].position -
+                          simulator->getAgentPosition(i));
+  }
+
+  return RVO::normalize(roadmap[minVertex].position -
+                        simulator->getAgentPosition(i));
+}
+
 void setRoadmapVelocities(RVO::RVOSimulator *simulator,
                           const std::vector<RoadmapVertex> &roadmap,
                           const std::vector<std::size_t> &goals) {
+  RoadmapContext context;
+  context.roadmap = &roadmap;
+  context.goals = &goals;
+
+  /* With more than one thread, the visibility search runs on the same
+   * workers as doStep(), instead of on a second OpenMP team. */
+  if (threadCount() > 1) {
+    simulator->setAgentPrefVelocities(&roadmapPrefVelocity, &context);
+  } else {
 #ifdef _OPENMP
 #pragma omp parallel for
 #endif /* _OPENMP */
-  for (std::size_t i = 0U; i < simulator->getNumAgents(); ++i) {
-    float minDist = std::numeric_limits<float>::infinity();
-    std::size_t minVertex = std::numeric_limits<std::size_t>::max();
-
-    for (std::size_t j = 0U; j < roadmap.size(); ++j) {
-      const float dist =
-          RVO::abs(roadmap[j].position - simulator->getAgentPosition(i)) +
-          roadmap[j].distToGoal[goals[i]];
-      const bool visible = simulator->queryVisibility(
-          simulator->getAgentPosition(i), roadmap[j].position,
-          simulator->getAgentRadius(i));
-
-      if (dist < minDist && visible) {
-        minDist = dist;
-        minVertex = j;
-      }
-    }
-
-    const std::size_t missing = std::numeric_limits<std::size_t>::max();
-    if (minVertex == missing) {
-      simulator->setAgentPrefVelocity(i, RVO::Vector2(0.0F, 0.0F));
-    } else if (RVO::absSq(roadmap[minVertex].position -
-                          simulator->getAgentPosition(i)) == 0.0F) {
-      if (minVertex == goals[i]) {
-        simulator->setAgentPrefVelocity(i, RVO::Vector2());
-      } else {
-        simulator->setAgentPrefVelocity(
-            i, RVO::normalize(roadmap[goals[i]].position -
-                              simulator->getAgentPosition(i)));
-      }
-    } else {
+    for (std::size_t i = 0U; i < simulator->getNumAgents(); ++i) {
       simulator->setAgentPrefVelocity(
-          i, RVO::normalize(roadmap[minVertex].position -
-                            simulator->getAgentPosition(i)));
+          i, roadmapPrefVelocity(simulator, i, &context));
     }
   }
 
@@ -410,14 +462,6 @@ double millisecondsSince(std::chrono::steady_clock::time_point start) {
   const std::chrono::steady_clock::time_point end =
       std::chrono::steady_clock::now();
   return std::chrono::duration<double, std::milli>(end - start).count();
-}
-
-int threadCount() {
-#ifdef _OPENMP
-  return omp_get_max_threads();
-#else
-  return 1;
-#endif
 }
 
 void printResult(const char *scenario, std::size_t agents, std::size_t steps,

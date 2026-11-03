@@ -62,6 +62,8 @@ target_sources(${RVO_LIBRARY}
       Obstacle.cc
       Obstacle.h
       RVOSimulator.cc
+      StepPool.cc
+      StepPool.h
       Vector2.cc)
 
 set_target_properties(${RVO_LIBRARY} PROPERTIES
@@ -87,6 +89,12 @@ endif()
 
 if(ENABLE_OPENMP AND OpenMP_FOUND)
   target_link_libraries(${RVO_LIBRARY} PRIVATE OpenMP::OpenMP_CXX)
+
+  # StepPool.cc starts its own workers on Linux.
+  if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    find_package(Threads REQUIRED)
+    target_link_libraries(${RVO_LIBRARY} PRIVATE Threads::Threads)
+  endif()
 endif()
 
 add_library(${PROJECT_NAME}::${RVO_LIBRARY} ALIAS ${RVO_LIBRARY})

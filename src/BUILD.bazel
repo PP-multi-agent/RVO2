@@ -64,6 +64,8 @@ cc_library(
         "Obstacle.cc",
         "Obstacle.h",
         "RVOSimulator.cc",
+        "StepPool.cc",
+        "StepPool.h",
         "Vector2.cc",
     ],
     hdrs = [":hdrs"],

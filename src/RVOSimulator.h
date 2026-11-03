@@ -49,6 +49,7 @@ class Agent;
 class KdTree;
 class Line;
 class Obstacle;
+class StepPool;
 class Vector2;
 
 /**
@@ -605,6 +606,27 @@ class RVO_EXPORT RVOSimulator {
   void setAgentPrefVelocity(std::size_t agentNo, const Vector2 &prefVelocity);
 
   /**
+   * @brief     Returns the two-dimensional preferred velocity of one agent.
+   *            Must only read the simulator and context.
+   * @param[in] simulator The simulator.
+   * @param[in] agentNo   The number of the agent.
+   * @param[in] context   The context given to setAgentPrefVelocities().
+   */
+  typedef Vector2 (*PrefVelocityFunction)(const RVOSimulator *simulator,
+                                          std::size_t agentNo, void *context);
+
+  /**
+   * @brief     Sets the two-dimensional preferred velocity of every agent to
+   *            the value returned by function. When doStep() runs on more
+   *            than one thread, the calls run on the same threads, so the
+   *            program does not start a second set of threads that competes
+   *            with them.
+   * @param[in] function Called once for every agent.
+   * @param[in] context  Passed to function unchanged.
+   */
+  void setAgentPrefVelocities(PrefVelocityFunction function, void *context);
+
+  /**
    * @brief     Sets the radius of a specified agent.
    * @param[in] agentNo The number of the agent whose radius is to be modified.
    * @param[in] radius  The replacement radius. Must be non-negative.
@@ -652,6 +674,16 @@ class RVO_EXPORT RVOSimulator {
   /* Not implemented. */
   RVOSimulator &operator=(const RVOSimulator &other);
 
+  /* Used by StepPool only. */
+  void preparePool(int threads);
+  void computeAgentInto(std::size_t agentNo, Agent *out) const;
+  void publishAgent(std::size_t agentNo, const Agent *from);
+  void updateAgent(std::size_t agentNo);
+  void setPrefVelocityFrom(std::size_t agentNo, PrefVelocityFunction function,
+                           void *context);
+  static Agent *newScratchAgent();
+  static void deleteScratchAgent(Agent *agent);
+
 #ifdef _MSC_VER
 #pragma warning(push)
 #pragma warning(disable : 4251)
@@ -665,8 +697,10 @@ class RVO_EXPORT RVOSimulator {
   KdTree *kdTree_;
   float globalTime_;
   float timeStep_;
+  StepPool *pool_;
 
   friend class KdTree;
+  friend class StepPool;
 };
 } /* namespace RVO */
 

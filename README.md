@@ -97,6 +97,12 @@ Raportul este `bench-results/<commit>/<calculator>_<cpu>/callgrind-<scenariu>-<a
 
 `bash profiling/perf.sh` face același lucru cu `perf`, când kernelul îl acceptă.
 
+### Cum rulează pasul pe mai multe threaduri
+
+Pe Linux, cu OpenMP și mai mult de un thread, `doStep()` rulează pe workeri proprii (`src/StepPool.cc`), nu pe o regiune OpenMP. O regiune OpenMP se termină doar când toate threadurile ajung la barieră. În WSL, Windows oprește din când în când un CPU virtual pentru câteva milisecunde, iar tot pasul îl așteaptă. Cu workerii proprii, pasul se termină când sunt gata toți agenții. Agenții unui thread oprit îi recalculează celelalte, iar rezultatul este identic bit cu bit cu cel de pe un thread. Pe un thread rulează codul original.
+
+Buclele din aplicație dintre pași trec prin `setAgentPrefVelocities()`, ca în `profiling/Bench.cc` și `examples/Roadmap.cc`. O buclă `#pragma omp parallel for` între pași pornește a doua echipă de threaduri, care se luptă pe aceleași CPU-uri cu workerii și face pasul de câteva ori mai lent.
+
 ## Ce înseamnă textul afișat
 
 Fiecare linie este un pas de simulare. Primul număr este timpul, în secunde. Pașii sunt din 0.25 în 0.25. După timp urmează câte o pereche `(x,y)` pentru fiecare agent, în ordinea în care au fost adăugați.
