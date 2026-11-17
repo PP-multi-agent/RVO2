@@ -264,6 +264,36 @@ class RVO_EXPORT RVOSimulator {
   void doStep();
 
   /**
+   * @brief A function that forEachAgent() calls for an agent.
+   */
+  typedef void (*AgentFunction)(std::size_t agentNo, void *context);
+
+  /**
+   * @brief     Calls function(agentNo, context) exactly once for every
+   *            agent, on the threads that doStep() uses, and returns when
+   *            all calls have returned. Use it for the work an application
+   *            does for every agent between two steps, such as setting the
+   *            preferred velocities. The calls run at the same time; each
+   *            may read anything and write to its own agent. A loop of the
+   *            application that brings threads of its own, an OpenMP loop
+   *            for instance, competes with the threads of doStep() for the
+   *            same CPUs.
+   * @param[in] function The function to call.
+   * @param[in] context  Passed to every call.
+   */
+  void forEachAgent(AgentFunction function, void *context);
+
+  /**
+   * @brief     Calls function(agentNo) exactly once for every agent; see
+   *            forEachAgent(AgentFunction, void *).
+   * @param[in] function The function or function object to call.
+   */
+  template <class Function>
+  void forEachAgent(Function function) {
+    forEachAgent(&RVOSimulator::callAgentFunction<Function>, &function);
+  }
+
+  /**
    * @brief     Returns the specified agent neighbor of the specified agent.
    * @param[in] agentNo    The number of the agent whose agent neighbor is to be
    *                       retrieved.
@@ -646,6 +676,11 @@ class RVO_EXPORT RVOSimulator {
   void setTimeStep(float timeStep) { timeStep_ = timeStep; }
 
  private:
+  template <class Function>
+  static void callAgentFunction(std::size_t agentNo, void *context) {
+    (*static_cast<Function *>(context))(agentNo);
+  }
+
   /* Not implemented. */
   RVOSimulator(const RVOSimulator &other);
 

@@ -45,7 +45,7 @@ project(
         'b_pie=true',
         'b_staticpic=true',
         'buildtype=release',
-        'cpp_std=c++98',
+        'cpp_std=c++11',
         'warning_level=1',
     ],
     meson_version: '>=1.1.0',

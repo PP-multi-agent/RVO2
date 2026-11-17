@@ -217,9 +217,6 @@ void buildRoadmap(
     RVO::RVOSimulator *simulator,
     std::vector<RoadmapVertex> &roadmap) { /* NOLINT(runtime/references) */
   /* Connect the roadmap vertices by edges if mutually visible. */
-#ifdef _OPENMP
-#pragma omp parallel for
-#endif /* _OPENMP */
   for (std::size_t i = 0; i < roadmap.size(); ++i) {
     for (std::size_t j = 0; j < roadmap.size(); ++j) {
       if (simulator->queryVisibility(roadmap[i].position, roadmap[j].position,
@@ -234,9 +231,6 @@ void buildRoadmap(
 
   /* Compute the distance to each of the four goals (the first four vertices)
    * for all vertices using Dijkstra's algorithm. */
-#ifdef _OPENMP
-#pragma omp parallel for
-#endif /* _OPENMP */
   for (std::size_t i = 0U; i < 4U; ++i) {
     std::multimap<float, std::size_t> Q;
     std::vector<std::multimap<float, std::size_t>::iterator> posInQ(roadmap.size(),
@@ -276,10 +270,7 @@ void setPreferredVelocities(RVO::RVOSimulator *simulator,
   /* Set the preferred velocity to be a vector of unit magnitude (speed) in the
    * direction of the visible roadmap vertex that is on the shortest path to the
    * goal. */
-#ifdef _OPENMP
-#pragma omp parallel for
-#endif /* _OPENMP */
-  for (std::size_t i = 0U; i < simulator->getNumAgents(); ++i) {
+  simulator->forEachAgent([simulator, &roadmap, &goals](std::size_t i) {
     float minDist = std::numeric_limits<float>::infinity();
     std::size_t minVertex = std::numeric_limits<std::size_t>::max();
 
@@ -316,8 +307,7 @@ void setPreferredVelocities(RVO::RVOSimulator *simulator,
                               simulator->getAgentPosition(i)));
       }
     }
-
-  }
+  });
 
   /* Perturb a little to avoid deadlocks due to perfect symmetry. */
   for (std::size_t i = 0U; i < simulator->getNumAgents(); ++i) {

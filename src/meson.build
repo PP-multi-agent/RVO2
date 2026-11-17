@@ -40,6 +40,7 @@ sources = files(
     'Line.cc',
     'Obstacle.cc',
     'RVOSimulator.cc',
+    'Team.cc',
     'Vector2.cc',
 )
 
@@ -97,7 +98,7 @@ lib_rvo = library(
     include_directories: inc,
     cpp_args: compile_args,
     gnu_symbol_visibility: 'hidden',
-    dependencies: openmp_deps,
+    dependencies: openmp_deps + [dependency('threads')],
     version: meson.project_version(),
     soversion: meson.project_version().split('.')[0],
     install: not meson.is_subproject(),

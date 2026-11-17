@@ -62,6 +62,8 @@ target_sources(${RVO_LIBRARY}
       Obstacle.cc
       Obstacle.h
       RVOSimulator.cc
+      Team.cc
+      Team.h
       Vector2.cc)
 
 set_target_properties(${RVO_LIBRARY} PROPERTIES
@@ -88,6 +90,9 @@ endif()
 if(ENABLE_OPENMP AND OpenMP_FOUND)
   target_link_libraries(${RVO_LIBRARY} PRIVATE OpenMP::OpenMP_CXX)
 endif()
+
+# Team.cc starts the threads of the parallel loops.
+target_link_libraries(${RVO_LIBRARY} PRIVATE Threads::Threads)
 
 add_library(${PROJECT_NAME}::${RVO_LIBRARY} ALIAS ${RVO_LIBRARY})
 

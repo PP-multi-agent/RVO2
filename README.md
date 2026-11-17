@@ -72,6 +72,10 @@ bash profiling/bench.sh
 
 Măsoară 12 sarcini: `circle`, `blocks` și `roadmap`, câte 100, 400, 1000 și 2000 de agenți, 200 de pași, de 10 ori. Aceeași suită rulează o dată cu un thread și o dată cu toate threadurile logice. Raportul este `bench-results/<commit>/<calculator>_<cpu>/bench.txt`: CPU, memorie, iar pe fiecare linie `threads=` și `per_step_us` (microsecunde pe pas). Compară mediana, la același număr de agenți. La final, doar suita completă are o secțiune `Efficiency`: speedup-ul fiecărei sarcini împărțit la numărul de threaduri, apoi `overall`, media geometrică. `1` înseamnă că rularea paralelă a scalat cu toate threadurile. Același cod dă un număr apropiat și pe un calculator cu mai puține nuclee. Doar `bash profiling/bench.sh` scrie în `bench-results/`. O rulare pe un scenariu rămâne în `_build-prof/bench.txt`, fără efficiency.
 
+Fiecare linie se termină cu `checksum=`, calculat din pozițiile finale ale tuturor agenților. Aceeași sarcină trebuie să dea aceeași valoare la orice rulare și cu orice număr de threaduri. Scriptul se oprește dacă două valori diferă.
+
+Timpul cu toate threadurile depinde mult de ce mai rulează pe Windows în acel moment. Compară două versiuni doar dacă au fost măsurate una după alta, pe priză, cu aceleași programe deschise.
+
 Dacă ai modificări locale, folderul este commitul curent. Dacă nu ai, este commitul anterior. Aceeași mașină și același commit suprascriu raportul vechi. Scriptul nu face commit; fișierele se adaugă în git când vreți.
 
 Altă rulare:
@@ -93,9 +97,25 @@ bash profiling/callgrind.sh
 bash profiling/callgrind.sh circle 200 1000
 ```
 
-Raportul este `bench-results/<commit>/<calculator>_<cpu>/callgrind-<scenariu>-<agenți>-threads-<n>.txt`. Prima linie are scenariul, agenții, pașii și `threads=`. Mai jos, funcțiile de sus sunt cele mai scumpe: `computeNewVelocity`, `computeNeighbors`, `buildAgentTree`, `update`. La roadmap apare și `queryVisibility`. Durează mult mai mult decât bench-ul. Efficiency rămâne în `bench.txt`, nu în callgrind.
+Raportul este `bench-results/<commit>/<calculator>_<cpu>/callgrind-<scenariu>-<agenți>-threads-<n>.txt`. Prima linie are scenariul, agenții, pașii și `threads=`. Mai jos, funcțiile de sus sunt cele mai scumpe: `computeNewVelocity`, `insertAgentNeighbor`, `Frame::queryRecursive`, `Frame::build`. La roadmap apare și `queryVisibility`. Durează mult mai mult decât bench-ul. Efficiency rămâne în `bench.txt`, nu în callgrind.
 
 `bash profiling/perf.sh` face același lucru cu `perf`, când kernelul îl acceptă.
+
+### Cum rulează pasul pe mai multe threaduri
+
+Numărul de threaduri este cel al OpenMP (`OMP_NUM_THREADS`), deci biblioteca trebuie compilată cu `-DENABLE_OPENMP=ON`. Buclele paralele nu sunt însă regiuni OpenMP. Rulează pe threadurile din `src/Team.cc`.
+
+O regiune OpenMP se termină când toate threadurile au ajuns la barieră. În WSL, Windows oprește din când în când un CPU virtual pentru câteva milisecunde, iar tot pasul îl așteaptă. Pe laptopul de test, cu 8 threaduri, așa se pierdea de la 20% din timp în sus. În `Team`, o buclă se termină când sunt gata toți agenții, oricine i-a calculat:
+
+- Un thread ia câte un agent, întâi din partea lui, apoi de la coada părților celorlalte. Un thread oprit ține pe loc cel mult un agent, iar bucla nu așteaptă un thread care nu ține niciunul.
+- `doStep()` citește starea agenților dintr-un cadru (`Frame`, în `src/KdTree.h`) care nu se schimbă în timpul pasului și scrie starea nouă în alt cadru. Calculul unui agent scrie doar în zona de lucru a threadului (`AgentScratch`). Agentul ținut de un thread oprit este calculat încă o dată de threadul care a chemat `doStep()`, iar primul rezultat rămâne.
+- Cât timp threadurile țin pasul, fiecare calculează aceiași agenți în fiecare pas, deci datele unui agent rămân în cache-ul unui singur nucleu. Starea unui agent ocupă exact o linie de cache.
+
+Rezultatul este identic bit cu bit cu cel de pe un thread și cu cel al codului de dinainte. Asta verifică `checksum` din `bench.txt`.
+
+Bucla din aplicație dintre pași, cea care pune viteza preferată a fiecărui agent, trece prin `simulator->forEachAgent(...)`, ca în `examples/` și în `profiling/Bench.cc`. O buclă `#pragma omp parallel for` în locul ei pornește al doilea set de threaduri, care se învârte în gol pe aceleași CPU-uri în timpul pasului. `forEachAgent` cheamă funcția exact o dată pentru fiecare agent, așa că acolo un thread oprit este așteptat.
+
+Biblioteca cere acum C++11 (`std::thread`, `std::atomic`).
 
 ## Ce înseamnă textul afișat
 

@@ -97,10 +97,7 @@ void setPreferredVelocities(RVO::RVOSimulator *simulator,
                             const std::vector<RVO::Vector2> &goals) {
   /* Set the preferred velocity to be a vector of unit magnitude (speed) in the
    * direction of the goal. */
-#ifdef _OPENMP
-#pragma omp parallel for
-#endif /* _OPENMP */
-  for (std::size_t i = 0U; i < simulator->getNumAgents(); ++i) {
+  simulator->forEachAgent([simulator, &goals](std::size_t i) {
     RVO::Vector2 goalVector = goals[i] - simulator->getAgentPosition(i);
 
     if (RVO::absSq(goalVector) > 1.0F) {
@@ -108,7 +105,7 @@ void setPreferredVelocities(RVO::RVOSimulator *simulator,
     }
 
     simulator->setAgentPrefVelocity(i, goalVector);
-  }
+  });
 }
 
 bool reachedGoal(RVO::RVOSimulator *simulator,
