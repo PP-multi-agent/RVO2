@@ -1,0 +1,307 @@
+date=2026-11-17T19:56:55+00:00
+os=Ubuntu 24.04.4 LTS
+arch=x86_64
+cpu=Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz
+sockets=1
+cores_per_socket=2
+threads_per_core=2
+logical_cpus=4
+memory_mib=3789
+compiler=g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+openmp=on
+repeats=10
+suite=full
+head=f2d7d24ee25c
+results_commit=f2d7d24ee25c
+worktree=clean
+machine=kimi_intel-core-i5-6200u-cpu-2-30ghz
+command=rvo-bench all
+
+threads=1
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.485 per_step_us=42.426 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=111.818 per_step_us=559.091 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=364.010 per_step_us=1820.049 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=857.821 per_step_us=4289.107 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=22.391 per_step_us=111.953 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=110.566 per_step_us=552.832 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=284.944 per_step_us=1424.719 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=605.187 per_step_us=3025.934 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=127.683 per_step_us=638.413 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=556.564 per_step_us=2782.819 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1429.193 per_step_us=7145.964 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2924.358 per_step_us=14621.789 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.614 per_step_us=43.071 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=110.281 per_step_us=551.405 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=359.921 per_step_us=1799.603 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=840.722 per_step_us=4203.608 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=22.231 per_step_us=111.154 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=108.155 per_step_us=540.776 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=279.887 per_step_us=1399.433 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=593.619 per_step_us=2968.094 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=125.716 per_step_us=628.578 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=545.618 per_step_us=2728.089 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1407.093 per_step_us=7035.463 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2884.578 per_step_us=14422.891 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.687 per_step_us=43.435 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=109.974 per_step_us=549.871 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=359.545 per_step_us=1797.725 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=841.325 per_step_us=4206.627 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=22.191 per_step_us=110.953 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=108.364 per_step_us=541.818 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=281.021 per_step_us=1405.104 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=594.931 per_step_us=2974.655 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=125.906 per_step_us=629.528 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=547.028 per_step_us=2735.138 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1416.007 per_step_us=7080.033 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2914.546 per_step_us=14572.732 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.559 per_step_us=42.794 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=112.224 per_step_us=561.122 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=362.619 per_step_us=1813.094 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=852.252 per_step_us=4261.260 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=22.405 per_step_us=112.027 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=110.427 per_step_us=552.135 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=286.357 per_step_us=1431.784 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=604.584 per_step_us=3022.918 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=128.165 per_step_us=640.827 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=556.327 per_step_us=2781.634 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1434.972 per_step_us=7174.861 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2939.880 per_step_us=14699.400 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.505 per_step_us=42.523 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=112.680 per_step_us=563.401 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=360.225 per_step_us=1801.126 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=845.421 per_step_us=4227.107 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=22.104 per_step_us=110.522 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=108.293 per_step_us=541.463 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=281.432 per_step_us=1407.161 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=598.388 per_step_us=2991.940 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=126.032 per_step_us=630.162 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=548.062 per_step_us=2740.312 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1412.301 per_step_us=7061.506 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2892.500 per_step_us=14462.499 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.717 per_step_us=43.586 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=110.949 per_step_us=554.744 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=358.587 per_step_us=1792.936 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=841.703 per_step_us=4208.514 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=22.355 per_step_us=111.774 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=108.416 per_step_us=542.079 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=280.419 per_step_us=1402.094 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=598.117 per_step_us=2990.587 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=125.839 per_step_us=629.196 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=546.574 per_step_us=2732.868 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1407.196 per_step_us=7035.980 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2892.900 per_step_us=14464.498 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.576 per_step_us=42.880 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=111.571 per_step_us=557.854 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=367.959 per_step_us=1839.796 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=853.161 per_step_us=4265.804 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=22.572 per_step_us=112.861 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=111.204 per_step_us=556.019 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=284.344 per_step_us=1421.721 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=608.881 per_step_us=3044.404 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=127.862 per_step_us=639.308 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=559.777 per_step_us=2798.886 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1435.085 per_step_us=7175.427 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2943.898 per_step_us=14719.490 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.615 per_step_us=43.076 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=112.216 per_step_us=561.079 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=363.596 per_step_us=1817.979 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=852.078 per_step_us=4260.389 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=22.329 per_step_us=111.646 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=109.596 per_step_us=547.979 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=285.095 per_step_us=1425.476 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=603.105 per_step_us=3015.523 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=127.008 per_step_us=635.041 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=554.505 per_step_us=2772.526 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1423.126 per_step_us=7115.629 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2924.720 per_step_us=14623.598 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.590 per_step_us=42.952 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=111.747 per_step_us=558.735 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=365.020 per_step_us=1825.100 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=852.732 per_step_us=4263.659 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=22.428 per_step_us=112.138 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=110.279 per_step_us=551.394 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=284.543 per_step_us=1422.717 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=606.700 per_step_us=3033.499 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=128.202 per_step_us=641.009 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=555.816 per_step_us=2779.078 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1428.929 per_step_us=7144.646 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2935.947 per_step_us=14679.734 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.495 per_step_us=42.476 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=111.969 per_step_us=559.844 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=364.823 per_step_us=1824.114 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=853.724 per_step_us=4268.622 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=22.574 per_step_us=112.870 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=109.984 per_step_us=549.921 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=284.757 per_step_us=1423.785 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=602.242 per_step_us=3011.208 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=127.025 per_step_us=635.124 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=553.443 per_step_us=2767.215 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1424.578 per_step_us=7122.888 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2923.312 per_step_us=14616.558 checksum=2d3d5c316399e54d
+
+median threads=1
+circle 100 threads=1 per_step_us min=42.426 median=42.916 max=43.586
+circle 400 threads=1 per_step_us min=549.871 median=558.913 max=563.401
+circle 1000 threads=1 per_step_us min=1792.936 median=1815.537 max=1839.796
+circle 2000 threads=1 per_step_us min=4203.608 median=4260.825 max=4289.107
+blocks 100 threads=1 per_step_us min=110.522 median=111.864 max=112.870
+blocks 400 threads=1 per_step_us min=540.776 median=548.950 max=556.019
+blocks 1000 threads=1 per_step_us min=1399.433 median=1422.219 max=1431.784
+blocks 2000 threads=1 per_step_us min=2968.094 median=3013.365 max=3044.404
+roadmap 100 threads=1 per_step_us min=628.578 median=635.082 max=641.009
+roadmap 400 threads=1 per_step_us min=2728.089 median=2769.870 max=2798.886
+roadmap 1000 threads=1 per_step_us min=7035.463 median=7119.258 max=7175.427
+roadmap 2000 threads=1 per_step_us min=14422.891 median=14619.174 max=14719.490
+
+threads=4
+scenario=circle agents=100 steps=200 warmup=5 threads=4 elapsed_ms=5.275 per_step_us=26.373 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.983 per_step_us=239.915 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=147.390 per_step_us=736.952 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=346.355 per_step_us=1731.775 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=4 elapsed_ms=10.614 per_step_us=53.069 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.263 per_step_us=236.314 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=123.454 per_step_us=617.271 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=259.449 per_step_us=1297.243 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=4 elapsed_ms=56.863 per_step_us=284.315 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=4 elapsed_ms=235.497 per_step_us=1177.484 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=604.159 per_step_us=3020.794 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=1240.701 per_step_us=6203.506 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=4 elapsed_ms=5.347 per_step_us=26.736 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.944 per_step_us=239.721 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=147.970 per_step_us=739.852 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=346.591 per_step_us=1732.957 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=4 elapsed_ms=10.703 per_step_us=53.517 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.867 per_step_us=239.335 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=124.165 per_step_us=620.825 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=262.312 per_step_us=1311.560 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=4 elapsed_ms=56.770 per_step_us=283.850 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=4 elapsed_ms=234.817 per_step_us=1174.084 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=603.217 per_step_us=3016.086 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=1232.492 per_step_us=6162.462 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=4 elapsed_ms=5.302 per_step_us=26.511 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=4 elapsed_ms=48.036 per_step_us=240.182 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=163.826 per_step_us=819.130 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=345.791 per_step_us=1728.953 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=4 elapsed_ms=10.658 per_step_us=53.292 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.717 per_step_us=238.583 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=123.199 per_step_us=615.996 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=260.815 per_step_us=1304.075 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=4 elapsed_ms=56.577 per_step_us=282.884 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=4 elapsed_ms=234.456 per_step_us=1172.278 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=601.295 per_step_us=3006.473 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=1234.238 per_step_us=6171.190 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=4 elapsed_ms=5.371 per_step_us=26.855 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.950 per_step_us=239.751 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=148.021 per_step_us=740.103 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=347.217 per_step_us=1736.087 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=4 elapsed_ms=10.746 per_step_us=53.731 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.536 per_step_us=237.682 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=124.332 per_step_us=621.659 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=262.150 per_step_us=1310.752 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=4 elapsed_ms=57.180 per_step_us=285.898 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=4 elapsed_ms=237.457 per_step_us=1187.284 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=609.658 per_step_us=3048.289 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=1247.857 per_step_us=6239.284 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=4 elapsed_ms=5.457 per_step_us=27.285 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.731 per_step_us=238.655 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=147.338 per_step_us=736.690 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=345.269 per_step_us=1726.344 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=4 elapsed_ms=10.550 per_step_us=52.750 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.326 per_step_us=236.629 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=122.827 per_step_us=614.135 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=261.578 per_step_us=1307.888 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=4 elapsed_ms=56.421 per_step_us=282.104 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=4 elapsed_ms=234.414 per_step_us=1172.069 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=601.164 per_step_us=3005.819 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=1231.956 per_step_us=6159.779 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=4 elapsed_ms=5.303 per_step_us=26.513 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.810 per_step_us=239.050 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=147.198 per_step_us=735.988 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=343.809 per_step_us=1719.046 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=4 elapsed_ms=10.519 per_step_us=52.594 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.190 per_step_us=235.950 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=124.547 per_step_us=622.736 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=259.947 per_step_us=1299.734 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=4 elapsed_ms=56.894 per_step_us=284.468 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=4 elapsed_ms=234.734 per_step_us=1173.668 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=601.739 per_step_us=3008.695 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=1232.819 per_step_us=6164.094 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=4 elapsed_ms=5.252 per_step_us=26.259 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=4 elapsed_ms=48.038 per_step_us=240.191 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=147.515 per_step_us=737.575 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=345.905 per_step_us=1729.524 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=4 elapsed_ms=10.621 per_step_us=53.103 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.636 per_step_us=238.180 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=123.462 per_step_us=617.311 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=262.700 per_step_us=1313.500 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=4 elapsed_ms=57.385 per_step_us=286.927 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=4 elapsed_ms=237.555 per_step_us=1187.775 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=610.760 per_step_us=3053.800 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=1247.633 per_step_us=6238.163 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=4 elapsed_ms=5.373 per_step_us=26.866 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.572 per_step_us=237.859 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=147.365 per_step_us=736.826 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=349.102 per_step_us=1745.511 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=4 elapsed_ms=10.500 per_step_us=52.501 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=4 elapsed_ms=46.910 per_step_us=234.548 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=122.551 per_step_us=612.755 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=262.305 per_step_us=1311.524 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=4 elapsed_ms=56.943 per_step_us=284.715 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=4 elapsed_ms=243.132 per_step_us=1215.662 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=606.932 per_step_us=3034.662 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=1232.027 per_step_us=6160.135 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=4 elapsed_ms=5.322 per_step_us=26.609 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.651 per_step_us=238.257 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=147.469 per_step_us=737.345 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=345.792 per_step_us=1728.958 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=4 elapsed_ms=10.740 per_step_us=53.700 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=4 elapsed_ms=47.053 per_step_us=235.265 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=122.330 per_step_us=611.648 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=258.989 per_step_us=1294.947 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=4 elapsed_ms=56.764 per_step_us=283.818 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=4 elapsed_ms=235.839 per_step_us=1179.196 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=608.362 per_step_us=3041.808 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=1243.789 per_step_us=6218.946 checksum=2d3d5c316399e54d
+scenario=circle agents=100 steps=200 warmup=5 threads=4 elapsed_ms=5.379 per_step_us=26.894 checksum=ef0288bd876b273e
+scenario=circle agents=400 steps=200 warmup=5 threads=4 elapsed_ms=48.035 per_step_us=240.173 checksum=bfcc080853c1904
+scenario=circle agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=147.058 per_step_us=735.290 checksum=3c5eca85c0f5752b
+scenario=circle agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=346.781 per_step_us=1733.903 checksum=22e1a1e1da123351
+scenario=blocks agents=100 steps=200 warmup=5 threads=4 elapsed_ms=10.791 per_step_us=53.956 checksum=cfe1f4bcbb5921
+scenario=blocks agents=400 steps=200 warmup=5 threads=4 elapsed_ms=54.055 per_step_us=270.274 checksum=362208204d426bc0
+scenario=blocks agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=123.293 per_step_us=616.465 checksum=f56960881a14b46b
+scenario=blocks agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=261.766 per_step_us=1308.832 checksum=bdb178b168b998ec
+scenario=roadmap agents=100 steps=200 warmup=5 threads=4 elapsed_ms=56.378 per_step_us=281.890 checksum=8a5cacc269e831bf
+scenario=roadmap agents=400 steps=200 warmup=5 threads=4 elapsed_ms=235.053 per_step_us=1175.263 checksum=a7f2fac4b3d60cd2
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=4 elapsed_ms=605.310 per_step_us=3026.548 checksum=511e50607910e611
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=4 elapsed_ms=1228.470 per_step_us=6142.349 checksum=2d3d5c316399e54d
+
+median threads=4
+circle 100 threads=4 per_step_us min=26.259 median=26.672 max=27.285
+circle 400 threads=4 per_step_us min=237.859 median=239.736 max=240.191
+circle 1000 threads=4 per_step_us min=735.290 median=737.149 max=819.130
+circle 2000 threads=4 per_step_us min=1719.046 median=1730.649 max=1745.511
+blocks 100 threads=4 per_step_us min=52.501 median=53.198 max=53.956
+blocks 400 threads=4 per_step_us min=234.548 median=237.155 max=270.274
+blocks 1000 threads=4 per_step_us min=611.648 median=616.868 max=622.736
+blocks 2000 threads=4 per_step_us min=1294.947 median=1308.360 max=1313.500
+roadmap 100 threads=4 per_step_us min=281.890 median=284.082 max=286.927
+roadmap 400 threads=4 per_step_us min=1172.069 median=1176.373 max=1215.662
+roadmap 1000 threads=4 per_step_us min=3005.819 median=3023.671 max=3053.800
+roadmap 2000 threads=4 per_step_us min=6142.349 median=6167.642 max=6239.284
+
+checksum: identical final positions in every run of each workload
+
+Efficiency
+circle 100 0.402
+circle 400 0.583
+circle 1000 0.616
+circle 2000 0.615
+blocks 100 0.526
+blocks 400 0.579
+blocks 1000 0.576
+blocks 2000 0.576
+roadmap 100 0.559
+roadmap 400 0.589
+roadmap 1000 0.589
+roadmap 2000 0.593
+overall 0.564

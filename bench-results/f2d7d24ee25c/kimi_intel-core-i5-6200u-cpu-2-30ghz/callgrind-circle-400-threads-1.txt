@@ -1,0 +1,2579 @@
+scenario=circle agents=400 steps=200 threads=1
+
+--------------------------------------------------------------------------------
+Profile data file '/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/callgrind-circle-400-threads-1.out' (creator: callgrind-3.22.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 109707877
+Trigger: Program termination
+Profiled target:  /home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/profiling/rvo-bench circle 200 400 (PID 34766, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                   
+--------------------------------------------------------------------------------
+624,114,563 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                   file:function
+--------------------------------------------------------------------------------
+93,318,386 (14.95%)  src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+73,043,215 (11.70%)  src/Agent.cc:RVO::AgentScratch::computeNewVelocity(float) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+68,977,994 (11.05%)  src/Agent.cc:RVO::AgentScratch::insertAgentNeighbor(RVO::Vector2 const&, unsigned long, float&) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+56,973,263 ( 9.13%)  src/KdTree.cc:RVO::Frame::queryRecursive(RVO::AgentScratch*, unsigned long, float&, unsigned long) const'2 [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+47,279,980 ( 7.58%)  src/Vector2.cc:RVO::operator*(float, RVO::Vector2 const&) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+40,434,212 ( 6.48%)  src/Vector2.cc:RVO::Vector2::Vector2(float, float) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+31,126,529 ( 4.99%)  src/Vector2.cc:RVO::Vector2::operator*(RVO::Vector2 const&) const [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+23,562,799 ( 3.78%)  src/Agent.cc:RVO::(anonymous namespace)::linearProgram2(std::vector<RVO::Line, std::allocator<RVO::Line> > const&, float, RVO::Vector2 const&, bool, RVO::Vector2&) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+18,309,753 ( 2.93%)  src/Vector2.cc:RVO::Vector2::operator/(float) const [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+17,256,788 ( 2.77%)  src/Vector2.cc:RVO::Vector2::operator+(RVO::Vector2 const&) const [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+11,262,743 ( 1.80%)  /usr/include/c++/13/bits/stl_algobase.h:RVO::Frame::queryRecursive(RVO::AgentScratch*, unsigned long, float&, unsigned long) const'2
+ 9,967,663 ( 1.60%)  /usr/include/c++/13/bits/stl_vector.h:RVO::Frame::queryRecursive(RVO::AgentScratch*, unsigned long, float&, unsigned long) const'2
+ 9,679,452 ( 1.55%)  src/Vector2.cc:RVO::absSq(RVO::Vector2 const&) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 8,688,823 ( 1.39%)  src/Line.cc:RVO::Line::Line() [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 8,097,161 ( 1.30%)  /usr/include/c++/13/bits/stl_vector.h:RVO::AgentScratch::computeNewVelocity(float)
+ 7,251,769 ( 1.16%)  src/Vector2.cc:RVO::det(RVO::Vector2 const&, RVO::Vector2 const&) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 7,118,634 ( 1.14%)  src/Vector2.cc:RVO::Vector2::Vector2() [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 6,728,402 ( 1.08%)  /usr/include/c++/13/bits/stl_vector.h:RVO::(anonymous namespace)::linearProgram2(std::vector<RVO::Line, std::allocator<RVO::Line> > const&, float, RVO::Vector2 const&, bool, RVO::Vector2&)
+ 6,423,042 ( 1.03%)  /usr/include/c++/13/bits/stl_vector.h:RVO::AgentScratch::insertAgentNeighbor(RVO::Vector2 const&, unsigned long, float&)
+ 6,268,047 ( 1.00%)  src/KdTree.cc:RVO::Frame::buildRecursive(unsigned long, unsigned long, unsigned long)'2 [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 5,809,463 ( 0.93%)  /usr/include/c++/13/bits/stl_pair.h:RVO::AgentScratch::insertAgentNeighbor(RVO::Vector2 const&, unsigned long, float&)
+ 5,653,615 ( 0.91%)  src/KdTree.cc:RVO::Frame::queryRecursive(RVO::AgentScratch*, unsigned long, float&, unsigned long) const [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 4,592,000 ( 0.74%)  src/KdTree.cc:RVO::Frame::compute(unsigned long, unsigned long) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 4,465,697 ( 0.72%)  /usr/include/c++/13/cmath:RVO::AgentScratch::computeNewVelocity(float)
+ 3,854,000 ( 0.62%)  src/KdTree.cc:RVO::Frame::store(unsigned long, unsigned long) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 3,631,810 ( 0.58%)  /usr/include/c++/13/bits/stl_algobase.h:RVO::Frame::buildRecursive(unsigned long, unsigned long, unsigned long)'2
+ 3,165,551 ( 0.51%)  /usr/include/c++/13/bits/vector.tcc:RVO::AgentScratch::insertAgentNeighbor(RVO::Vector2 const&, unsigned long, float&)
+ 2,952,000 ( 0.47%)  /usr/include/c++/13/bits/stl_vector.h:RVO::AgentScratch::store(RVO::Agent*)
+ 2,844,341 ( 0.46%)  src/KdTree.cc:RVO::Frame::buildRecursive(unsigned long, unsigned long, unsigned long) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 2,542,000 ( 0.41%)  src/KdTree.cc:RVO::KdTree::queryObstacleTreeRecursive(RVO::AgentScratch*, float, RVO::KdTree::ObstacleTreeNode const*) const [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 2,393,990 ( 0.38%)  src/Team.cc:RVO::Team::execute(RVO::Team::Job*, unsigned long, unsigned long, unsigned long, bool, void const*) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 2,073,011 ( 0.33%)  /usr/include/c++/13/bits/stl_algobase.h:RVO::Frame::queryRecursive(RVO::AgentScratch*, unsigned long, float&, unsigned long) const
+ 1,886,000 ( 0.30%)  src/RVOSimulator.h:void RVO::RVOSimulator::callAgentFunction<(anonymous namespace)::setPreferredVelocities(RVO::RVOSimulator*, std::vector<RVO::Vector2, std::allocator<RVO::Vector2> > const&, bool)::{lambda(unsigned long)#1}>(unsigned long, void*) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/profiling/rvo-bench]
+ 1,707,800 ( 0.27%)  /usr/include/c++/13/bits/stl_algobase.h:RVO::Frame::buildRecursive(unsigned long, unsigned long, unsigned long)
+ 1,640,000 ( 0.26%)  profiling/Bench.cc:void RVO::RVOSimulator::callAgentFunction<(anonymous namespace)::setPreferredVelocities(RVO::RVOSimulator*, std::vector<RVO::Vector2, std::allocator<RVO::Vector2> > const&, bool)::{lambda(unsigned long)#1}>(unsigned long, void*)
+ 1,575,776 ( 0.25%)  /usr/include/c++/13/bits/new_allocator.h:RVO::AgentScratch::computeNewVelocity(float)
+ 1,575,758 ( 0.25%)  /usr/include/c++/13/bits/new_allocator.h:RVO::AgentScratch::insertAgentNeighbor(RVO::Vector2 const&, unsigned long, float&)
+ 1,558,114 ( 0.25%)  src/Vector2.cc:RVO::Vector2::operator*(float) const [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 1,457,184 ( 0.23%)  src/Vector2.h:RVO::Frame::queryRecursive(RVO::AgentScratch*, unsigned long, float&, unsigned long) const'2
+ 1,318,156 ( 0.21%)  src/KdTree.cc:RVO::Frame::build(std::vector<unsigned int, std::allocator<unsigned int> >&) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 1,123,960 ( 0.18%)  src/Vector2.cc:RVO::Vector2::operator-() const [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+ 1,076,005 ( 0.17%)  src/Vector2.h:RVO::Frame::buildRecursive(unsigned long, unsigned long, unsigned long)'2
+   902,099 ( 0.14%)  src/Vector2.cc:RVO::normalize(RVO::Vector2 const&) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+   902,000 ( 0.14%)  src/RVOSimulator.cc:RVO::RVOSimulator::setAgentPrefVelocity(unsigned long, RVO::Vector2 const&) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+   859,680 ( 0.14%)  /usr/include/c++/13/bits/stl_vector.h:RVO::Frame::queryRecursive(RVO::AgentScratch*, unsigned long, float&, unsigned long) const
+   704,892 ( 0.11%)  ./elf/./elf/dl-lookup.c:do_lookup_x [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+   656,000 ( 0.11%)  src/RVOSimulator.cc:RVO::(anonymous namespace)::AgentFunctionJob::compute(unsigned long, unsigned long) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+   655,599 ( 0.11%)  /usr/include/c++/13/bits/stl_vector.h:RVO::Frame::compute(unsigned long, unsigned long)
+   633,003 ( 0.10%)  src/Vector2.cc:RVO::abs(RVO::Vector2 const&) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+   574,000 ( 0.09%)  src/Vector2.cc:RVO::Vector2::operator+=(RVO::Vector2 const&) [/home/arthur/actions-runner/_work/RVO2/RVO2/_build-prof/src/libRVO.so.2.0.3]
+   517,446 ( 0.08%)  src/Vector2.h:RVO::Frame::buildRecursive(unsigned long, unsigned long, unsigned long)
+   505,764 ( 0.08%)  ./elf/../sysdeps/generic/dl-new-hash.h:_dl_lookup_symbol_x
+   361,716 ( 0.06%)  /usr/include/c++/13/cmath:RVO::abs(RVO::Vector2 const&)
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: src/KdTree.cc
+--------------------------------------------------------------------------------
+Ir                 
+
+-- line 104 ----------------------------------------
+        .           
+        .             /**
+        .              * @brief The minimum y-coordinate.
+        .              */
+        .             float minY;
+        .           };
+        .           
+        .           Frame::Node::Node()
+    1,600 ( 0.00%)      : begin(0U),
+        .                 end(0U),
+        .                 left(0U),
+        .                 right(0U),
+    1,608 ( 0.00%)        maxX(0.0F),
+        .                 maxY(0.0F),
+        .                 minX(0.0F),
+        .                 minY(0.0F) {}
+        .           
+        .           /**
+        .            * @brief Defines an obstacle k-D tree node.
+        .            */
+        .           class KdTree::ObstacleTreeNode {
+-- line 124 ----------------------------------------
+-- line 157 ----------------------------------------
+        .           };
+        .           
+        .           KdTree::ObstacleTreeNode::ObstacleTreeNode()
+        .               : obstacle(NULL), left(NULL), right(NULL) {}
+        .           
+        .           KdTree::ObstacleTreeNode::~ObstacleTreeNode() {}
+        .           
+        .           Frame::Frame(const KdTree *kdTree)
+       12 ( 0.00%)      : agents_(NULL), next_(NULL), kdTree_(kdTree), timeStep_(0.0F) {}
+        .           
+       34 ( 0.00%)  Frame::~Frame() {}
+    1,342 ( 0.00%)  => src/KdTree.cc:RVO::Frame::~Frame() (2x)
+      360 ( 0.00%)  => ???:0x0000000004844350 (2x)
+        .           
+    2,255 ( 0.00%)  void Frame::build(std::vector<unsigned int> &order) {
+        .             const std::size_t count = states_.size();
+        .           
+      410 ( 0.00%)    if (entries_.size() != count) {
+        2 ( 0.00%)      entries_.resize(count);
+        8 ( 0.00%)      nodes_.resize(count == 0U ? 0U : 2U * count - 1U);
+        .             }
+        .           
+  328,816 ( 0.05%)    for (std::size_t i = 0U; i < count; ++i) {
+  410,000 ( 0.07%)      entries_[i].position = states_[order[i]].position_;
+   82,000 ( 0.01%)      entries_[i].agentNo = order[i];
+        .             }
+        .           
+        .             if (count != 0U) {
+    1,025 ( 0.00%)      buildRecursive(0U, count, 0U);
+16,267,724 ( 2.61%)  => src/KdTree.cc:RVO::Frame::buildRecursive(unsigned long, unsigned long, unsigned long) (205x)
+        .             }
+        .           
+  328,000 ( 0.05%)    for (std::size_t i = 0U; i < count; ++i) {
+  164,000 ( 0.03%)      order[i] = entries_[i].agentNo;
+        .             }
+    1,640 ( 0.00%)  }
+        .           
+        .           void Frame::buildRecursive(std::size_t begin, std::size_t end,
+   95,742 ( 0.02%)                             std::size_t node) {
+   21,071 ( 0.00%)    nodes_[node].begin = static_cast<unsigned int>(begin);
+   52,780 ( 0.01%)    nodes_[node].end = static_cast<unsigned int>(end);
+   84,284 ( 0.01%)    nodes_[node].minX = nodes_[node].maxX = entries_[begin].position.x();
+        .             nodes_[node].minY = nodes_[node].maxY = entries_[begin].position.y();
+        .           
+1,749,380 ( 0.28%)    for (std::size_t i = begin + 1U; i < end; ++i) {
+  533,961 ( 0.09%)      nodes_[node].maxX = std::max(nodes_[node].maxX, entries_[i].position.x());
+  533,961 ( 0.09%)      nodes_[node].minX = std::min(nodes_[node].minX, entries_[i].position.x());
+  533,961 ( 0.09%)      nodes_[node].maxY = std::max(nodes_[node].maxY, entries_[i].position.y());
+  533,961 ( 0.09%)      nodes_[node].minY = std::min(nodes_[node].minY, entries_[i].position.y());
+        .             }
+        .           
+   84,284 ( 0.01%)    if (end - begin > RVO_MAX_LEAF_SIZE) {
+        .               /* No leaf node. */
+   41,732 ( 0.01%)      const bool isVertical = nodes_[node].maxX - nodes_[node].minX >
+   41,732 ( 0.01%)                              nodes_[node].maxY - nodes_[node].minY;
+        .               const float splitValue =
+   41,732 ( 0.01%)          0.5F * (isVertical ? nodes_[node].maxX + nodes_[node].minX
+   52,985 ( 0.01%)                             : nodes_[node].maxY + nodes_[node].minY);
+        .           
+   10,433 ( 0.00%)      std::size_t left = begin;
+   10,433 ( 0.00%)      std::size_t right = end;
+        .           
+   61,256 ( 0.01%)      while (left < right) {
+1,448,060 ( 0.23%)        while (left < right &&
+  498,892 ( 0.08%)               (isVertical ? entries_[left].position.x()
+        .                                    : entries_[left].position.y()) < splitValue) {
+  249,446 ( 0.04%)          ++left;
+        .                 }
+        .           
+1,459,019 ( 0.23%)        while (right > left &&
+  701,823 ( 0.11%)               (isVertical ? entries_[right - 1U].position.x()
+        .                                    : entries_[right - 1U].position.y()) >= splitValue) {
+        .                   --right;
+        .                 }
+        .           
+    3,598 ( 0.00%)        if (left < right) {
+    1,799 ( 0.00%)          std::swap(entries_[left], entries_[right - 1U]);
+    1,799 ( 0.00%)          ++left;
+    1,799 ( 0.00%)          --right;
+        .                 }
+        .               }
+        .           
+        .               if (left == begin) {
+   41,732 ( 0.01%)        ++left;
+        .                 ++right;
+        .               }
+        .           
+   20,866 ( 0.00%)      nodes_[node].left = static_cast<unsigned int>(node + 1U);
+   41,732 ( 0.01%)      nodes_[node].right = static_cast<unsigned int>(node + 2U * (left - begin));
+        .           
+   41,732 ( 0.01%)      buildRecursive(begin, left, nodes_[node].left);
+11,175,300 ( 1.79%)  => src/KdTree.cc:RVO::Frame::buildRecursive(unsigned long, unsigned long, unsigned long)'2 (1,435x)
+   31,299 ( 0.01%)      buildRecursive(left, end, nodes_[node].right);
+        .             }
+   85,104 ( 0.01%)  }
+        .           
+  738,000 ( 0.12%)  void Frame::compute(std::size_t item, std::size_t thread) {
+  328,000 ( 0.05%)    AgentScratch *const scratch = scratch_[thread];
+  902,000 ( 0.14%)    static_cast<AgentState &>(*scratch) = states_[item];
+   82,000 ( 0.01%)    scratch->states_ = &states_[0];
+        .           
+        .             scratch->obstacleNeighbors_.clear();
+   82,000 ( 0.01%)    const float range =
+  164,000 ( 0.03%)        scratch->timeHorizonObst_ * scratch->maxSpeed_ + scratch->radius_;
+  164,000 ( 0.03%)    kdTree_->computeObstacleNeighbors(scratch, range * range);
+        .           
+        .             scratch->agentNeighbors_.clear();
+        .           
+  164,000 ( 0.03%)    if (scratch->maxNeighbors_ > 0U) {
+  246,000 ( 0.04%)      float rangeSq = scratch->neighborDist_ * scratch->neighborDist_;
+  574,000 ( 0.09%)      queryRecursive(scratch, item, rangeSq, 0U);
+220,388,208 (35.31%)  => src/KdTree.cc:RVO::Frame::queryRecursive(RVO::AgentScratch*, unsigned long, float&, unsigned long) const (82,000x)
+        .             }
+        .           
+  492,000 ( 0.08%)    scratch->computeNewVelocity(timeStep_);
+349,528,298 (56.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Agent.cc:RVO::AgentScratch::computeNewVelocity(float) (82,000x)
+  410,000 ( 0.07%)  }
+        .           
+        .           void Frame::queryRecursive(AgentScratch *scratch, std::size_t agentNo,
+8,497,814 ( 1.36%)                             float &rangeSq, std::size_t node) const {
+5,069,626 ( 0.81%)    if (nodes_[node].end - nodes_[node].begin <= RVO_MAX_LEAF_SIZE) {
+6,565,156 ( 1.05%)      for (std::size_t i = nodes_[node].begin; i < nodes_[node].end; ++i) {
+4,364,319 ( 0.70%)        if (entries_[i].agentNo != agentNo) {
+9,609,411 ( 1.54%)          scratch->insertAgentNeighbor(entries_[i].position, entries_[i].agentNo,
+131,883,145 (21.13%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Agent.cc:RVO::AgentScratch::insertAgentNeighbor(RVO::Vector2 const&, unsigned long, float&) (1,372,773x)
+        .                                                rangeSq);
+        .                 }
+        .               }
+        .             } else {
+        .               const float distLeftMinX = std::max(
+1,715,088 ( 0.27%)          0.0F, nodes_[nodes_[node].left].minX - scratch->position_.x());
+        .               const float distLeftMaxX = std::max(
+1,143,392 ( 0.18%)          0.0F, scratch->position_.x() - nodes_[nodes_[node].left].maxX);
+        .               const float distLeftMinY = std::max(
+1,143,392 ( 0.18%)          0.0F, nodes_[nodes_[node].left].minY - scratch->position_.y());
+        .               const float distLeftMaxY = std::max(
+1,143,392 ( 0.18%)          0.0F, scratch->position_.y() - nodes_[nodes_[node].left].maxY);
+        .           
+  571,696 ( 0.09%)      const float distSqLeft =
+1,705,500 ( 0.27%)          distLeftMinX * distLeftMinX + distLeftMaxX * distLeftMaxX +
+  562,320 ( 0.09%)          distLeftMinY * distLeftMinY + distLeftMaxY * distLeftMaxY;
+        .           
+        .               const float distRightMinX = std::max(
+1,715,088 ( 0.27%)          0.0F, nodes_[nodes_[node].right].minX - scratch->position_.x());
+        .               const float distRightMaxX = std::max(
+  571,696 ( 0.09%)          0.0F, scratch->position_.x() - nodes_[nodes_[node].right].maxX);
+        .               const float distRightMinY = std::max(
+1,143,392 ( 0.18%)          0.0F, nodes_[nodes_[node].right].minY - scratch->position_.y());
+        .               const float distRightMaxY = std::max(
+  571,696 ( 0.09%)          0.0F, scratch->position_.y() - nodes_[nodes_[node].right].maxY);
+        .           
+  571,696 ( 0.09%)      const float distSqRight =
+1,717,124 ( 0.28%)          distRightMinX * distRightMinX + distRightMaxX * distRightMaxX +
+  571,872 ( 0.09%)          distRightMinY * distRightMinY + distRightMaxY * distRightMaxY;
+        .           
+1,143,392 ( 0.18%)      if (distSqLeft < distSqRight) {
+  865,197 ( 0.14%)        if (distSqLeft < rangeSq) {
+1,441,915 ( 0.23%)          queryRecursive(scratch, agentNo, rangeSq, nodes_[node].left);
+106,062,251 (16.99%)  => src/KdTree.cc:RVO::Frame::queryRecursive(RVO::AgentScratch*, unsigned long, float&, unsigned long) const'2 (43,160x)
+        .           
+1,153,532 ( 0.18%)          if (distSqRight < rangeSq) {
+   52,161 ( 0.01%)            queryRecursive(scratch, agentNo, rangeSq, nodes_[node].right);
+        .                   }
+        .                 }
+  849,891 ( 0.14%)      } else if (distSqRight < rangeSq) {
+1,699,770 ( 0.27%)        queryRecursive(scratch, agentNo, rangeSq, nodes_[node].right);
+105,481,747 (16.90%)  => src/KdTree.cc:RVO::Frame::queryRecursive(RVO::AgentScratch*, unsigned long, float&, unsigned long) const'2 (42,790x)
+        .           
+1,133,180 ( 0.18%)        if (distSqLeft < rangeSq) {
+  104,746 ( 0.02%)          queryRecursive(scratch, agentNo, rangeSq, nodes_[node].left);
+        .                 }
+        .               }
+        .             }
+5,229,424 ( 0.84%)  }
+        .           
+  738,000 ( 0.12%)  void Frame::store(std::size_t item, std::size_t thread) {
+  328,000 ( 0.05%)    AgentScratch *const scratch = scratch_[thread];
+  164,000 ( 0.03%)    Agent *const agent = agents_[item];
+        .             AgentState &state = next_->states_[item];
+        .           
+  656,000 ( 0.11%)    state = *scratch;
+  164,000 ( 0.03%)    state.velocity_ = scratch->newVelocity_;
+  574,000 ( 0.09%)    state.position_ += state.velocity_ * timeStep_;
+1,886,000 ( 0.30%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator*(float) const (82,000x)
+  574,000 ( 0.09%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator+=(RVO::Vector2 const&) (82,000x)
+        .           
+  164,000 ( 0.03%)    agent->velocity_ = state.velocity_;
+  164,000 ( 0.03%)    agent->position_ = state.position_;
+  492,000 ( 0.08%)    scratch->store(agent);
+3,280,000 ( 0.53%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Agent.cc:RVO::AgentScratch::store(RVO::Agent*) (82,000x)
+  410,000 ( 0.07%)  }
+        .           
+        7 ( 0.00%)  KdTree::KdTree(RVOSimulator *simulator)
+        5 ( 0.00%)      : frame_(new Frame(this)), obstacleTree_(NULL), simulator_(simulator) {
+      207 ( 0.00%)  => ???:0x0000000004844360 (1x)
+        2 ( 0.00%)    frames_.push_back(frame_);
+        4 ( 0.00%)  }
+        .           
+        8 ( 0.00%)  KdTree::~KdTree() {
+        .             quiesce();
+        1 ( 0.00%)    deleteObstacleTree(obstacleTree_);
+        .           
+       11 ( 0.00%)    for (std::size_t i = 0U; i < frames_.size(); ++i) {
+       14 ( 0.00%)      delete frames_[i];
+        .             }
+        .           
+        6 ( 0.00%)    for (std::size_t i = 0U; i < scratch_.size(); ++i) {
+        7 ( 0.00%)      delete scratch_[i];
+       91 ( 0.00%)  => ???:0x0000000004844350 (1x)
+        .             }
+        5 ( 0.00%)  }
+        .           
+      800 ( 0.00%)  void KdTree::addAgent(const AgentState &state) {
+      410 ( 0.00%)    frame_->states_.push_back(state);
+      390 ( 0.00%)  }
+        .           
+    2,870 ( 0.00%)  Frame *KdTree::beginStep(std::size_t threads) {
+      205 ( 0.00%)    Frame *const frame = frame_;
+        .             const std::size_t count = frame->states_.size();
+        .           
+    1,611 ( 0.00%)    for (std::size_t i = agents_.size(); i < count; ++i) {
+      400 ( 0.00%)      agents_.push_back(static_cast<unsigned int>(i));
+        .             }
+        .           
+        .             /* Almost always the frame that the previous step read. A thread that fell
+        .              * behind in that step keeps the frame until it notices, and this step
+        .              * writes to another. */
+      205 ( 0.00%)    Frame *next = NULL;
+        .           
+    1,944 ( 0.00%)    for (std::size_t i = 0U; i < frames_.size() && next == NULL; ++i) {
+    2,042 ( 0.00%)      if (frames_[i] != frame && !Team::instance().isPinned(frames_[i])) {
+   18,972 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Team.cc:RVO::Team::isPinned(void const*) const (204x)
+    1,224 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Team.cc:RVO::Team::instance() (204x)
+      408 ( 0.00%)        next = frames_[i];
+        .               }
+        .             }
+        .           
+      206 ( 0.00%)    if (next == NULL) {
+        4 ( 0.00%)      next = new Frame(this);
+       65 ( 0.00%)  => ???:0x0000000004844360 (1x)
+        1 ( 0.00%)      frames_.push_back(next);
+        .             }
+        .           
+        1 ( 0.00%)    next->states_.resize(count);
+        .           
+      822 ( 0.00%)    while (scratch_.size() < threads) {
+        7 ( 0.00%)      scratch_.push_back(new AgentScratch());
+      207 ( 0.00%)  => ???:0x0000000004844360 (1x)
+       42 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Agent.cc:RVO::AgentScratch::AgentScratch() (1x)
+        .             }
+        .           
+      410 ( 0.00%)    frame->scratch_ = scratch_;
+    1,025 ( 0.00%)    frame->agents_ = count == 0U ? NULL : &simulator_->agents_[0];
+      205 ( 0.00%)    frame->next_ = next;
+      410 ( 0.00%)    frame->timeStep_ = simulator_->timeStep_;
+      615 ( 0.00%)    frame->build(agents_);
+17,606,049 ( 2.82%)  => src/KdTree.cc:RVO::Frame::build(std::vector<unsigned int, std::allocator<unsigned int> >&) (205x)
+        .           
+        .             return frame;
+    2,460 ( 0.00%)  }
+        .           
+    1,025 ( 0.00%)  void KdTree::endStep() { frame_ = frame_->next_; }
+        .           
+        .           void KdTree::buildObstacleTree() {
+        .             quiesce();
+        .             deleteObstacleTree(obstacleTree_);
+        .           
+        .             const std::vector<Obstacle *> obstacles(simulator_->obstacles_);
+        .             obstacleTree_ = buildObstacleTreeRecursive(obstacles);
+        .           }
+-- line 406 ----------------------------------------
+-- line 526 ----------------------------------------
+        .               return node;
+        .             }
+        .           
+        .             return NULL;
+        .           }
+        .           
+        .           void KdTree::computeObstacleNeighbors(AgentScratch *agent,
+        .                                                 float rangeSq) const {
+  246,000 ( 0.04%)    queryObstacleTreeRecursive(agent, rangeSq, obstacleTree_);
+2,542,000 ( 0.41%)  => src/KdTree.cc:RVO::KdTree::queryObstacleTreeRecursive(RVO::AgentScratch*, float, RVO::KdTree::ObstacleTreeNode const*) const (82,000x)
+        .           }
+        .           
+        .           void KdTree::deleteObstacleTree(ObstacleTreeNode *node) {
+        2 ( 0.00%)    if (node != NULL) {
+        .               deleteObstacleTree(node->left);
+        .               deleteObstacleTree(node->right);
+        .               delete node;
+        .             }
+        .           }
+        .           
+        .           void KdTree::queryObstacleTreeRecursive(AgentScratch *agent, float rangeSq,
+1,394,000 ( 0.22%)                                          const ObstacleTreeNode *node) const {
+  246,000 ( 0.04%)    if (node != NULL) {
+        .               const Obstacle *const obstacle1 = node->obstacle;
+        .               const Obstacle *const obstacle2 = obstacle1->next_;
+        .           
+        .               const float agentLeftOfLine =
+        .                   leftOf(obstacle1->point_, obstacle2->point_, agent->position_);
+        .           
+        .               queryObstacleTreeRecursive(
+        .                   agent, rangeSq, agentLeftOfLine >= 0.0F ? node->left : node->right);
+-- line 555 ----------------------------------------
+-- line 564 ----------------------------------------
+        .                   agent->insertObstacleNeighbor(node->obstacle, rangeSq);
+        .                 }
+        .           
+        .                 /* Try other side of line. */
+        .                 queryObstacleTreeRecursive(
+        .                     agent, rangeSq, agentLeftOfLine >= 0.0F ? node->right : node->left);
+        .               }
+        .             }
+  902,000 ( 0.14%)  }
+        .           
+        .           bool KdTree::queryVisibility(const Vector2 &vector1, const Vector2 &vector2,
+        .                                        float radius) const {
+        .             return queryVisibilityRecursive(vector1, vector2, radius, obstacleTree_);
+        .           }
+        .           
+        .           bool KdTree::queryVisibilityRecursive(const Vector2 &vector1,
+        .                                                 const Vector2 &vector2, float radius,
+-- line 580 ----------------------------------------
+-- line 620 ----------------------------------------
+        .                      queryVisibilityRecursive(vector1, vector2, radius, node->left) &&
+        .                      queryVisibilityRecursive(vector1, vector2, radius, node->right);
+        .             }
+        .           
+        .             return true;
+        .           }
+        .           
+        .           void KdTree::quiesce() {
+       11 ( 0.00%)    for (std::size_t i = 0U; i < frames_.size(); ++i) {
+       10 ( 0.00%)      Team::instance().waitUnpinned(frames_[i]);
+      220 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Team.cc:RVO::Team::waitUnpinned(void const*) const (2x)
+       12 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Team.cc:RVO::Team::instance() (2x)
+        .             }
+        .           }
+        .           } /* namespace RVO */
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: src/RVOSimulator.h
+--------------------------------------------------------------------------------
+Ir                 
+
+-- line 285 ----------------------------------------
+        .           
+        .             /**
+        .              * @brief     Calls function(agentNo) exactly once for every agent; see
+        .              *            forEachAgent(AgentFunction, void *).
+        .              * @param[in] function The function or function object to call.
+        .              */
+        .             template <class Function>
+        .             void forEachAgent(Function function) {
+    1,435 ( 0.00%)      forEachAgent(&RVOSimulator::callAgentFunction<Function>, &function);
+14,541,978 ( 2.33%)  => ???:0x000000000010a5f0 (205x)
+        .             }
+        .           
+        .             /**
+        .              * @brief     Returns the specified agent neighbor of the specified agent.
+        .              * @param[in] agentNo    The number of the agent whose agent neighbor is to be
+        .              *                       retrieved.
+        .              * @param[in] neighborNo The number of the agent neighbor to be retrieved.
+        .              * @return    The number of the neighboring agent.
+-- line 301 ----------------------------------------
+-- line 668 ----------------------------------------
+        .              * @param[in] velocity The replacement two-dimensional linear velocity.
+        .              */
+        .             void setAgentVelocity(std::size_t agentNo, const Vector2 &velocity);
+        .           
+        .             /**
+        .              * @brief     Sets the time step of the simulation.
+        .              * @param[in] timeStep The time step of the simulation. Must be positive.
+        .              */
+        1 ( 0.00%)    void setTimeStep(float timeStep) { timeStep_ = timeStep; }
+        .           
+        .            private:
+        .             template <class Function>
+1,066,000 ( 0.17%)    static void callAgentFunction(std::size_t agentNo, void *context) {
+        .               (*static_cast<Function *>(context))(agentNo);
+  820,000 ( 0.13%)    }
+        .           
+        .             /* Not implemented. */
+        .             RVOSimulator(const RVOSimulator &other);
+        .           
+        .             /* Not implemented. */
+        .             RVOSimulator &operator=(const RVOSimulator &other);
+        .           
+        .           #ifdef _MSC_VER
+-- line 690 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/13/bits/vector.tcc
+--------------------------------------------------------------------------------
+Ir                 
+
+-- line 106 ----------------------------------------
+        .                 _GLIBCXX20_CONSTEXPR
+        .                 typename vector<_Tp, _Alloc>::reference
+        .           #else
+        .                 void
+        .           #endif
+        .                 vector<_Tp, _Alloc>::
+        .                 emplace_back(_Args&&... __args)
+        .                 {
+1,582,170 ( 0.25%)  	if (this->_M_impl._M_finish != this->_M_impl._M_end_of_storage)
+        .           	  {
+        .           	    _GLIBCXX_ASAN_ANNOTATE_GROW(1);
+        .           	    _Alloc_traits::construct(this->_M_impl, this->_M_impl._M_finish,
+        .           				     std::forward<_Args>(__args)...);
+1,577,318 ( 0.25%)  	    ++this->_M_impl._M_finish;
+        .           	    _GLIBCXX_ASAN_ANNOTATE_GREW(1);
+        .           	  }
+        .           	else
+   10,499 ( 0.00%)  	  _M_realloc_insert(end(), std::forward<_Args>(__args)...);
+    2,684 ( 0.00%)  => /usr/include/c++/13/bits/vector.tcc:void std::vector<unsigned int, std::allocator<unsigned int> >::_M_realloc_insert<unsigned int>(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned int&&) (10x)
+      126 ( 0.00%)  => /usr/include/c++/13/bits/vector.tcc:void std::vector<RVO::AgentScratch*, std::allocator<RVO::AgentScratch*> >::_M_realloc_insert<RVO::AgentScratch*>(__gnu_cxx::__normal_iterator<RVO::AgentScratch**, std::vector<RVO::AgentScratch*, std::allocator<RVO::AgentScratch*> > >, RVO::AgentScratch*&&) (1x)
+        .           #if __cplusplus > 201402L
+        .           	return back();
+        .           #endif
+        .                 }
+        .           #endif
+        .           
+        .             template<typename _Tp, typename _Alloc>
+        .               _GLIBCXX20_CONSTEXPR
+-- line 131 ----------------------------------------
+-- line 205 ----------------------------------------
+        .               }
+        .           
+        .             template<typename _Tp, typename _Alloc>
+        .               _GLIBCXX20_CONSTEXPR
+        .               vector<_Tp, _Alloc>&
+        .               vector<_Tp, _Alloc>::
+        .               operator=(const vector<_Tp, _Alloc>& __x)
+        .               {
+      410 ( 0.00%)        if (std::__addressof(__x) != this)
+        .           	{
+        .           	  _GLIBCXX_ASAN_ANNOTATE_REINIT;
+        .           #if __cplusplus >= 201103L
+        .           	  if (_Alloc_traits::_S_propagate_on_copy_assign())
+        .           	    {
+        .           	      if (!_Alloc_traits::_S_always_equal()
+        .           	          && _M_get_Tp_allocator() != __x._M_get_Tp_allocator())
+        .           	        {
+-- line 221 ----------------------------------------
+-- line 228 ----------------------------------------
+        .           		  this->_M_impl._M_finish = nullptr;
+        .           		  this->_M_impl._M_end_of_storage = nullptr;
+        .           		}
+        .           	      std::__alloc_on_copy(_M_get_Tp_allocator(),
+        .           				   __x._M_get_Tp_allocator());
+        .           	    }
+        .           #endif
+        .           	  const size_type __xlen = __x.size();
+      410 ( 0.00%)  	  if (__xlen > capacity())
+        .           	    {
+        .           	      pointer __tmp = _M_allocate_and_copy(__xlen, __x.begin(),
+        .           						   __x.end());
+        .           	      std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+        .           			    _M_get_Tp_allocator());
+        .           	      _M_deallocate(this->_M_impl._M_start,
+        .           			    this->_M_impl._M_end_of_storage
+        2 ( 0.00%)  			    - this->_M_impl._M_start);
+        2 ( 0.00%)  	      this->_M_impl._M_start = __tmp;
+        6 ( 0.00%)  	      this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __xlen;
+        .           	    }
+      406 ( 0.00%)  	  else if (size() >= __xlen)
+        .           	    {
+        .           	      std::_Destroy(std::copy(__x.begin(), __x.end(), begin()),
+        .           			    end(), _M_get_Tp_allocator());
+        .           	    }
+        .           	  else
+        .           	    {
+        .           	      std::copy(__x._M_impl._M_start, __x._M_impl._M_start + size(),
+        .           			this->_M_impl._M_start);
+        .           	      std::__uninitialized_copy_a(__x._M_impl._M_start + size(),
+        .           					  __x._M_impl._M_finish,
+        .           					  this->_M_impl._M_finish,
+        .           					  _M_get_Tp_allocator());
+        .           	    }
+      611 ( 0.00%)  	  this->_M_impl._M_finish = this->_M_impl._M_start + __xlen;
+        .           	}
+        .                 return *this;
+        .               }
+        .           
+        .             template<typename _Tp, typename _Alloc>
+        .               _GLIBCXX20_CONSTEXPR
+        .               void
+        .               vector<_Tp, _Alloc>::
+-- line 270 ----------------------------------------
+-- line 437 ----------------------------------------
+        .           #endif
+        .               }
+        .           
+        .           #if __cplusplus >= 201103L
+        .             template<typename _Tp, typename _Alloc>
+        .               template<typename... _Args>
+        .                 _GLIBCXX20_CONSTEXPR
+        .                 void
+   48,734 ( 0.01%)        vector<_Tp, _Alloc>::
+        .                 _M_realloc_insert(iterator __position, _Args&&... __args)
+        .           #else
+        .             template<typename _Tp, typename _Alloc>
+        .               void
+        .               vector<_Tp, _Alloc>::
+        .               _M_realloc_insert(iterator __position, const _Tp& __x)
+        .           #endif
+        .               {
+-- line 453 ----------------------------------------
+-- line 475 ----------------------------------------
+        .           	  __new_finish = pointer();
+        .           
+        .           #if __cplusplus >= 201103L
+        .           	  if _GLIBCXX17_CONSTEXPR (_S_use_relocate())
+        .           	    {
+        .           	      __new_finish = _S_relocate(__old_start, __position.base(),
+        .           					 __new_start, _M_get_Tp_allocator());
+        .           
+    7,291 ( 0.00%)  	      ++__new_finish;
+        .           
+        .           	      __new_finish = _S_relocate(__position.base(), __old_finish,
+        .           					 __new_finish, _M_get_Tp_allocator());
+        .           	    }
+        .           	  else
+        .           #endif
+        .           	    {
+        .           	      __new_finish
+-- line 491 ----------------------------------------
+-- line 513 ----------------------------------------
+        .           	}
+        .           #if __cplusplus >= 201103L
+        .                 if _GLIBCXX17_CONSTEXPR (!_S_use_relocate())
+        .           #endif
+        .           	std::_Destroy(__old_start, __old_finish, _M_get_Tp_allocator());
+        .                 _GLIBCXX_ASAN_ANNOTATE_REINIT;
+        .                 _M_deallocate(__old_start,
+        .           		    this->_M_impl._M_end_of_storage - __old_start);
+    4,062 ( 0.00%)        this->_M_impl._M_start = __new_start;
+    4,062 ( 0.00%)        this->_M_impl._M_finish = __new_finish;
+    8,147 ( 0.00%)        this->_M_impl._M_end_of_storage = __new_start + __len;
+   32,526 ( 0.01%)      }
+        .           
+        .             template<typename _Tp, typename _Alloc>
+        .               _GLIBCXX20_CONSTEXPR
+        .               void
+        .               vector<_Tp, _Alloc>::
+        .               _M_fill_insert(iterator __position, size_type __n, const value_type& __x)
+        .               {
+        .                 if (__n != 0)
+-- line 532 ----------------------------------------
+-- line 626 ----------------------------------------
+        .           	    }
+        .           	}
+        .               }
+        .           
+        .           #if __cplusplus >= 201103L
+        .             template<typename _Tp, typename _Alloc>
+        .               _GLIBCXX20_CONSTEXPR
+        .               void
+       55 ( 0.00%)      vector<_Tp, _Alloc>::
+        .               _M_default_append(size_type __n)
+        .               {
+       10 ( 0.00%)        if (__n != 0)
+        .           	{
+        .           	  const size_type __size = size();
+        .           	  size_type __navail = size_type(this->_M_impl._M_end_of_storage
+       19 ( 0.00%)  					 - this->_M_impl._M_finish);
+        .           
+       10 ( 0.00%)  	  if (__size > max_size() || __navail > max_size() - __size)
+        .           	    __builtin_unreachable();
+        .           
+       10 ( 0.00%)  	  if (__navail >= __n)
+        .           	    {
+        .           	      _GLIBCXX_ASAN_ANNOTATE_GROW(__n);
+        .           	      this->_M_impl._M_finish =
+        .           		std::__uninitialized_default_n_a(this->_M_impl._M_finish,
+        .           						 __n, _M_get_Tp_allocator());
+        .           	      _GLIBCXX_ASAN_ANNOTATE_GREW(__n);
+        .           	    }
+        .           	  else
+-- line 654 ----------------------------------------
+-- line 660 ----------------------------------------
+        .           
+        .           	      const size_type __len =
+        .           		_M_check_len(__n, "vector::_M_default_append");
+        .           	      pointer __new_start(this->_M_allocate(__len));
+        .           	      if _GLIBCXX17_CONSTEXPR (_S_use_relocate())
+        .           		{
+        .           		  __try
+        .           		    {
+        8 ( 0.00%)  		      std::__uninitialized_default_n_a(__new_start + __size,
+   13,614 ( 0.00%)  => /usr/include/c++/13/bits/stl_uninitialized.h:RVO::AgentState* std::__uninitialized_default_n_a<RVO::AgentState*, unsigned long, RVO::CacheLineAllocator<RVO::AgentState> >(RVO::AgentState*, unsigned long, RVO::CacheLineAllocator<RVO::AgentState>&) [clone .isra.0] (1x)
+        .           			      __n, _M_get_Tp_allocator());
+        .           		    }
+        .           		  __catch(...)
+        .           		    {
+        .           		      _M_deallocate(__new_start, __len);
+        .           		      __throw_exception_again;
+        .           		    }
+        .           		  _S_relocate(__old_start, __old_finish,
+-- line 676 ----------------------------------------
+-- line 697 ----------------------------------------
+        .           		      __throw_exception_again;
+        .           		    }
+        .           		  std::_Destroy(__old_start, __old_finish,
+        .           				_M_get_Tp_allocator());
+        .           		}
+        .           	      _GLIBCXX_ASAN_ANNOTATE_REINIT;
+        .           	      _M_deallocate(__old_start,
+        .           			    this->_M_impl._M_end_of_storage - __old_start);
+        7 ( 0.00%)  	      this->_M_impl._M_start = __new_start;
+       21 ( 0.00%)  	      this->_M_impl._M_finish = __new_start + __size + __n;
+       13 ( 0.00%)  	      this->_M_impl._M_end_of_storage = __new_start + __len;
+        .           	    }
+        .           	}
+       40 ( 0.00%)      }
+        .           
+        .             template<typename _Tp, typename _Alloc>
+        .               _GLIBCXX20_CONSTEXPR
+        .               bool
+        .               vector<_Tp, _Alloc>::
+        .               _M_shrink_to_fit()
+        .               {
+        .                 if (capacity() == size())
+-- line 718 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: src/Team.cc
+--------------------------------------------------------------------------------
+Ir               
+
+-- line 89 ----------------------------------------
+      .           
+      .           /* The pin of a worker sits on a cache line of its own. */
+      .           struct Team::Slot {
+      .             char before[64];
+      .             std::atomic<const void *> pin;
+      .             char after[64];
+      .           };
+      .           
+    414 ( 0.00%)  Team::Job::~Job() {}
+      .           
+      .           void Team::Job::store(std::size_t /*item*/, std::size_t /*thread*/) {}
+      .           
+      6 ( 0.00%)  Team::Team()
+      .               : gate_(0U),
+      .                 job_(NULL),
+      .                 flags_(NULL),
+      .                 count_(0U),
+      .                 grain_(1U),
+      .                 threads_(0U),
+      .                 pin_(NULL),
+      .                 hedged_(false),
+      1 ( 0.00%)        capacity_(0U),
+      .                 phase_(0U),
+      .                 sleepers_(0),
+      5 ( 0.00%)        started_(0U) {}
+      8 ( 0.00%)  => ???:0x00000000048443b0 (1x)
+      .           
+    620 ( 0.00%)  Team &Team::instance() {
+      .             /* Never destroyed: its workers may outlive every other static object. */
+  1,861 ( 0.00%)    static Team *const team = new Team();
+    207 ( 0.00%)  => ???:0x0000000004844360 (1x)
+     45 ( 0.00%)  => src/Team.cc:RVO::Team::Team() (1x)
+     23 ( 0.00%)  => ???:0x0000000004844460 (1x)
+      8 ( 0.00%)  => ???:0x00000000048442f0 (1x)
+    616 ( 0.00%)    return *team;
+    619 ( 0.00%)  }
+      .           
+      .           void Team::run(Job *job, std::size_t count, std::size_t threads,
+    615 ( 0.00%)                 std::size_t grain) {
+  1,435 ( 0.00%)    execute(job, count, threads, std::max<std::size_t>(grain, 1U), false, this);
+14,522,815 ( 2.33%)  => src/Team.cc:RVO::Team::execute(RVO::Team::Job*, unsigned long, unsigned long, unsigned long, bool, void const*) (205x)
+    820 ( 0.00%)  }
+      .           
+      .           void Team::runHedged(Job *job, std::size_t count, std::size_t threads,
+    615 ( 0.00%)                       const void *pin) {
+      .             /* One item at a time: a second thread computes what it stores. */
+  1,025 ( 0.00%)    execute(job, count, threads, 1U, true, pin);
+589,112,920 (94.39%)  => src/Team.cc:RVO::Team::execute(RVO::Team::Job*, unsigned long, unsigned long, unsigned long, bool, void const*) (205x)
+    820 ( 0.00%)  }
+      .           
+  1,854 ( 0.00%)  bool Team::isPinned(const void *pin) const {
+      .             const std::lock_guard<std::mutex> lock(slotsMutex_);
+      .           
+    824 ( 0.00%)    for (std::size_t i = 0U; i < slots_.size(); ++i) {
+      .               if (slots_[i]->pin.load() == pin) {
+      .                 return true;
+      .               }
+      .             }
+      .           
+    206 ( 0.00%)    return false;
+  1,442 ( 0.00%)  }
+      .           
+     14 ( 0.00%)  void Team::waitUnpinned(const void *pin) const {
+     12 ( 0.00%)    while (isPinned(pin)) {
+    186 ( 0.00%)  => src/Team.cc:RVO::Team::isPinned(void const*) const (2x)
+      .               std::this_thread::yield();
+      .             }
+      8 ( 0.00%)  }
+      .           
+      .           void Team::execute(Job *job, std::size_t count, std::size_t threads,
+  9,020 ( 0.00%)                     std::size_t grain, bool hedged, const void *pin) {
+    820 ( 0.00%)    std::unique_lock<std::mutex> lock(runMutex_, std::defer_lock);
+      .           
+      .             /* One loop at a time. A second caller, or a job that starts a loop of its
+      .              * own, runs on the calling thread alone. */
+    820 ( 0.00%)    if (threads < 2U || count < 2U || !lock.try_lock()) {
+492,820 ( 0.08%)      for (std::size_t i = 0U; i < count; ++i) {
+820,000 ( 0.13%)        job->compute(i, 0U);
+577,706,105 (92.56%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/KdTree.cc:RVO::Frame::compute(unsigned long, unsigned long) (82,000x)
+13,694,000 ( 2.19%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/RVOSimulator.cc:RVO::(anonymous namespace)::AgentFunctionJob::compute(unsigned long, unsigned long) (82,000x)
+      .           
+328,000 ( 0.05%)        if (hedged) {
+738,000 ( 0.12%)          job->store(i, 0U);
+9,840,000 ( 1.58%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/KdTree.cc:RVO::Frame::store(unsigned long, unsigned long) (82,000x)
+      .                 }
+      .               }
+      .           
+      .               return;
+      .             }
+      .           
+      .             threads = std::min(threads, kMaxThreads);
+      .           
+-- line 169 ----------------------------------------
+-- line 242 ----------------------------------------
+      .                * the same pace by the others. */
+      .               const double perChunkUs = microsecondsSince(start) *
+      .                                         static_cast<double>(loop.threads) /
+      .                                         static_cast<double>(chunks);
+      .               finish(loop, std::max(kMinGraceUs, kGraceItems * perChunkUs));
+      .             }
+      .           
+      .             gate_.store(2U * loop.phase);
+  4,510 ( 0.00%)  }
+      .           
+      .           bool Team::attempt(const Loop &loop, std::size_t chunk, std::size_t thread) {
+      .             const Word computing = 4U * loop.phase + kComputing;
+      .             Word flag = loop.flags[chunk].load(std::memory_order_relaxed);
+      .           
+      .             if (flag < computing &&
+      .                 loop.flags[chunk].compare_exchange_strong(flag, computing)) {
+      .               compute(loop, chunk, thread);
+-- line 258 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/13/cmath
+--------------------------------------------------------------------------------
+Ir                 
+
+-- line 227 ----------------------------------------
+        .               exp(_Tp __x)
+        .               { return __builtin_exp(__x); }
+        .           
+        .             using ::fabs;
+        .           
+        .           #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+        .             inline _GLIBCXX_CONSTEXPR float
+        .             fabs(float __x)
+  201,756 ( 0.03%)    { return __builtin_fabsf(__x); }
+        .           
+        .             inline _GLIBCXX_CONSTEXPR long double
+        .             fabs(long double __x)
+        .             { return __builtin_fabsl(__x); }
+        .           #endif
+        .           
+        .             template<typename _Tp>
+        .               inline _GLIBCXX_CONSTEXPR
+-- line 243 ----------------------------------------
+-- line 431 ----------------------------------------
+        .               sinh(_Tp __x)
+        .               { return __builtin_sinh(__x); }
+        .           
+        .             using ::sqrt;
+        .           
+        .           #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+        .             inline _GLIBCXX_CONSTEXPR float
+        .             sqrt(float __x)
+4,945,767 ( 0.79%)    { return __builtin_sqrtf(__x); }
+        .           
+        .             inline _GLIBCXX_CONSTEXPR long double
+        .             sqrt(long double __x)
+        .             { return __builtin_sqrtl(__x); }
+        .           #endif
+        .           
+        .             template<typename _Tp>
+        .               inline _GLIBCXX_CONSTEXPR
+-- line 447 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/13/bits/stl_vector.h
+--------------------------------------------------------------------------------
+Ir                  
+
+-- line 92 ----------------------------------------
+         .                 struct _Vector_impl_data
+         .                 {
+         .           	pointer _M_start;
+         .           	pointer _M_finish;
+         .           	pointer _M_end_of_storage;
+         .           
+         .           	_GLIBCXX20_CONSTEXPR
+         .           	_Vector_impl_data() _GLIBCXX_NOEXCEPT
+     2,480 ( 0.00%)  	: _M_start(), _M_finish(), _M_end_of_storage()
+         .           	{ }
+         .           
+         .           #if __cplusplus >= 201103L
+         .           	_GLIBCXX20_CONSTEXPR
+         .           	_Vector_impl_data(_Vector_impl_data&& __x) noexcept
+         .           	: _M_start(__x._M_start), _M_finish(__x._M_finish),
+         .           	  _M_end_of_storage(__x._M_end_of_storage)
+         .           	{ __x._M_start = __x._M_finish = __x._M_end_of_storage = pointer(); }
+         .           #endif
+         .           
+         .           	_GLIBCXX20_CONSTEXPR
+         .           	void
+         .           	_M_copy_data(_Vector_impl_data const& __x) _GLIBCXX_NOEXCEPT
+         .           	{
+   984,000 ( 0.16%)  	  _M_start = __x._M_start;
+   984,000 ( 0.16%)  	  _M_finish = __x._M_finish;
+   984,000 ( 0.16%)  	  _M_end_of_storage = __x._M_end_of_storage;
+         .           	}
+         .           
+         .           	_GLIBCXX20_CONSTEXPR
+         .           	void
+         .           	_M_swap_data(_Vector_impl_data& __x) _GLIBCXX_NOEXCEPT
+         .           	{
+         .           	  // Do not use std::swap(_M_start, __x._M_start), etc as it loses
+         .           	  // information used by TBAA.
+-- line 125 ----------------------------------------
+-- line 362 ----------------------------------------
+         .                 : _M_impl(_Tp_alloc_type(__a), std::move(__x._M_impl))
+         .                 { }
+         .           #endif
+         .           
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 ~_Vector_base() _GLIBCXX_NOEXCEPT
+         .                 {
+         .           	_M_deallocate(_M_impl._M_start,
+     1,218 ( 0.00%)  		      _M_impl._M_end_of_storage - _M_impl._M_start);
+         .                 }
+         .           
+         .               public:
+         .                 _Vector_impl _M_impl;
+         .           
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 pointer
+         3 ( 0.00%)        _M_allocate(size_t __n)
+         .                 {
+         .           	typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+     6,518 ( 0.00%)  	return __n != 0 ? _Tr::allocate(_M_impl, __n) : pointer();
+         .                 }
+         .           
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 void
+         .                 _M_deallocate(pointer __p, size_t __n)
+         .                 {
+         .           	typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+    10,554 ( 0.00%)  	if (__p)
+         .           	  _Tr::deallocate(_M_impl, __p, __n);
+         .                 }
+         .           
+         .               protected:
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 void
+         .                 _M_create_storage(size_t __n)
+         .                 {
+-- line 397 ----------------------------------------
+-- line 984 ----------------------------------------
+         .                 crend() const noexcept
+         .                 { return const_reverse_iterator(begin()); }
+         .           #endif
+         .           
+         .                 // [23.2.4.2] capacity
+         .                 /**  Returns the number of elements in the %vector.  */
+         .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+         .                 size_type
+     4,059 ( 0.00%)        size() const _GLIBCXX_NOEXCEPT
+13,507,193 ( 2.16%)        { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+         .           
+         .                 /**  Returns the size() of the largest possible %vector.  */
+         .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+         .                 size_type
+         .                 max_size() const _GLIBCXX_NOEXCEPT
+         .                 { return _S_max_size(_M_get_Tp_allocator()); }
+         .           
+         .           #if __cplusplus >= 201103L
+-- line 1001 ----------------------------------------
+-- line 1007 ----------------------------------------
+         .                  *  number of elements.  If the number is smaller than the
+         .                  *  %vector's current size the %vector is truncated, otherwise
+         .                  *  default constructed elements are appended.
+         .                  */
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 void
+         .                 resize(size_type __new_size)
+         .                 {
+       623 ( 0.00%)  	if (__new_size > size())
+        18 ( 0.00%)  	  _M_default_append(__new_size - size());
+    13,883 ( 0.00%)  => /usr/include/c++/13/bits/vector.tcc:std::vector<RVO::AgentState, RVO::CacheLineAllocator<RVO::AgentState> >::_M_default_append(unsigned long) (1x)
+       612 ( 0.00%)  	else if (__new_size < size())
+         .           	  _M_erase_at_end(this->_M_impl._M_start + __new_size);
+         .                 }
+         .           
+         .                 /**
+         .                  *  @brief  Resizes the %vector to the specified number of elements.
+         .                  *  @param  __new_size  Number of elements the %vector should contain.
+         .                  *  @param  __x  Data with which new elements should be populated.
+         .                  *
+-- line 1025 ----------------------------------------
+-- line 1072 ----------------------------------------
+         .                 /**
+         .                  *  Returns the total number of elements that the %vector can
+         .                  *  hold before needing to allocate more memory.
+         .                  */
+         .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+         .                 size_type
+         .                 capacity() const _GLIBCXX_NOEXCEPT
+         .                 { return size_type(this->_M_impl._M_end_of_storage
+       615 ( 0.00%)  			 - this->_M_impl._M_start); }
+         .           
+         .                 /**
+         .                  *  Returns true if the %vector is empty.  (Thus begin() would
+         .                  *  equal end().)
+         .                  */
+         .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+         .                 bool
+         .                 empty() const _GLIBCXX_NOEXCEPT
+-- line 1088 ----------------------------------------
+-- line 1118 ----------------------------------------
+         .                  *
+         .                  *  This operator allows for easy, array-style, data access.
+         .                  *  Note that data access with this operator is unchecked and
+         .                  *  out_of_range lookups are not defined. (For checked lookups
+         .                  *  see at().)
+         .                  */
+         .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+         .                 reference
+       307 ( 0.00%)        operator[](size_type __n) _GLIBCXX_NOEXCEPT
+         .                 {
+         .           	__glibcxx_requires_subscript(__n);
+   619,522 ( 0.10%)  	return *(this->_M_impl._M_start + __n);
+         .                 }
+         .           
+         .                 /**
+         .                  *  @brief  Subscript access to the data contained in the %vector.
+         .                  *  @param __n The index of the element for which data should be
+         .                  *  accessed.
+         .                  *  @return  Read-only (constant) reference to data.
+         .                  *
+         .                  *  This operator allows for easy, array-style, data access.
+         .                  *  Note that data access with this operator is unchecked and
+         .                  *  out_of_range lookups are not defined. (For checked lookups
+         .                  *  see at().)
+         .                  */
+         .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+         .                 const_reference
+    67,277 ( 0.01%)        operator[](size_type __n) const _GLIBCXX_NOEXCEPT
+         .                 {
+         .           	__glibcxx_requires_subscript(__n);
+14,493,257 ( 2.32%)  	return *(this->_M_impl._M_start + __n);
+         .                 }
+         .           
+         .               protected:
+         .                 /// Safety check used only from at().
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 void
+         .                 _M_range_check(size_type __n) const
+         .                 {
+-- line 1156 ----------------------------------------
+-- line 1275 ----------------------------------------
+         .                  *  to it.  Due to the nature of a %vector this operation can be
+         .                  *  done in constant time if the %vector has preallocated space
+         .                  *  available.
+         .                  */
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 void
+         .                 push_back(const value_type& __x)
+         .                 {
+ 2,371,685 ( 0.38%)  	if (this->_M_impl._M_finish != this->_M_impl._M_end_of_storage)
+         .           	  {
+         .           	    _GLIBCXX_ASAN_ANNOTATE_GROW(1);
+         .           	    _Alloc_traits::construct(this->_M_impl, this->_M_impl._M_finish,
+         .           				     __x);
+ 1,576,928 ( 0.25%)  	    ++this->_M_impl._M_finish;
+         .           	    _GLIBCXX_ASAN_ANNOTATE_GREW(1);
+         .           	  }
+         .           	else
+     8,110 ( 0.00%)  	  _M_realloc_insert(end(), __x);
+       268 ( 0.00%)  => /usr/include/c++/13/bits/vector.tcc:void std::vector<RVO::Frame*, std::allocator<RVO::Frame*> >::_M_realloc_insert<RVO::Frame* const&>(__gnu_cxx::__normal_iterator<RVO::Frame**, std::vector<RVO::Frame*, std::allocator<RVO::Frame*> > >, RVO::Frame* const&) (1x)
+         .                 }
+         .           
+         .           #if __cplusplus >= 201103L
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 void
+         .                 push_back(value_type&& __x)
+         .                 { emplace_back(std::move(__x)); }
+         .           
+-- line 1300 ----------------------------------------
+-- line 1598 ----------------------------------------
+         .                  *  Erases all the elements.  Note that this function only erases the
+         .                  *  elements, and that if the elements themselves are pointers, the
+         .                  *  pointed-to memory is not touched in any way.  Managing the pointer is
+         .                  *  the user's responsibility.
+         .                  */
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 void
+         .                 clear() _GLIBCXX_NOEXCEPT
+   246,000 ( 0.04%)        { _M_erase_at_end(this->_M_impl._M_start); }
+         .           
+         .               protected:
+         .                 /**
+         .                  *  Memory expansion handler.  Uses the member allocation function to
+         .                  *  obtain @a n bytes of memory, and then copies [first,last) into it.
+         .                  */
+         .                 template<typename _ForwardIterator>
+         .           	_GLIBCXX20_CONSTEXPR
+-- line 1614 ----------------------------------------
+-- line 1684 ----------------------------------------
+         .                 template<typename _ForwardIterator>
+         .           	_GLIBCXX20_CONSTEXPR
+         .           	void
+         .           	_M_range_initialize(_ForwardIterator __first, _ForwardIterator __last,
+         .           			    std::forward_iterator_tag)
+         .           	{
+         .           	  const size_type __n = std::distance(__first, __last);
+         .           	  this->_M_impl._M_start
+         6 ( 0.00%)  	    = this->_M_allocate(_S_check_init_len(__n, _M_get_Tp_allocator()));
+        18 ( 0.00%)  	  this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+         6 ( 0.00%)  	  this->_M_impl._M_finish =
+         .           	    std::__uninitialized_copy_a(__first, __last,
+         .           					this->_M_impl._M_start,
+         .           					_M_get_Tp_allocator());
+         .           	}
+         .           
+         .                 // Called by the first initialize_dispatch above and by the
+         .                 // vector(n,value,a) constructor.
+         .                 _GLIBCXX20_CONSTEXPR
+-- line 1702 ----------------------------------------
+-- line 1890 ----------------------------------------
+         .                 { return _M_insert_rval(__position, std::move(__v)); }
+         .           #endif
+         .           
+         .                 // Called by _M_fill_insert, _M_insert_aux etc.
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 size_type
+         .                 _M_check_len(size_type __n, const char* __s) const
+         .                 {
+    12,196 ( 0.00%)  	if (max_size() - size() < __n)
+         .           	  __throw_length_error(__N(__s));
+         .           
+     3,256 ( 0.00%)  	const size_type __len = size() + (std::max)(size(), __n);
+    19,511 ( 0.00%)  	return (__len < size() || __len > max_size()) ? max_size() : __len;
+         .                 }
+         .           
+         .                 // Called by constructors to check initial size.
+         .                 static _GLIBCXX20_CONSTEXPR size_type
+         .                 _S_check_init_len(size_type __n, const allocator_type& __a)
+         .                 {
+        24 ( 0.00%)  	if (__n > _S_max_size(_Tp_alloc_type(__a)))
+         .           	  __throw_length_error(
+         .           	      __N("cannot create std::vector larger than max_size()"));
+         .           	return __n;
+         .                 }
+         .           
+         .                 static _GLIBCXX20_CONSTEXPR size_type
+         .                 _S_max_size(const _Tp_alloc_type& __a) _GLIBCXX_NOEXCEPT
+         .                 {
+-- line 1917 ----------------------------------------
+-- line 1927 ----------------------------------------
+         .                 // Internal erase functions follow.
+         .           
+         .                 // Called by erase(q1,q2), clear(), resize(), _M_fill_assign,
+         .                 // _M_assign_aux.
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 void
+         .                 _M_erase_at_end(pointer __pos) _GLIBCXX_NOEXCEPT
+         .                 {
+   492,000 ( 0.08%)  	if (size_type __n = this->_M_impl._M_finish - __pos)
+         .           	  {
+         .           	    std::_Destroy(__pos, this->_M_impl._M_finish,
+         .           			  _M_get_Tp_allocator());
+   163,198 ( 0.03%)  	    this->_M_impl._M_finish = __pos;
+         .           	    _GLIBCXX_ASAN_ANNOTATE_SHRINK(__n);
+         .           	  }
+         .                 }
+         .           
+         .                 _GLIBCXX20_CONSTEXPR
+         .                 iterator
+         .                 _M_erase(iterator __position);
+         .           
+-- line 1947 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/13/bits/stl_pair.h
+--------------------------------------------------------------------------------
+Ir                 
+
+-- line 723 ----------------------------------------
+        .           
+        .           #undef __glibcxx_no_dangling_refs
+        .           
+        .                 pair&
+        .                 operator=(__conditional_t<__and_<is_copy_assignable<_T1>,
+        .           				       is_copy_assignable<_T2>>::value,
+        .           				const pair&, const __nonesuch&> __p)
+        .                 {
+1,397,105 ( 0.22%)  	first = __p.first;
+2,794,210 ( 0.45%)  	second = __p.second;
+        .           	return *this;
+        .                 }
+        .           
+        .                 pair&
+        .                 operator=(__conditional_t<__and_<is_move_assignable<_T1>,
+        .           				       is_move_assignable<_T2>>::value,
+        .           				pair&&, __nonesuch&&> __p)
+        .                 noexcept(__and_<is_nothrow_move_assignable<_T1>,
+        .           		      is_nothrow_move_assignable<_T2>>::value)
+        .                 {
+  809,074 ( 0.13%)  	first = std::forward<first_type>(__p.first);
+  809,074 ( 0.13%)  	second = std::forward<second_type>(__p.second);
+        .           	return *this;
+        .                 }
+        .           
+        .                 template<typename _U1, typename _U2>
+        .           	typename enable_if<__and_<is_assignable<_T1&, const _U1&>,
+        .           				  is_assignable<_T2&, const _U2&>>::value,
+        .           			   pair&>::type
+        .           	operator=(const pair<_U1, _U2>& __p)
+-- line 752 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: profiling/Bench.cc
+--------------------------------------------------------------------------------
+Ir               
+
+-- line 66 ----------------------------------------
+      .           const std::size_t kLoadCount = 4U;
+      .           const std::size_t kLoads[kLoadCount] = {100U, 400U, 1000U, 2000U};
+      .           
+      .           void setPreferredVelocities(RVO::RVOSimulator *simulator,
+      .                                       const std::vector<RVO::Vector2> &goals,
+      .                                       bool perturb) {
+      .             /* On the threads of doStep(). An OpenMP loop here would bring a second
+      .              * set of threads that keeps spinning on the same CPUs during the step. */
+      2 ( 0.00%)    simulator->forEachAgent([simulator, &goals, perturb](std::size_t i) {
+492,000 ( 0.08%)      RVO::Vector2 goalVector = goals[i] - simulator->getAgentPosition(i);
+2,050,000 ( 0.33%)  => ???:0x000000000010a3d0 (82,000x)
+492,000 ( 0.08%)  => ???:0x000000000010a3e0 (82,000x)
+      .           
+410,000 ( 0.07%)      if (RVO::absSq(goalVector) > 1.0F) {
+984,000 ( 0.16%)  => ???:0x000000000010a580 (82,000x)
+246,000 ( 0.04%)        goalVector = RVO::normalize(goalVector);
+4,592,000 ( 0.74%)  => ???:0x000000000010a3c0 (82,000x)
+      .               }
+      .           
+328,000 ( 0.05%)      simulator->setAgentPrefVelocity(i, goalVector);
+1,148,000 ( 0.18%)  => ???:0x000000000010a440 (82,000x)
+      .           
+      .               /* Deterministic nudge. Blocks uses noise to break symmetry; a fixed
+      .                * angle keeps repeated benchmark runs comparable. */
+164,000 ( 0.03%)      if (perturb) {
+      .                 const float angle = static_cast<float>(i) * 0.01F;
+      .                 const float dist = 0.0001F;
+      .                 simulator->setAgentPrefVelocity(
+      .                     i, simulator->getAgentPrefVelocity(i) +
+      .                            dist * RVO::Vector2(std::cos(angle), std::sin(angle)));
+      .               }
+      .             });
+      .           }
+      .           
+      .           void setupCircle(
+      .               RVO::RVOSimulator *simulator,
+      .               std::vector<RVO::Vector2> &goals, /* NOLINT(runtime/references) */
+      .               std::size_t agentCount) {
+      .             simulator->setTimeStep(0.25F);
+      2 ( 0.00%)    simulator->setAgentDefaults(15.0F, 10U, 10.0F, 10.0F, 1.5F, 2.0F);
+    328 ( 0.00%)  => ???:0x000000000010a3b0 (1x)
+      .           
+  1,209 ( 0.00%)    for (std::size_t i = 0U; i < agentCount; ++i) {
+  3,600 ( 0.00%)      const float angle = static_cast<float>(i) * kTwoPi /
+ 18,536 ( 0.00%)  => ???:0x000000000010a410 (400x)
+      5 ( 0.00%)                          static_cast<float>(agentCount);
+  1,200 ( 0.00%)      simulator->addAgent(
+145,584 ( 0.02%)  => ???:0x000000000010a4d0 (400x)
+  3,200 ( 0.00%)          200.0F * RVO::Vector2(std::cos(angle), std::sin(angle)));
+ 10,000 ( 0.00%)  => ???:0x000000000010a490 (400x)
+  2,400 ( 0.00%)  => ???:0x000000000010a390 (400x)
+  2,400 ( 0.00%)      goals.push_back(-simulator->getAgentPosition(i));
+ 10,400 ( 0.00%)  => ???:0x000000000010a670 (400x)
+  2,400 ( 0.00%)  => ???:0x000000000010a3e0 (400x)
+      .             }
+      .           }
+      .           
+      .           void addDemoObstacles(RVO::RVOSimulator *simulator) {
+      .             std::vector<RVO::Vector2> obstacle1;
+      .             std::vector<RVO::Vector2> obstacle2;
+      .             std::vector<RVO::Vector2> obstacle3;
+      .             std::vector<RVO::Vector2> obstacle4;
+-- line 115 ----------------------------------------
+-- line 360 ----------------------------------------
+      .                   i, simulator->getAgentPrefVelocity(i) +
+      .                          dist * RVO::Vector2(std::cos(angle), std::sin(angle)));
+      .             }
+      .           }
+      .           
+      .           void runSteps(RVO::RVOSimulator *simulator,
+      .                         const std::vector<RVO::Vector2> &goals, std::size_t count,
+      .                         bool perturb) {
+    614 ( 0.00%)    for (std::size_t step = 0U; step < count; ++step) {
+      .               setPreferredVelocities(simulator, goals, perturb);
+    410 ( 0.00%)      simulator->doStep();
+606,800,887 (97.23%)  => ???:0x000000000010a500 (205x)
+      .             }
+      .           }
+      .           
+     20 ( 0.00%)  bool parsePositive(const char *text, std::size_t *value) {
+      2 ( 0.00%)    char *end = NULL;
+      6 ( 0.00%)    const unsigned long parsed = std::strtoul(text, &end, 10);
+    308 ( 0.00%)  => ???:0x000000000010a590 (2x)
+      .           
+     14 ( 0.00%)    if (text[0] == '\0' || *end != '\0' || parsed == 0UL) {
+      2 ( 0.00%)      return false;
+      .             }
+      .           
+      2 ( 0.00%)    *value = static_cast<std::size_t>(parsed);
+      2 ( 0.00%)    return true;
+     18 ( 0.00%)  }
+      .           
+      .           void printUsage() {
+      .             std::cerr
+      .                 << "Usage: rvo-bench [all|circle|blocks|roadmap|list] [steps] [agents]\n"
+      .                 << "  all      100, 400, 1000 and 2000 agents, each scenario\n"
+      .                 << "  circle   ring of agents, no obstacles; default runs all loads\n"
+      .                 << "  blocks   four corners and four obstacles; default runs all loads\n"
+      .                 << "  roadmap  blocks plus a visibility graph; default runs all loads\n"
+-- line 392 ----------------------------------------
+-- line 398 ----------------------------------------
+      .           void printLoads(const char *scenario) {
+      .             for (std::size_t i = 0U; i < kLoadCount; ++i) {
+      .               std::cout << scenario << " " << kLoads[i] << std::endl;
+      .             }
+      .           }
+      .           
+      .           double millisecondsSince(std::chrono::steady_clock::time_point start) {
+      .             const std::chrono::steady_clock::time_point end =
+      1 ( 0.00%)        std::chrono::steady_clock::now();
+     31 ( 0.00%)  => ???:0x000000000010a5b0 (1x)
+      .             return std::chrono::duration<double, std::milli>(end - start).count();
+      .           }
+      .           
+      .           int threadCount() {
+      .           #ifdef _OPENMP
+      2 ( 0.00%)    return omp_get_max_threads();
+     11 ( 0.00%)  => ???:0x000000000010a640 (1x)
+      .           #else
+      .             return 1;
+      .           #endif
+      .           }
+      .           
+      .           /* FNV-1a over the bit patterns of every agent position, in agent order. */
+      .           std::uint64_t positionChecksum(const RVO::RVOSimulator &simulator) {
+      1 ( 0.00%)    std::uint64_t hash = 14695981039346656037ULL;
+      .           
+  1,207 ( 0.00%)    for (std::size_t i = 0U; i < simulator.getNumAgents(); ++i) {
+  1,600 ( 0.00%)      const RVO::Vector2 &position = simulator.getAgentPosition(i);
+  2,400 ( 0.00%)  => ???:0x000000000010a3e0 (400x)
+      .               const float coordinates[2] = {position.x(), position.y()};
+      .               unsigned char bytes[sizeof(coordinates)];
+      .               std::memcpy(bytes, coordinates, sizeof(coordinates));
+      .           
+ 10,400 ( 0.00%)      for (std::size_t b = 0U; b < sizeof(bytes); ++b) {
+ 12,802 ( 0.00%)        hash = (hash ^ bytes[b]) * 1099511628211ULL;
+      .               }
+      .             }
+      .           
+      .             return hash;
+      .           }
+      .           
+      .           void printResult(const char *scenario, const RVO::RVOSimulator &simulator,
+     14 ( 0.00%)                   std::size_t steps, double elapsedMs) {
+      8 ( 0.00%)    const double perStepUs = elapsedMs * 1000.0 / static_cast<double>(steps);
+      .           
+      .             std::cout.setf(std::ios::fixed);
+      .             std::cout.precision(3);
+      .             std::cout << "scenario=" << scenario
+      .                       << " agents=" << simulator.getNumAgents() << " steps=" << steps
+      .                       << " warmup=" << kWarmupSteps << " threads=" << threadCount()
+      3 ( 0.00%)              << " elapsed_ms=" << elapsedMs << " per_step_us=" << perStepUs
+  2,478 ( 0.00%)  => ???:0x000000000010a660 (1x)
+      .                       << " checksum=" << std::hex << positionChecksum(simulator)
+      .                       << std::dec << std::endl;
+      7 ( 0.00%)  }
+      .           
+      .           void timeGoalSteps(RVO::RVOSimulator *simulator,
+      .                              const std::vector<RVO::Vector2> &goals, bool perturb,
+     16 ( 0.00%)                     const char *scenario, std::size_t steps) {
+      .             runSteps(simulator, goals, kWarmupSteps, perturb);
+      .           
+      .             const std::chrono::steady_clock::time_point start =
+      2 ( 0.00%)        std::chrono::steady_clock::now();
+    986 ( 0.00%)  => ???:0x000000000010a5b0 (1x)
+      .             runSteps(simulator, goals, steps, perturb);
+      .             const double elapsedMs = millisecondsSince(start);
+      7 ( 0.00%)    printResult(scenario, *simulator, steps, elapsedMs);
+ 56,719 ( 0.01%)  => profiling/Bench.cc:(anonymous namespace)::printResult(char const*, RVO::RVOSimulator const&, unsigned long, double) (1x)
+      7 ( 0.00%)  }
+      .           
+      .           void runCircle(std::size_t steps, std::size_t agents) {
+      4 ( 0.00%)    RVO::RVOSimulator simulator;
+    760 ( 0.00%)  => ???:0x000000000010a510 (1x)
+      .             std::vector<RVO::Vector2> goals;
+      .             setupCircle(&simulator, goals, agents);
+      7 ( 0.00%)    timeGoalSteps(&simulator, goals, false, "circle", steps);
+621,403,100 (99.57%)  => profiling/Bench.cc:(anonymous namespace)::timeGoalSteps(RVO::RVOSimulator*, std::vector<RVO::Vector2, std::allocator<RVO::Vector2> > const&, bool, char const*, unsigned long) (1x)
+      .           }
+      .           
+      .           void runBlocks(std::size_t steps, std::size_t agents) {
+      .             RVO::RVOSimulator simulator;
+      .             std::vector<RVO::Vector2> goals;
+      .             setupBlocks(&simulator, goals, agents);
+      .             timeGoalSteps(&simulator, goals, true, "blocks", steps);
+      .           }
+-- line 474 ----------------------------------------
+-- line 491 ----------------------------------------
+      .             buildRoadmap(&simulator, roadmap);
+      .             runRoadmapSteps(&simulator, roadmap, goals, kWarmupSteps);
+      .           
+      .             const std::chrono::steady_clock::time_point start =
+      .                 std::chrono::steady_clock::now();
+      .             runRoadmapSteps(&simulator, roadmap, goals, steps);
+      .             const double elapsedMs = millisecondsSince(start);
+      .             printResult("roadmap", simulator, steps, elapsedMs);
+      2 ( 0.00%)  }
+270,514 ( 0.04%)  => ???:0x000000000010a650 (1x)
+      .           
+     14 ( 0.00%)  void runOne(const char *scenario, std::size_t steps, std::size_t agents) {
+      5 ( 0.00%)    if (std::strcmp(scenario, "circle") == 0) {
+     22 ( 0.00%)  => ???:0x000000000010a5c0 (1x)
+      .               runCircle(steps, agents);
+      .             } else if (std::strcmp(scenario, "blocks") == 0) {
+      .               runBlocks(steps, agents);
+      .             } else {
+      .               runRoadmap(steps, agents);
+      .             }
+     11 ( 0.00%)  }
+      .           
+      .           void runLoads(const char *scenario, std::size_t steps) {
+      .             for (std::size_t i = 0U; i < kLoadCount; ++i) {
+      .               runOne(scenario, steps, kLoads[i]);
+      .             }
+      .           }
+      .           
+      .           void runSuite(std::size_t steps) {
+      .             runLoads("circle", steps);
+      .             runLoads("blocks", steps);
+      .             runLoads("roadmap", steps);
+      .           }
+      .           } /* namespace */
+      .           
+     12 ( 0.00%)  int main(int argc, char *argv[]) {
+      .             const char *scenario = "all";
+      1 ( 0.00%)    std::size_t steps = 200U;
+      1 ( 0.00%)    std::size_t agents = 0U;
+      .           
+      3 ( 0.00%)    if (argc > 4) {
+      .               printUsage();
+      .               return 1;
+      .             }
+      2 ( 0.00%)    if (argc > 1) {
+      2 ( 0.00%)      scenario = argv[1];
+      .             }
+      5 ( 0.00%)    if (std::strcmp(scenario, "list") == 0) {
+     22 ( 0.00%)  => ???:0x000000000010a5c0 (1x)
+      .               printLoads("circle");
+      .               printLoads("blocks");
+      .               printLoads("roadmap");
+      2 ( 0.00%)      return 0;
+      .             }
+      7 ( 0.00%)    if (argc > 2 && !parsePositive(argv[2], &steps)) {
+    187 ( 0.00%)  => profiling/Bench.cc:(anonymous namespace)::parsePositive(char const*, unsigned long*) (1x)
+      .               printUsage();
+      .               return 1;
+      .             }
+      7 ( 0.00%)    if (argc > 3 && !parsePositive(argv[3], &agents)) {
+    187 ( 0.00%)  => profiling/Bench.cc:(anonymous namespace)::parsePositive(char const*, unsigned long*) (1x)
+      .               printUsage();
+      .               return 1;
+      .             }
+      .           
+      4 ( 0.00%)    const bool all = std::strcmp(scenario, "all") == 0;
+     22 ( 0.00%)  => ???:0x000000000010a5c0 (1x)
+      5 ( 0.00%)    const bool circle = std::strcmp(scenario, "circle") == 0;
+     22 ( 0.00%)  => ???:0x000000000010a5c0 (1x)
+      5 ( 0.00%)    const bool blocks = std::strcmp(scenario, "blocks") == 0;
+     22 ( 0.00%)  => ???:0x000000000010a5c0 (1x)
+      4 ( 0.00%)    const bool roadmap = std::strcmp(scenario, "roadmap") == 0;
+     22 ( 0.00%)  => ???:0x000000000010a5c0 (1x)
+      .           
+      6 ( 0.00%)    if (!all && !circle && !blocks && !roadmap) {
+      .               printUsage();
+      .               return 1;
+      .             }
+      2 ( 0.00%)    if (all && argc > 3) {
+      .               std::cerr << "all uses 100, 400, 1000 and 2000 agents; omit agents\n";
+      .               printUsage();
+      .               return 1;
+      .             }
+      .           
+      2 ( 0.00%)    if (all) {
+      1 ( 0.00%)      runSuite(steps);
+      2 ( 0.00%)    } else if (argc > 3) {
+      4 ( 0.00%)      runOne(scenario, steps, agents);
+621,885,785 (99.64%)  => profiling/Bench.cc:(anonymous namespace)::runOne(char const*, unsigned long, unsigned long) (1x)
+      .             } else if (circle) {
+      .               runLoads("circle", steps);
+      .             } else if (blocks) {
+      .               runLoads("blocks", steps);
+      .             } else {
+      .               runLoads("roadmap", steps);
+      .             }
+      .             return 0;
+     11 ( 0.00%)  }
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: src/RVOSimulator.cc
+--------------------------------------------------------------------------------
+Ir               
+
+-- line 60 ----------------------------------------
+      .            * @relates RVOSimulator
+      .            * @brief   Returns the number of threads for the parallel loops: the number
+      .            *          that OpenMP would use, and one if the library is built without
+      .            *          OpenMP.
+      .            * @return  The number of threads, including the calling thread.
+      .            */
+      .           std::size_t threadCount() {
+      .           #ifdef _OPENMP
+    820 ( 0.00%)    return static_cast<std::size_t>(omp_get_max_threads());
+  2,255 ( 0.00%)  => ???:0x0000000004844430 (205x)
+      .           #else
+      .             return 1U;
+      .           #endif /* _OPENMP */
+      .           }
+      .           
+      .           /**
+      .            * @relates RVOSimulator
+      .            * @brief   RVOSimulator::forEachAgent() times its first calls on the calling
+-- line 76 ----------------------------------------
+-- line 87 ----------------------------------------
+      .            *          to wait for a thread that is not running.
+      .            */
+      .           const double RVO_SERIAL_LOOP_US = 8.0;
+      .           
+      .           /**
+      .            * @relates RVOSimulator
+      .            * @brief   Defines the loop of RVOSimulator::forEachAgent().
+      .            */
+    615 ( 0.00%)  class AgentFunctionJob : public Team::Job {
+    410 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Team.cc:RVO::Team::Job::~Job() (205x)
+      .            public:
+      .             AgentFunctionJob(RVOSimulator::AgentFunction function, void *context,
+      .                              std::size_t first)
+  1,230 ( 0.00%)        : function_(function), context_(context), first_(first) {}
+      .           
+164,000 ( 0.03%)    virtual void compute(std::size_t item, std::size_t /*thread*/) {
+492,000 ( 0.08%)      function_(first_ + item, context_);
+13,038,000 ( 2.09%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/RVOSimulator.h:void RVO::RVOSimulator::callAgentFunction<(anonymous namespace)::setPreferredVelocities(RVO::RVOSimulator*, std::vector<RVO::Vector2, std::allocator<RVO::Vector2> > const&, bool)::{lambda(unsigned long)#1}>(unsigned long, void*) (82,000x)
+      .             }
+      .           
+      .            private:
+      .             RVOSimulator::AgentFunction function_;
+      .             void *context_;
+      .             std::size_t first_;
+      .           };
+      .           } /* namespace */
+      .           
+      .           const std::size_t RVO_ERROR = std::numeric_limits<std::size_t>::max();
+      .           
+      8 ( 0.00%)  RVOSimulator::RVOSimulator()
+      1 ( 0.00%)      : defaultAgent_(NULL),
+      7 ( 0.00%)        kdTree_(new KdTree(this)),
+    521 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/KdTree.cc:RVO::KdTree::KdTree(RVO::RVOSimulator*) (1x)
+    210 ( 0.00%)  => ???:0x0000000004844360 (1x)
+      1 ( 0.00%)        globalTime_(0.0F),
+      6 ( 0.00%)        timeStep_(0.0F) {}
+      .           
+      .           RVOSimulator::RVOSimulator(float timeStep, float neighborDist,
+      .                                      std::size_t maxNeighbors, float timeHorizon,
+      .                                      float timeHorizonObst, float radius, float maxSpeed)
+      .               : defaultAgent_(new Agent()),
+      .                 kdTree_(new KdTree(this)),
+      .                 globalTime_(0.0F),
+      .                 timeStep_(timeStep) {
+-- line 126 ----------------------------------------
+-- line 144 ----------------------------------------
+      .             defaultAgent_->maxNeighbors_ = maxNeighbors;
+      .             defaultAgent_->maxSpeed_ = maxSpeed;
+      .             defaultAgent_->neighborDist_ = neighborDist;
+      .             defaultAgent_->radius_ = radius;
+      .             defaultAgent_->timeHorizon_ = timeHorizon;
+      .             defaultAgent_->timeHorizonObst_ = timeHorizonObst;
+      .           }
+      .           
+      8 ( 0.00%)  RVOSimulator::~RVOSimulator() {
+      7 ( 0.00%)    delete defaultAgent_;
+     18 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Agent.cc:RVO::Agent::~Agent() (1x)
+     91 ( 0.00%)  => ???:0x0000000004844350 (1x)
+      7 ( 0.00%)    delete kdTree_;
+     91 ( 0.00%)  => ???:0x0000000004844350 (1x)
+  2,715 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/KdTree.cc:RVO::KdTree::~KdTree() (1x)
+      .           
+  1,204 ( 0.00%)    for (std::size_t i = 0U; i < agents_.size(); ++i) {
+  3,200 ( 0.00%)      delete agents_[i];
+176,647 ( 0.03%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Agent.cc:RVO::Agent::~Agent() (400x)
+ 85,075 ( 0.01%)  => ???:0x0000000004844350 (400x)
+      .             }
+      .           
+      2 ( 0.00%)    for (std::size_t i = 0U; i < obstacles_.size(); ++i) {
+      .               delete obstacles_[i];
+      .             }
+      5 ( 0.00%)  }
+      .           
+  4,000 ( 0.00%)  std::size_t RVOSimulator::addAgent(const Vector2 &position) {
+  1,200 ( 0.00%)    if (defaultAgent_ != NULL) {
+  2,800 ( 0.00%)      Agent *const agent = new Agent();
+ 83,488 ( 0.01%)  => ???:0x0000000004844360 (400x)
+ 14,400 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Agent.cc:RVO::Agent::Agent() (400x)
+    800 ( 0.00%)      agent->position_ = position;
+  1,200 ( 0.00%)      agent->velocity_ = defaultAgent_->velocity_;
+    400 ( 0.00%)      agent->id_ = agents_.size();
+    800 ( 0.00%)      agent->maxNeighbors_ = defaultAgent_->maxNeighbors_;
+    800 ( 0.00%)      agent->maxSpeed_ = defaultAgent_->maxSpeed_;
+    800 ( 0.00%)      agent->neighborDist_ = defaultAgent_->neighborDist_;
+    800 ( 0.00%)      agent->radius_ = defaultAgent_->radius_;
+    800 ( 0.00%)      agent->timeHorizon_ = defaultAgent_->timeHorizon_;
+    800 ( 0.00%)      agent->timeHorizonObst_ = defaultAgent_->timeHorizonObst_;
+      .               agents_.push_back(agent);
+  1,200 ( 0.00%)      kdTree_->addAgent(*agent);
+ 16,643 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/KdTree.cc:RVO::KdTree::addAgent(RVO::AgentState const&) (400x)
+      .           
+    400 ( 0.00%)      return agents_.size() - 1U;
+      .             }
+      .           
+      .             return RVO_ERROR;
+  3,600 ( 0.00%)  }
+      .           
+      .           std::size_t RVOSimulator::addAgent(const Vector2 &position, float neighborDist,
+      .                                              std::size_t maxNeighbors, float timeHorizon,
+      .                                              float timeHorizonObst, float radius,
+      .                                              float maxSpeed) {
+      .             return addAgent(position, neighborDist, maxNeighbors, timeHorizon,
+      .                             timeHorizonObst, radius, maxSpeed, Vector2());
+      .           }
+-- line 192 ----------------------------------------
+-- line 247 ----------------------------------------
+      .               }
+      .           
+      .               return obstacleNo;
+      .             }
+      .           
+      .             return RVO_ERROR;
+      .           }
+      .           
+  1,640 ( 0.00%)  void RVOSimulator::doStep() {
+      .             const std::size_t threads = threadCount();
+    820 ( 0.00%)    Frame *const frame = kdTree_->beginStep(threads);
+17,673,617 ( 2.83%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/KdTree.cc:RVO::KdTree::beginStep(unsigned long) (205x)
+      .           
+      .             /* Every agent is computed from the frame and moved as soon as its new
+      .              * velocity is known. */
+  1,230 ( 0.00%)    Team::instance().runHedged(frame, agents_.size(), threads, frame);
+589,115,380 (94.39%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Team.cc:RVO::Team::runHedged(RVO::Team::Job*, unsigned long, unsigned long, void const*) (205x)
+  1,230 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Team.cc:RVO::Team::instance() (205x)
+    410 ( 0.00%)    kdTree_->endStep();
+  1,025 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/KdTree.cc:RVO::KdTree::endStep() (205x)
+      .           
+    615 ( 0.00%)    globalTime_ += timeStep_;
+  1,230 ( 0.00%)  }
+      .           
+  2,870 ( 0.00%)  void RVOSimulator::forEachAgent(AgentFunction function, void *context) {
+      .             const std::size_t count = agents_.size();
+      .             std::size_t threads = threadCount();
+    205 ( 0.00%)    std::size_t first = 0U;
+      .           
+    410 ( 0.00%)    if (threads > 1U && count > RVO_PROBE_AGENTS) {
+      .               typedef std::chrono::steady_clock Clock;
+      .               const Clock::time_point start = Clock::now();
+      .           
+      .               for (; first < RVO_PROBE_AGENTS; ++first) {
+      .                 function(first, context);
+      .               }
+      .           
+      .               const double probeUs =
+-- line 280 ----------------------------------------
+-- line 285 ----------------------------------------
+      .                   RVO_SERIAL_LOOP_US * static_cast<double>(RVO_PROBE_AGENTS)) {
+      .                 threads = 1U;
+      .               }
+      .             }
+      .           
+      .             /* About eight chunks for every thread: few enough that taking a chunk
+      .              * costs nothing next to its agents, enough to even out the threads. */
+      .             AgentFunctionJob job(function, context, first);
+  2,050 ( 0.00%)    Team::instance().run(&job, count - first, threads,
+14,525,685 ( 2.33%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Team.cc:RVO::Team::run(RVO::Team::Job*, unsigned long, unsigned long, unsigned long) (205x)
+  1,533 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Team.cc:RVO::Team::instance() (205x)
+    615 ( 0.00%)                         (count - first) / (8U * threads));
+  2,255 ( 0.00%)  }
+      .           
+      .           std::size_t RVOSimulator::getAgentAgentNeighbor(std::size_t agentNo,
+      .                                                           std::size_t neighborNo) const {
+      .             return agents_[agentNo]->agentNeighbors_[neighborNo].second;
+      .           }
+      .           
+      .           std::size_t RVOSimulator::getAgentMaxNeighbors(std::size_t agentNo) const {
+      .             return agents_[agentNo]->maxNeighbors_;
+-- line 303 ----------------------------------------
+-- line 329 ----------------------------------------
+      .             return agents_[agentNo]->obstacleNeighbors_[neighborNo].second->id_;
+      .           }
+      .           
+      .           const Line &RVOSimulator::getAgentORCALine(std::size_t agentNo,
+      .                                                      std::size_t lineNo) const {
+      .             return agents_[agentNo]->orcaLines_[lineNo];
+      .           }
+      .           
+ 82,800 ( 0.01%)  const Vector2 &RVOSimulator::getAgentPosition(std::size_t agentNo) const {
+165,600 ( 0.03%)    return agents_[agentNo]->position_;
+ 82,800 ( 0.01%)  }
+      .           
+      .           const Vector2 &RVOSimulator::getAgentPrefVelocity(std::size_t agentNo) const {
+      .             return agents_[agentNo]->prefVelocity_;
+      .           }
+      .           
+      .           float RVOSimulator::getAgentRadius(std::size_t agentNo) const {
+      .             return agents_[agentNo]->radius_;
+      .           }
+-- line 347 ----------------------------------------
+-- line 380 ----------------------------------------
+      .           bool RVOSimulator::queryVisibility(const Vector2 &point1, const Vector2 &point2,
+      .                                              float radius) const {
+      .             return kdTree_->queryVisibility(point1, point2, radius);
+      .           }
+      .           
+      .           void RVOSimulator::setAgentDefaults(float neighborDist,
+      .                                               std::size_t maxNeighbors, float timeHorizon,
+      .                                               float timeHorizonObst, float radius,
+     17 ( 0.00%)                                      float maxSpeed) {
+      9 ( 0.00%)    setAgentDefaults(neighborDist, maxNeighbors, timeHorizon, timeHorizonObst,
+    285 ( 0.00%)  => src/RVOSimulator.cc:RVO::RVOSimulator::setAgentDefaults(float, unsigned long, float, float, float, float, RVO::Vector2 const&) (1x)
+      3 ( 0.00%)                     radius, maxSpeed, Vector2());
+      3 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::Vector2() (1x)
+      9 ( 0.00%)  }
+      .           
+      .           void RVOSimulator::setAgentDefaults(float neighborDist,
+      .                                               std::size_t maxNeighbors, float timeHorizon,
+      .                                               float timeHorizonObst, float radius,
+     16 ( 0.00%)                                      float maxSpeed, const Vector2 &velocity) {
+      4 ( 0.00%)    if (defaultAgent_ == NULL) {
+      7 ( 0.00%)      defaultAgent_ = new Agent();
+    207 ( 0.00%)  => ???:0x0000000004844360 (1x)
+     36 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Agent.cc:RVO::Agent::Agent() (1x)
+      .             }
+      .           
+      1 ( 0.00%)    defaultAgent_->maxNeighbors_ = maxNeighbors;
+      2 ( 0.00%)    defaultAgent_->maxSpeed_ = maxSpeed;
+      .             defaultAgent_->neighborDist_ = neighborDist;
+      .             defaultAgent_->radius_ = radius;
+      .             defaultAgent_->timeHorizon_ = timeHorizon;
+      1 ( 0.00%)    defaultAgent_->timeHorizonObst_ = timeHorizonObst;
+      2 ( 0.00%)    defaultAgent_->velocity_ = velocity;
+      9 ( 0.00%)  }
+      .           
+      .           void RVOSimulator::setAgentMaxNeighbors(std::size_t agentNo,
+      .                                                   std::size_t maxNeighbors) {
+      .             agents_[agentNo]->maxNeighbors_ = maxNeighbors;
+      .             kdTree_->frame_->states_[agentNo].maxNeighbors_ = maxNeighbors;
+      .           }
+      .           
+      .           void RVOSimulator::setAgentMaxSpeed(std::size_t agentNo, float maxSpeed) {
+-- line 416 ----------------------------------------
+-- line 426 ----------------------------------------
+      .           
+      .           void RVOSimulator::setAgentPosition(std::size_t agentNo,
+      .                                               const Vector2 &position) {
+      .             agents_[agentNo]->position_ = position;
+      .             kdTree_->frame_->states_[agentNo].position_ = position;
+      .           }
+      .           
+      .           void RVOSimulator::setAgentPrefVelocity(std::size_t agentNo,
+ 82,000 ( 0.01%)                                          const Vector2 &prefVelocity) {
+328,000 ( 0.05%)    agents_[agentNo]->prefVelocity_ = prefVelocity;
+410,000 ( 0.07%)    kdTree_->frame_->states_[agentNo].prefVelocity_ = prefVelocity;
+ 82,000 ( 0.01%)  }
+      .           
+      .           void RVOSimulator::setAgentRadius(std::size_t agentNo, float radius) {
+      .             agents_[agentNo]->radius_ = radius;
+      .             kdTree_->frame_->states_[agentNo].radius_ = radius;
+      .           }
+      .           
+      .           void RVOSimulator::setAgentTimeHorizon(std::size_t agentNo, float timeHorizon) {
+      .             agents_[agentNo]->timeHorizon_ = timeHorizon;
+-- line 445 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: src/Vector2.h
+--------------------------------------------------------------------------------
+Ir                 
+
+-- line 67 ----------------------------------------
+        .              * @param[in] y The y-coordinate of the two-dimensional vector.
+        .              */
+        .             Vector2(float x, float y);
+        .           
+        .             /**
+        .              * @brief  Returns the x-coordinate of this two-dimensional vector.
+        .              * @return The x-coordinate of the two-dimensional vector.
+        .              */
+2,054,540 ( 0.33%)    float x() const { return x_; }
+        .           
+        .             /**
+        .              * @brief  Returns the y-coordinate of this two-dimensional vector.
+        .              * @return The y-coordinate of the two-dimensional vector.
+        .              */
+1,477,495 ( 0.24%)    float y() const { return y_; }
+        .           
+        .             /**
+        .              * @brief  Computes the negation of this two-dimensional vector.
+        .              * @return The negation of this two-dimensional vector.
+        .              */
+        .             Vector2 operator-() const;
+        .           
+        .             /**
+-- line 89 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/13/bits/stl_algobase.h
+--------------------------------------------------------------------------------
+Ir                  
+
+-- line 231 ----------------------------------------
+         .               _GLIBCXX14_CONSTEXPR
+         .               inline const _Tp&
+         .               min(const _Tp& __a, const _Tp& __b)
+         .               {
+         .                 // concept requirements
+         .                 __glibcxx_function_requires(_LessThanComparableConcept<_Tp>)
+         .                 //return __b < __a ? __b : __a;
+         .                 if (__b < __a)
+ 2,203,204 ( 0.35%)  	return __b;
+         .                 return __a;
+         .               }
+         .           
+         .             /**
+         .              *  @brief This does what you think it does.
+         .              *  @ingroup sorting_algorithms
+         .              *  @param  __a  A thing of arbitrary type.
+         .              *  @param  __b  Another thing of arbitrary type.
+-- line 247 ----------------------------------------
+-- line 249 ----------------------------------------
+         .              *
+         .              *  This is the simple classic generic implementation.  It will work on
+         .              *  temporary expressions, since they are only evaluated once, unlike a
+         .              *  preprocessor macro.
+         .             */
+         .             template<typename _Tp>
+         .               _GLIBCXX14_CONSTEXPR
+         .               inline const _Tp&
+   571,696 ( 0.09%)      max(const _Tp& __a, const _Tp& __b)
+         .               {
+         .                 // concept requirements
+         .                 __glibcxx_function_requires(_LessThanComparableConcept<_Tp>)
+         .                 //return  __a < __b ? __b : __a;
+12,772,195 ( 2.05%)        if (__a < __b)
+ 3,304,473 ( 0.53%)  	return __b;
+         .                 return __a;
+         .               }
+         .           
+         .             /**
+         .              *  @brief This does what you think it does.
+         .              *  @ingroup sorting_algorithms
+         .              *  @param  __a  A thing of arbitrary type.
+         .              *  @param  __b  Another thing of arbitrary type.
+-- line 271 ----------------------------------------
+-- line 390 ----------------------------------------
+         .           	      ++__result;
+         .           	    }
+         .           	  return __result;
+         .           	}
+         .           
+         .                 template<typename _Tp, typename _Up>
+         .           	static void
+         .           	__assign_one(_Tp* __to, _Up* __from)
+       412 ( 0.00%)  	{ *__to = *__from; }
+         .               };
+         .           
+         .           #if __cplusplus >= 201103L
+         .             template<>
+         .               struct __copy_move<true, false, random_access_iterator_tag>
+         .               {
+         .                 template<typename _II, typename _OI>
+         .           	_GLIBCXX20_CONSTEXPR
+-- line 406 ----------------------------------------
+-- line 428 ----------------------------------------
+         .               struct __copy_move<_IsMove, true, random_access_iterator_tag>
+         .               {
+         .                 template<typename _Tp, typename _Up>
+         .           	_GLIBCXX20_CONSTEXPR
+         .           	static _Up*
+         .           	__copy_m(_Tp* __first, _Tp* __last, _Up* __result)
+         .           	{
+         .           	  const ptrdiff_t _Num = __last - __first;
+       410 ( 0.00%)  	  if (__builtin_expect(_Num > 1, true))
+         .           	    __builtin_memmove(__result, __first, sizeof(_Tp) * _Num);
+       203 ( 0.00%)  	  else if (_Num == 1)
+         .           	    std::__copy_move<_IsMove, false, random_access_iterator_tag>::
+         .           	      __assign_one(__result, __first);
+         .           	  return __result + _Num;
+         .           	}
+         .               };
+         .           
+         .           _GLIBCXX_BEGIN_NAMESPACE_CONTAINER
+         .           
+-- line 446 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: src/Agent.cc
+--------------------------------------------------------------------------------
+Ir                  
+
+-- line 58 ----------------------------------------
+         .            * @param[in]      optVelocity  The optimization velocity.
+         .            * @param[in]      directionOpt True if the direction should be optimized.
+         .            * @param[in, out] result       A reference to the result of the linear program.
+         .            * @return         True if successful.
+         .            */
+         .           bool linearProgram1(const std::vector<Line> &lines, std::size_t lineNo,
+         .                               float radius, const Vector2 &optVelocity, bool directionOpt,
+         .                               Vector2 &result) { /* NOLINT(runtime/references) */
+   236,726 ( 0.04%)    const float dotProduct = lines[lineNo].point * lines[lineNo].direction;
+   828,541 ( 0.13%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator*(RVO::Vector2 const&) const (118,363x)
+         .             const float discriminant =
+ 1,420,356 ( 0.23%)        dotProduct * dotProduct + radius * radius - absSq(lines[lineNo].point);
+ 1,183,630 ( 0.19%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::absSq(RVO::Vector2 const&) (118,363x)
+         .           
+   355,089 ( 0.06%)    if (discriminant < 0.0F) {
+         .               /* Max speed circle fully invalidates line lineNo. */
+         .               return false;
+         .             }
+         .           
+         .             const float sqrtDiscriminant = std::sqrt(discriminant);
+   591,815 ( 0.09%)    float tLeft = -dotProduct - sqrtDiscriminant;
+   236,726 ( 0.04%)    float tRight = -dotProduct + sqrtDiscriminant;
+         .           
+   505,704 ( 0.08%)    for (std::size_t i = 0U; i < lineNo; ++i) {
+   134,498 ( 0.02%)      const float denominator = det(lines[lineNo].direction, lines[i].direction);
+   470,743 ( 0.08%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::det(RVO::Vector2 const&, RVO::Vector2 const&) (67,249x)
+         .               const float numerator =
+   403,494 ( 0.06%)          det(lines[i].direction, lines[lineNo].point - lines[i].point);
+ 1,546,727 ( 0.25%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (67,249x)
+   470,743 ( 0.08%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::det(RVO::Vector2 const&, RVO::Vector2 const&) (67,249x)
+         .           
+   470,725 ( 0.08%)      if (std::fabs(denominator) <= RVO_EPSILON) {
+         .                 /* Lines lineNo and i are (almost) parallel. */
+         .                 if (numerator < 0.0F) {
+         .                   return false;
+         .                 }
+         .           
+         .                 continue;
+         .               }
+         .           
+    67,249 ( 0.01%)      const float t = numerator / denominator;
+         .           
+   201,747 ( 0.03%)      if (denominator >= 0.0F) {
+         .                 /* Line i bounds line lineNo on the right. */
+         .                 tRight = std::min(tRight, t);
+         .               } else {
+         .                 /* Line i bounds line lineNo on the left. */
+         .                 tLeft = std::max(tLeft, t);
+         .               }
+         .           
+   201,751 ( 0.03%)      if (tLeft > tRight) {
+         .                 return false;
+         .               }
+         .             }
+         .           
+   236,718 ( 0.04%)    if (directionOpt) {
+         .               /* Optimize direction. */
+        48 ( 0.00%)      if (optVelocity * lines[lineNo].direction > 0.0F) {
+        56 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator*(RVO::Vector2 const&) const (8x)
+         .                 /* Take right extreme. */
+         5 ( 0.00%)        result = lines[lineNo].point + tRight * lines[lineNo].direction;
+         .               } else {
+         .                 /* Take left extreme. */
+   946,875 ( 0.15%)        result = lines[lineNo].point + tLeft * lines[lineNo].direction;
+ 2,722,257 ( 0.44%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator+(RVO::Vector2 const&) const (118,359x)
+ 2,722,257 ( 0.44%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::operator*(float, RVO::Vector2 const&) (118,359x)
+         .               }
+         .             } else {
+         .               /* Optimize closest point. */
+         .               const float t =
+   710,106 ( 0.11%)          lines[lineNo].direction * (optVelocity - lines[lineNo].point);
+ 2,722,073 ( 0.44%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (118,351x)
+   828,457 ( 0.13%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator*(RVO::Vector2 const&) const (118,351x)
+         .           
+   355,053 ( 0.06%)      if (t < tLeft) {
+    59,724 ( 0.01%)        result = lines[lineNo].point + tLeft * lines[lineNo].direction;
+   265,467 ( 0.04%)      } else if (t > tRight) {
+    59,930 ( 0.01%)        result = lines[lineNo].point + tRight * lines[lineNo].direction;
+         .               } else {
+         .                 result = lines[lineNo].point + t * lines[lineNo].direction;
+         .               }
+         .             }
+         .           
+         .             return true;
+         .           }
+         .           
+-- line 133 ----------------------------------------
+-- line 140 ----------------------------------------
+         .            * @param[in]      optVelocity  The optimization velocity.
+         .            * @param[in]      directionOpt True if the direction should be optimized.
+         .            * @param[in, out] result       A reference to the result of the linear program.
+         .            * @return         The number of the line it fails on, and the number of lines
+         .            *                 if successful.
+         .            */
+         .           std::size_t linearProgram2(const std::vector<Line> &lines, float radius,
+         .                                      const Vector2 &optVelocity, bool directionOpt,
+ 1,312,096 ( 0.21%)                             Vector2 &result) { /* NOLINT(runtime/references) */
+   164,012 ( 0.03%)    if (directionOpt) {
+         .               /* Optimize direction. Note that the optimization velocity is of unit length
+         .                * in this case.
+         .                */
+        24 ( 0.00%)      result = optVelocity * radius;
+       138 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator*(float) const (6x)
+   656,000 ( 0.11%)    } else if (absSq(optVelocity) > radius * radius) {
+   820,000 ( 0.13%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::absSq(RVO::Vector2 const&) (82,000x)
+         .               /* Optimize closest point and outside circle. */
+         .               result = normalize(optVelocity) * radius;
+         .             } else {
+         .               /* Optimize closest point and inside circle. */
+   410,000 ( 0.07%)      result = optVelocity;
+         .             }
+         .           
+ 2,697,619 ( 0.43%)    for (std::size_t i = 0U; i < lines.size(); ++i) {
+ 9,478,428 ( 1.52%)      if (det(lines[i].direction, lines[i].point - result) > 0.0F) {
+18,166,987 ( 2.91%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (789,869x)
+ 5,529,083 ( 0.89%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::det(RVO::Vector2 const&, RVO::Vector2 const&) (789,869x)
+         .                 /* Result does not satisfy constraint i. Compute new optimal result. */
+   236,726 ( 0.04%)        const Vector2 tempResult = result;
+         .           
+         .                 if (!linearProgram1(lines, i, radius, optVelocity, directionOpt,
+         .                                     result)) {
+        12 ( 0.00%)          result = tempResult;
+         .           
+         .                   return i;
+         .                 }
+         .               }
+         .             }
+         .           
+   164,004 ( 0.03%)    return lines.size();
+   984,072 ( 0.16%)  }
+         .           
+         .           /**
+         .            * @relates        AgentScratch
+         .            * @brief          Solves a two-dimensional linear program subject to linear
+         .            *                 constraints defined by lines and a circular constraint.
+         .            * @param[in]      lines        Lines defining the linear constraints.
+         .            * @param[in]      numObstLines Count of obstacle lines.
+         .            * @param[in]      beginLine    The line on which the 2-d linear program failed.
+         .            * @param[in]      radius       The radius of the circular constraint.
+         .            * @param[in, out] result       A reference to the result of the linear program.
+         .            */
+         .           void linearProgram3(const std::vector<Line> &lines, std::size_t numObstLines,
+         .                               std::size_t beginLine, float radius,
+         .                               Vector2 &result) { /* NOLINT(runtime/references) */
+         4 ( 0.00%)    float distance = 0.0F;
+         .           
+       112 ( 0.00%)    for (std::size_t i = beginLine; i < lines.size(); ++i) {
+       252 ( 0.00%)      if (det(lines[i].direction, lines[i].point - result) > distance) {
+       644 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (28x)
+       196 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::det(RVO::Vector2 const&, RVO::Vector2 const&) (28x)
+         .                 /* Result does not satisfy constraint of line i. */
+         .                 std::vector<Line> projLines(
+         .                     lines.begin(),
+         .                     lines.begin() + static_cast<std::ptrdiff_t>(numObstLines));
+         .           
+        78 ( 0.00%)        for (std::size_t j = numObstLines; j < i; ++j) {
+        18 ( 0.00%)          Line line;
+       153 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Line.cc:RVO::Line::Line() (9x)
+         .           
+        18 ( 0.00%)          const float determinant = det(lines[i].direction, lines[j].direction);
+        63 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::det(RVO::Vector2 const&, RVO::Vector2 const&) (9x)
+         .           
+        36 ( 0.00%)          if (std::fabs(determinant) <= RVO_EPSILON) {
+         .                     /* Line i and line j are parallel. */
+         .                     if (lines[i].direction * lines[j].direction > 0.0F) {
+         .                       /* Line i and line j point in the same direction. */
+         .                       continue;
+         .                     }
+         .           
+         .                     /* Line i and line j point in opposite direction. */
+         .                     line.point = 0.5F * (lines[i].point + lines[j].point);
+         .                   } else {
+        30 ( 0.00%)            line.point = lines[i].point + (det(lines[j].direction,
+        63 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::det(RVO::Vector2 const&, RVO::Vector2 const&) (9x)
+        36 ( 0.00%)                                               lines[i].point - lines[j].point) /
+       207 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (9x)
+         .                                                    determinant) *
+        90 ( 0.00%)                                              lines[i].direction;
+       207 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::operator*(float, RVO::Vector2 const&) (9x)
+       207 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator+(RVO::Vector2 const&) const (9x)
+         .                   }
+         .           
+        45 ( 0.00%)          line.direction = normalize(lines[j].direction - lines[i].direction);
+       207 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (9x)
+       486 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::normalize(RVO::Vector2 const&) (9x)
+         .                   projLines.push_back(line);
+         .                 }
+         .           
+        12 ( 0.00%)        const Vector2 tempResult = result;
+         .           
+        54 ( 0.00%)        if (linearProgram2(
+     2,005 ( 0.00%)  => src/Agent.cc:RVO::(anonymous namespace)::linearProgram2(std::vector<RVO::Line, std::allocator<RVO::Line> > const&, float, RVO::Vector2 const&, bool, RVO::Vector2&) (6x)
+         .                         projLines, radius,
+        30 ( 0.00%)                Vector2(-lines[i].direction.y(), lines[i].direction.x()), true,
+        24 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::Vector2(float, float) (6x)
+         .                         result) < projLines.size()) {
+         .                   /* This should in principle not happen. The result is by definition
+         .                    * already in the feasible region of this linear program. If it fails,
+         .                    * it is due to small floating point error, and the current result is
+         .                    * kept. */
+         .                   result = tempResult;
+         .                 }
+         .           
+        42 ( 0.00%)        distance = det(lines[i].direction, lines[i].point - result);
+       138 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (6x)
+        42 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::det(RVO::Vector2 const&, RVO::Vector2 const&) (6x)
+         .               }
+         .             }
+         .           }
+         .           } /* namespace */
+         .           
+     2,400 ( 0.00%)  AgentState::AgentState()
+       802 ( 0.00%)      : maxNeighbors_(0U),
+     1,604 ( 0.00%)        maxSpeed_(0.0F),
+         .                 neighborDist_(0.0F),
+         .                 radius_(0.0F),
+         .                 timeHorizon_(0.0F),
+       802 ( 0.00%)        timeHorizonObst_(0.0F),
+     6,814 ( 0.00%)        padding_() {}
+     3,600 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::Vector2() (1,200x)
+         .           
+        13 ( 0.00%)  AgentScratch::AgentScratch() : states_(NULL) {}
+         3 ( 0.00%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::Vector2() (1x)
+         .           
+     4,010 ( 0.00%)  Agent::Agent() : id_(0U) {}
+         .           
+     3,209 ( 0.00%)  Agent::~Agent() {}
+         .           
+         .           /* Search for the best new velocity. */
+ 1,148,000 ( 0.18%)  void AgentScratch::computeNewVelocity(float timeStep) {
+   164,000 ( 0.03%)    orcaLines_.clear();
+         .           
+   164,000 ( 0.03%)    const float invTimeHorizonObst = 1.0F / timeHorizonObst_;
+         .           
+         .             /* Create obstacle ORCA lines. */
+   164,000 ( 0.03%)    for (std::size_t i = 0U; i < obstacleNeighbors_.size(); ++i) {
+         .               const Obstacle *obstacle1 = obstacleNeighbors_[i].second;
+         .               const Obstacle *obstacle2 = obstacle1->next_;
+         .           
+         .               const Vector2 relativePosition1 = obstacle1->point_ - position_;
+         .               const Vector2 relativePosition2 = obstacle2->point_ - position_;
+         .           
+         .               /* Check if velocity obstacle of obstacle is already taken care of by
+         .                * previously constructed obstacle ORCA lines. */
+-- line 275 ----------------------------------------
+-- line 522 ----------------------------------------
+         .               line.point =
+         .                   rightCutoff + radius_ * invTimeHorizonObst *
+         .                                     Vector2(-line.direction.y(), line.direction.x());
+         .               orcaLines_.push_back(line);
+         .             }
+         .           
+         .             const std::size_t numObstLines = orcaLines_.size();
+         .           
+   164,000 ( 0.03%)    const float invTimeHorizon = 1.0F / timeHorizon_;
+         .           
+         .             /* Create agent ORCA lines. */
+ 2,779,652 ( 0.45%)    for (std::size_t i = 0U; i < agentNeighbors_.size(); ++i) {
+ 3,949,420 ( 0.63%)      const AgentState *const other = &states_[agentNeighbors_[i].second];
+         .           
+ 3,159,536 ( 0.51%)      const Vector2 relativePosition = other->position_ - position_;
+18,167,332 ( 2.91%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (789,884x)
+ 3,159,536 ( 0.51%)      const Vector2 relativeVelocity = velocity_ - other->velocity_;
+18,167,332 ( 2.91%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (789,884x)
+ 2,369,652 ( 0.38%)      const float distSq = absSq(relativePosition);
+ 7,898,840 ( 1.27%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::absSq(RVO::Vector2 const&) (789,884x)
+ 2,369,652 ( 0.38%)      const float combinedRadius = radius_ + other->radius_;
+ 2,369,652 ( 0.38%)      const float combinedRadiusSq = combinedRadius * combinedRadius;
+         .           
+ 1,579,768 ( 0.25%)      Line line;
+13,428,028 ( 2.15%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Line.cc:RVO::Line::Line() (789,884x)
+ 1,579,768 ( 0.25%)      Vector2 u;
+ 2,369,652 ( 0.38%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::Vector2() (789,884x)
+         .           
+ 2,369,652 ( 0.38%)      if (distSq > combinedRadiusSq) {
+         .                 /* No collision. */
+ 6,260,132 ( 1.00%)        const Vector2 w = relativeVelocity - invTimeHorizon * relativePosition;
+17,973,672 ( 2.88%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (781,464x)
+17,973,672 ( 2.88%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::operator*(float, RVO::Vector2 const&) (781,464x)
+         .                 /* Vector from cutoff center to relative velocity. */
+ 3,125,856 ( 0.50%)        const float wLengthSq = absSq(w);
+ 7,814,640 ( 1.25%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::absSq(RVO::Vector2 const&) (781,464x)
+         .           
+ 2,344,392 ( 0.38%)        const float dotProduct = w * relativePosition;
+ 5,470,248 ( 0.88%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator*(RVO::Vector2 const&) const (781,464x)
+         .           
+ 5,055,320 ( 0.81%)        if (dotProduct < 0.0F &&
+ 2,344,392 ( 0.38%)            dotProduct * dotProduct > combinedRadiusSq * wLengthSq) {
+         .                   /* Project on cut-off circle. */
+         .                   const float wLength = std::sqrt(wLengthSq);
+ 3,349,580 ( 0.54%)          const Vector2 unitW = w / wLength;
+16,747,900 ( 2.68%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator/(float) const (669,916x)
+         .           
+ 4,689,412 ( 0.75%)          line.direction = Vector2(unitW.y(), -unitW.x());
+ 2,679,664 ( 0.43%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::Vector2(float, float) (669,916x)
+ 4,689,412 ( 0.75%)          u = (combinedRadius * invTimeHorizon - wLength) * unitW;
+15,408,068 ( 2.47%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::operator*(float, RVO::Vector2 const&) (669,916x)
+   669,916 ( 0.11%)        } else {
+         .                   /* Project on legs. */
+   223,096 ( 0.04%)          const float leg = std::sqrt(distSq - combinedRadiusSq);
+         .           
+   892,384 ( 0.14%)          if (det(relativePosition, w) > 0.0F) {
+   780,836 ( 0.13%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::det(RVO::Vector2 const&, RVO::Vector2 const&) (111,548x)
+         .                     /* Project on left leg. */
+   334,548 ( 0.05%)            line.direction = Vector2(relativePosition.x() * leg -
+   223,000 ( 0.04%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::Vector2(float, float) (55,750x)
+   111,548 ( 0.02%)                                         relativePosition.y() * combinedRadius,
+   334,644 ( 0.05%)                                     relativePosition.x() * combinedRadius +
+   223,096 ( 0.04%)                                         relativePosition.y() * leg) /
+   223,000 ( 0.04%)                             distSq;
+ 1,393,750 ( 0.22%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator/(float) const (55,750x)
+         .                   } else {
+         .                     /* Project on right leg. */
+   278,990 ( 0.04%)            line.direction = -Vector2(relativePosition.x() * leg +
+   223,192 ( 0.04%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::Vector2(float, float) (55,798x)
+         .                                                   relativePosition.y() * combinedRadius,
+         .                                               -relativePosition.x() * combinedRadius +
+   167,394 ( 0.03%)                                          relativePosition.y() * leg) /
+ 1,339,152 ( 0.21%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-() const (55,798x)
+   360,990 ( 0.06%)                             distSq;
+ 1,394,950 ( 0.22%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator/(float) const (55,798x)
+         .                   }
+         .           
+   780,836 ( 0.13%)          u = (relativeVelocity * line.direction) * line.direction -
+ 2,565,604 ( 0.41%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::operator*(float, RVO::Vector2 const&) (111,548x)
+   780,836 ( 0.13%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator*(RVO::Vector2 const&) const (111,548x)
+   446,192 ( 0.07%)              relativeVelocity;
+ 2,565,604 ( 0.41%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (111,548x)
+         .                 }
+         .               } else {
+         .                 /* Collision. Project on cut-off circle of time timeStep. */
+         .                 const float invTimeStep = 1.0F / timeStep;
+         .           
+         .                 /* Vector from cutoff center to relative velocity. */
+    84,200 ( 0.01%)        const Vector2 w = relativeVelocity - invTimeStep * relativePosition;
+   193,660 ( 0.03%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (8,420x)
+   193,660 ( 0.03%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::operator*(float, RVO::Vector2 const&) (8,420x)
+         .           
+    25,260 ( 0.00%)        const float wLength = abs(w);
+   151,560 ( 0.02%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::abs(RVO::Vector2 const&) (8,420x)
+    33,680 ( 0.01%)        const Vector2 unitW = w / wLength;
+   210,500 ( 0.03%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator/(float) const (8,420x)
+         .           
+    58,940 ( 0.01%)        line.direction = Vector2(unitW.y(), -unitW.x());
+    33,680 ( 0.01%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::Vector2(float, float) (8,420x)
+   239,780 ( 0.04%)        u = (combinedRadius * invTimeStep - wLength) * unitW;
+   193,660 ( 0.03%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::operator*(float, RVO::Vector2 const&) (8,420x)
+         .               }
+         .           
+ 6,319,072 ( 1.01%)      line.point = velocity_ + 0.5F * u;
+18,167,332 ( 2.91%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::operator*(float, RVO::Vector2 const&) (789,884x)
+18,167,332 ( 2.91%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator+(RVO::Vector2 const&) const (789,884x)
+         .               orcaLines_.push_back(line);
+         .             }
+         .           
+         .             const std::size_t lineFail =
+   820,000 ( 0.13%)        linearProgram2(orcaLines_, maxSpeed_, prefVelocity_, false, newVelocity_);
+68,789,065 (11.02%)  => src/Agent.cc:RVO::(anonymous namespace)::linearProgram2(std::vector<RVO::Line, std::allocator<RVO::Line> > const&, float, RVO::Vector2 const&, bool, RVO::Vector2&) (82,000x)
+         .           
+   164,000 ( 0.03%)    if (lineFail < orcaLines_.size()) {
+         8 ( 0.00%)      linearProgram3(orcaLines_, numObstLines, lineFail, maxSpeed_, newVelocity_);
+         .             }
+   902,000 ( 0.14%)  }
+         .           
+         .           void AgentScratch::insertAgentNeighbor(const Vector2 &position,
+19,497,357 ( 3.12%)                                         std::size_t agentNo, float &rangeSq) {
+ 6,863,865 ( 1.10%)    const float distSq = absSq(position_ - position);
+31,573,779 ( 5.06%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::operator-(RVO::Vector2 const&) const (1,372,773x)
+13,727,730 ( 2.20%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::absSq(RVO::Vector2 const&) (1,372,773x)
+         .           
+ 4,118,319 ( 0.66%)    if (distSq < rangeSq) {
+ 1,618,148 ( 0.26%)      if (agentNeighbors_.size() < maxNeighbors_) {
+ 1,581,773 ( 0.25%)        agentNeighbors_.push_back(std::make_pair(distSq, agentNo));
+         .               }
+         .           
+         .               std::size_t i = agentNeighbors_.size() - 1U;
+         .           
+19,247,053 ( 3.08%)      while (i != 0U && distSq < agentNeighbors_[i - 1U].first) {
+         .                 agentNeighbors_[i] = agentNeighbors_[i - 1U];
+         .                 --i;
+         .               }
+         .           
+         .               agentNeighbors_[i] = std::make_pair(distSq, agentNo);
+         .           
+ 2,066,640 ( 0.33%)      if (agentNeighbors_.size() == maxNeighbors_) {
+   171,406 ( 0.03%)        rangeSq = agentNeighbors_.back().first;
+         .               }
+         .             }
+13,813,433 ( 2.21%)  }
+         .           
+         .           void AgentScratch::insertObstacleNeighbor(const Obstacle *obstacle, float rangeSq) {
+         .             const Obstacle *const nextObstacle = obstacle->next_;
+         .           
+         .             float distSq = 0.0F;
+         .             const float r = ((position_ - obstacle->point_) *
+         .                              (nextObstacle->point_ - obstacle->point_)) /
+         .                             absSq(nextObstacle->point_ - obstacle->point_);
+-- line 640 ----------------------------------------
+-- line 657 ----------------------------------------
+         .                 obstacleNeighbors_[i] = obstacleNeighbors_[i - 1U];
+         .                 --i;
+         .               }
+         .           
+         .               obstacleNeighbors_[i] = std::make_pair(distSq, obstacle);
+         .             }
+         .           }
+         .           
+   246,000 ( 0.04%)  void AgentScratch::store(Agent *agent) {
+         .             agentNeighbors_.swap(agent->agentNeighbors_);
+         .             obstacleNeighbors_.swap(agent->obstacleNeighbors_);
+         .             orcaLines_.swap(agent->orcaLines_);
+    82,000 ( 0.01%)  }
+         .           } /* namespace RVO */
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: src/Line.cc
+--------------------------------------------------------------------------------
+Ir                 
+
+-- line 34 ----------------------------------------
+        .           /**
+        .            * @file  Line.cc
+        .            * @brief Defines the Line class.
+        .            */
+        .           
+        .           #include "Line.h"
+        .           
+        .           namespace RVO {
+8,688,823 ( 1.39%)  Line::Line() {}
+4,739,358 ( 0.76%)  => /home/arthur/actions-runner/_work/RVO2/RVO2/src/Vector2.cc:RVO::Vector2::Vector2() (1,579,786x)
+        .           } /* namespace RVO */
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/13/bits/new_allocator.h
+--------------------------------------------------------------------------------
+Ir                 
+
+-- line 126 ----------------------------------------
+        .                 allocate(size_type __n, const void* = static_cast<const void*>(0))
+        .                 {
+        .           #if __cplusplus >= 201103L
+        .           	// _GLIBCXX_RESOLVE_LIB_DEFECTS
+        .           	// 3308. std::allocator<void>().allocate(n)
+        .           	static_assert(sizeof(_Tp) != 0, "cannot allocate incomplete types");
+        .           #endif
+        .           
+        6 ( 0.00%)  	if (__builtin_expect(__n > this->_M_max_size(), false))
+        .           	  {
+        .           	    // _GLIBCXX_RESOLVE_LIB_DEFECTS
+        .           	    // 3190. allocator::allocate sometimes returns too little storage
+        .           	    if (__n > (std::size_t(-1) / sizeof(_Tp)))
+        .           	      std::__throw_bad_array_new_length();
+        .           	    std::__throw_bad_alloc();
+        .           	  }
+        .           
+-- line 142 ----------------------------------------
+-- line 143 ----------------------------------------
+        .           #if __cpp_aligned_new
+        .           	if (alignof(_Tp) > __STDCPP_DEFAULT_NEW_ALIGNMENT__)
+        .           	  {
+        .           	    std::align_val_t __al = std::align_val_t(alignof(_Tp));
+        .           	    return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp),
+        .           							   __al));
+        .           	  }
+        .           #endif
+   31,673 ( 0.01%)  	return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+      124 ( 0.00%)  => ???:0x0000000004844360 (2x)
+        .                 }
+        .           
+        .                 // __p is not permitted to be a null pointer.
+        .                 void
+        .                 deallocate(_Tp* __p, size_type __n __attribute__ ((__unused__)))
+        .                 {
+        .           #if __cpp_sized_deallocation
+        .           # define _GLIBCXX_SIZED_DEALLOC(p, n) (p), (n) * sizeof(_Tp)
+-- line 159 ----------------------------------------
+-- line 164 ----------------------------------------
+        .           #if __cpp_aligned_new
+        .           	if (alignof(_Tp) > __STDCPP_DEFAULT_NEW_ALIGNMENT__)
+        .           	  {
+        .           	    _GLIBCXX_OPERATOR_DELETE(_GLIBCXX_SIZED_DEALLOC(__p, __n),
+        .           				     std::align_val_t(alignof(_Tp)));
+        .           	    return;
+        .           	  }
+        .           #endif
+   13,744 ( 0.00%)  	_GLIBCXX_OPERATOR_DELETE(_GLIBCXX_SIZED_DEALLOC(__p, __n));
+      565 ( 0.00%)  => ???:0x0000000004844350 (5x)
+       52 ( 0.00%)        }
+        .           
+        .           #undef _GLIBCXX_SIZED_DEALLOC
+        .           #undef _GLIBCXX_OPERATOR_DELETE
+        .           #undef _GLIBCXX_OPERATOR_NEW
+        .           
+        .           #if __cplusplus <= 201703L
+        .                 __attribute__((__always_inline__))
+        .                 size_type
+-- line 181 ----------------------------------------
+-- line 183 ----------------------------------------
+        .                 { return _M_max_size(); }
+        .           
+        .           #if __cplusplus >= 201103L
+        .                 template<typename _Up, typename... _Args>
+        .           	__attribute__((__always_inline__))
+        .           	void
+        .           	construct(_Up* __p, _Args&&... __args)
+        .           	noexcept(std::is_nothrow_constructible<_Up, _Args...>::value)
+3,189,909 ( 0.51%)  	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+        .           
+        .                 template<typename _Up>
+        .           	__attribute__((__always_inline__))
+        .           	void
+        .           	destroy(_Up* __p)
+        .           	noexcept(std::is_nothrow_destructible<_Up>::value)
+        .           	{ __p->~_Up(); }
+        .           #else
+-- line 199 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: src/Vector2.cc
+--------------------------------------------------------------------------------
+Ir                  
+
+-- line 39 ----------------------------------------
+         .           #include "Vector2.h"
+         .           
+         .           #include <cmath>
+         .           #include <ostream>
+         .           
+         .           namespace RVO {
+         .           const float RVO_EPSILON = 0.00001F;
+         .           
+ 7,118,634 ( 1.14%)  Vector2::Vector2() : x_(0.0F), y_(0.0F) {}
+         .           
+40,434,212 ( 6.48%)  Vector2::Vector2(float x, float y) : x_(x), y_(y) {}
+         .           
+ 1,123,960 ( 0.18%)  Vector2 Vector2::operator-() const { return Vector2(-x_, -y_); }
+   224,792 ( 0.04%)  => src/Vector2.cc:RVO::Vector2::Vector2(float, float) (56,198x)
+         .           
+ 4,446,647 ( 0.71%)  float Vector2::operator*(const Vector2 &vector) const {
+22,233,235 ( 3.56%)    return x_ * vector.x_ + y_ * vector.y_;
+ 4,446,647 ( 0.71%)  }
+         .           
+   656,048 ( 0.11%)  Vector2 Vector2::operator*(float scalar) const {
+   492,036 ( 0.08%)    return Vector2(x_ * scalar, y_ * scalar);
+   328,024 ( 0.05%)  => src/Vector2.cc:RVO::Vector2::Vector2(float, float) (82,006x)
+   410,030 ( 0.07%)  }
+         .           
+ 6,103,251 ( 0.98%)  Vector2 Vector2::operator/(float scalar) const {
+ 1,743,786 ( 0.28%)    const float invScalar = 1.0F / scalar;
+         .           
+ 6,103,251 ( 0.98%)    return Vector2(x_ * invScalar, y_ * invScalar);
+ 3,487,572 ( 0.56%)  => src/Vector2.cc:RVO::Vector2::Vector2(float, float) (871,893x)
+ 4,359,465 ( 0.70%)  }
+         .           
+ 6,357,764 ( 1.02%)  Vector2 Vector2::operator+(const Vector2 &vector) const {
+ 6,357,764 ( 1.02%)    return Vector2(x_ + vector.x_, y_ + vector.y_);
+ 3,633,008 ( 0.58%)  => src/Vector2.cc:RVO::Vector2::Vector2(float, float) (908,252x)
+ 4,541,260 ( 0.73%)  }
+         .           
+34,380,458 ( 5.51%)  Vector2 Vector2::operator-(const Vector2 &vector) const {
+34,380,458 ( 5.51%)    return Vector2(x_ - vector.x_, y_ - vector.y_);
+19,645,976 ( 3.15%)  => src/Vector2.cc:RVO::Vector2::Vector2(float, float) (4,911,494x)
+24,557,470 ( 3.93%)  }
+         .           
+         .           bool Vector2::operator==(const Vector2 &vector) const {
+         .             return x_ == vector.x_ && y_ == vector.y_;
+         .           }
+         .           
+         .           bool Vector2::operator!=(const Vector2 &vector) const {
+         .             return x_ != vector.x_ || y_ != vector.y_;
+         .           }
+-- line 81 ----------------------------------------
+-- line 90 ----------------------------------------
+         .           Vector2 &Vector2::operator/=(float scalar) {
+         .             const float invScalar = 1.0F / scalar;
+         .             x_ *= invScalar;
+         .             y_ *= invScalar;
+         .           
+         .             return *this;
+         .           }
+         .           
+   164,000 ( 0.03%)  Vector2 &Vector2::operator+=(const Vector2 &vector) {
+   328,000 ( 0.05%)    x_ += vector.x_;
+         .             y_ += vector.y_;
+         .           
+         .             return *this;
+    82,000 ( 0.01%)  }
+         .           
+         .           Vector2 &Vector2::operator-=(const Vector2 &vector) {
+         .             x_ -= vector.x_;
+         .             y_ -= vector.y_;
+         .           
+         .             return *this;
+         .           }
+         .           
+19,907,360 ( 3.19%)  Vector2 operator*(float scalar, const Vector2 &vector) {
+14,930,520 ( 2.39%)    return Vector2(scalar * vector.x(), scalar * vector.y());
+ 9,953,680 ( 1.59%)  => src/Vector2.cc:RVO::Vector2::Vector2(float, float) (2,488,420x)
+12,442,100 ( 1.99%)  }
+         .           
+         .           std::ostream &operator<<(std::ostream &stream, const Vector2 &vector) {
+         .             stream << "(" << vector.x() << "," << vector.y() << ")";
+         .           
+         .             return stream;
+         .           }
+         .           
+   633,003 ( 0.10%)  float abs(const Vector2 &vector) { return std::sqrt(vector * vector); }
+   633,003 ( 0.10%)  => src/Vector2.cc:RVO::Vector2::operator*(RVO::Vector2 const&) const (90,429x)
+         .           
+ 9,679,452 ( 1.55%)  float absSq(const Vector2 &vector) { return vector * vector; }
+22,585,388 ( 3.62%)  => src/Vector2.cc:RVO::Vector2::operator*(RVO::Vector2 const&) const (3,226,484x)
+         .           
+ 1,035,967 ( 0.17%)  float det(const Vector2 &vector1, const Vector2 &vector2) {
+ 5,179,835 ( 0.83%)    return vector1.x() * vector2.y() - vector1.y() * vector2.x();
+ 1,035,967 ( 0.17%)  }
+         .           
+         .           float leftOf(const Vector2 &vector1, const Vector2 &vector2,
+         .                        const Vector2 &vector3) {
+         .             return det(vector1 - vector3, vector2 - vector1);
+         .           }
+         .           
+   902,099 ( 0.14%)  Vector2 normalize(const Vector2 &vector) { return vector / abs(vector); }
+ 2,050,225 ( 0.33%)  => src/Vector2.cc:RVO::Vector2::operator/(float) const (82,009x)
+ 1,476,162 ( 0.24%)  => src/Vector2.cc:RVO::abs(RVO::Vector2 const&) (82,009x)
+         .           } /* namespace RVO */
+
+--------------------------------------------------------------------------------
+The following files chosen for auto-annotation could not be found:
+--------------------------------------------------------------------------------
+  ./elf/../sysdeps/generic/dl-new-hash.h
+  ./elf/./elf/dl-lookup.c
+
+--------------------------------------------------------------------------------
+Ir                   
+--------------------------------------------------------------------------------
+619,572,775 (99.27%)  events annotated
+
