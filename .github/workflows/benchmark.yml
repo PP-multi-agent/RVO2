@@ -17,7 +17,7 @@ permissions:
 jobs:
   benchmark:
     if: "!contains(github.event.head_commit.message, '[skip benchmark]')"
-    runs-on: [self-hosted, Linux, X64, benchmark]
+    runs-on: [self-hosted, Linux, X64]
 
     steps:
       - name: Checkout repository
@@ -26,6 +26,10 @@ jobs:
       - name: Run benchmark
         run: |
           bash profiling/bench.sh
+
+      - name: Run Callgrind profiler
+        run: |
+          bash profiling/callgrind.sh
 
       - name: Commit benchmark results
         run: |
