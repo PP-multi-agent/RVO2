@@ -1,0 +1,42 @@
+
+name: RVO2 Benchmark
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: rvo2-benchmark
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  benchmark:
+    if: "!contains(github.event.head_commit.message, '[skip benchmark]')"
+    runs-on: [self-hosted, Linux, X64, benchmark]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run benchmark
+        run: |
+          bash profiling/bench.sh
+
+      - name: Commit benchmark results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add bench-results/
+
+          if ! git diff --cached --quiet; then
+            git commit -m "Update benchmark results [skip benchmark]"
+            git push
+          else
+            echo "No benchmark result changes to commit."
+          fi
