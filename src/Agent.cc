@@ -33,7 +33,7 @@
 
 /**
  * @file  Agent.cc
- * @brief Defines the Agent class.
+ * @brief Defines the Agent, AgentState and AgentScratch classes.
  */
 
 #include "Agent.h"
@@ -48,7 +48,7 @@
 namespace RVO {
 namespace {
 /**
- * @relates        Agent
+ * @relates        AgentScratch
  * @brief          Solves a one-dimensional linear program on a specified line
  *                 subject to linear constraints defined by lines and a circular
  *                 constraint.
@@ -132,7 +132,7 @@ bool linearProgram1(const std::vector<Line> &lines, std::size_t lineNo,
 }
 
 /**
- * @relates        Agent
+ * @relates        AgentScratch
  * @brief          Solves a two-dimensional linear program subject to linear
  *                 constraints defined by lines and a circular constraint.
  * @param[in]      lines        Lines defining the linear constraints.
@@ -177,7 +177,7 @@ std::size_t linearProgram2(const std::vector<Line> &lines, float radius,
 }
 
 /**
- * @relates        Agent
+ * @relates        AgentScratch
  * @brief          Solves a two-dimensional linear program subject to linear
  *                 constraints defined by lines and a circular constraint.
  * @param[in]      lines        Lines defining the linear constraints.
@@ -242,32 +242,23 @@ void linearProgram3(const std::vector<Line> &lines, std::size_t numObstLines,
 }
 } /* namespace */
 
-Agent::Agent()
-    : id_(0U),
-      maxNeighbors_(0U),
+AgentState::AgentState()
+    : maxNeighbors_(0U),
       maxSpeed_(0.0F),
       neighborDist_(0.0F),
       radius_(0.0F),
       timeHorizon_(0.0F),
-      timeHorizonObst_(0.0F) {}
+      timeHorizonObst_(0.0F),
+      padding_() {}
+
+AgentScratch::AgentScratch() : states_(NULL) {}
+
+Agent::Agent() : id_(0U) {}
 
 Agent::~Agent() {}
 
-void Agent::computeNeighbors(const KdTree *kdTree) {
-  obstacleNeighbors_.clear();
-  const float range = timeHorizonObst_ * maxSpeed_ + radius_;
-  kdTree->computeObstacleNeighbors(this, range * range);
-
-  agentNeighbors_.clear();
-
-  if (maxNeighbors_ > 0U) {
-    float rangeSq = neighborDist_ * neighborDist_;
-    kdTree->computeAgentNeighbors(this, rangeSq);
-  }
-}
-
 /* Search for the best new velocity. */
-void Agent::computeNewVelocity(float timeStep) {
+void AgentScratch::computeNewVelocity(float timeStep) {
   orcaLines_.clear();
 
   const float invTimeHorizonObst = 1.0F / timeHorizonObst_;
@@ -540,7 +531,7 @@ void Agent::computeNewVelocity(float timeStep) {
 
   /* Create agent ORCA lines. */
   for (std::size_t i = 0U; i < agentNeighbors_.size(); ++i) {
-    const Agent *const other = agentNeighbors_[i].second;
+    const AgentState *const other = &states_[agentNeighbors_[i].second];
 
     const Vector2 relativePosition = other->position_ - position_;
     const Vector2 relativeVelocity = velocity_ - other->velocity_;
@@ -616,32 +607,31 @@ void Agent::computeNewVelocity(float timeStep) {
   }
 }
 
-void Agent::insertAgentNeighbor(const Agent *agent, float &rangeSq) {
-  if (this != agent) {
-    const float distSq = absSq(position_ - agent->position_);
+void AgentScratch::insertAgentNeighbor(const Vector2 &position,
+                                       std::size_t agentNo, float &rangeSq) {
+  const float distSq = absSq(position_ - position);
 
-    if (distSq < rangeSq) {
-      if (agentNeighbors_.size() < maxNeighbors_) {
-        agentNeighbors_.push_back(std::make_pair(distSq, agent));
-      }
+  if (distSq < rangeSq) {
+    if (agentNeighbors_.size() < maxNeighbors_) {
+      agentNeighbors_.push_back(std::make_pair(distSq, agentNo));
+    }
 
-      std::size_t i = agentNeighbors_.size() - 1U;
+    std::size_t i = agentNeighbors_.size() - 1U;
 
-      while (i != 0U && distSq < agentNeighbors_[i - 1U].first) {
-        agentNeighbors_[i] = agentNeighbors_[i - 1U];
-        --i;
-      }
+    while (i != 0U && distSq < agentNeighbors_[i - 1U].first) {
+      agentNeighbors_[i] = agentNeighbors_[i - 1U];
+      --i;
+    }
 
-      agentNeighbors_[i] = std::make_pair(distSq, agent);
+    agentNeighbors_[i] = std::make_pair(distSq, agentNo);
 
-      if (agentNeighbors_.size() == maxNeighbors_) {
-        rangeSq = agentNeighbors_.back().first;
-      }
+    if (agentNeighbors_.size() == maxNeighbors_) {
+      rangeSq = agentNeighbors_.back().first;
     }
   }
 }
 
-void Agent::insertObstacleNeighbor(const Obstacle *obstacle, float rangeSq) {
+void AgentScratch::insertObstacleNeighbor(const Obstacle *obstacle, float rangeSq) {
   const Obstacle *const nextObstacle = obstacle->next_;
 
   float distSq = 0.0F;
@@ -672,8 +662,9 @@ void Agent::insertObstacleNeighbor(const Obstacle *obstacle, float rangeSq) {
   }
 }
 
-void Agent::update(float timeStep) {
-  velocity_ = newVelocity_;
-  position_ += velocity_ * timeStep;
+void AgentScratch::store(Agent *agent) {
+  agentNeighbors_.swap(agent->agentNeighbors_);
+  obstacleNeighbors_.swap(agent->obstacleNeighbors_);
+  orcaLines_.swap(agent->orcaLines_);
 }
 } /* namespace RVO */

@@ -36,24 +36,140 @@
 
 /**
  * @file  KdTree.h
- * @brief Declares the KdTree class.
+ * @brief Declares the Frame and KdTree classes.
  */
 
 #include <cstddef>
 #include <vector>
 
+#include "Agent.h"
+#include "Team.h"
+#include "Vector2.h"
+
 namespace RVO {
-class Agent;
+class KdTree;
 class Obstacle;
 class RVOSimulator;
-class Vector2;
+
+/**
+ * @brief Defines the agents as one simulation step reads them: the state of
+ *        every agent before the step and the agent k-D tree over those
+ *        states.
+ *
+ * Nothing in a frame changes while the new velocities are computed. A step
+ * reads one frame and writes the states after the step to another, which the
+ * following step reads in turn. An agent is therefore moved as soon as its
+ * new velocity is known, by the thread that computed it, and no thread waits
+ * for the others before it writes.
+ *
+ * It also makes a step a hedged loop of the team. Computing an agent reads
+ * the frame and writes the scratch of the calling thread, so an agent held by
+ * a thread that is not running can be computed a second time by another
+ * thread, with the same result. A frame is not written again while such a
+ * thread can still be reading it.
+ */
+class Frame : public Team::Job {
+ private:
+  /**
+   * @brief Defines an entry of the agent k-D tree. The entries of a leaf are
+   *        next to each other, so a query reads the positions in a leaf from
+   *        two or three cache lines instead of one per agent.
+   */
+  class Entry {
+   public:
+    /**
+     * @brief The position of the agent.
+     */
+    Vector2 position;
+
+    /**
+     * @brief The number of the agent.
+     */
+    unsigned int agentNo;
+  };
+
+  class Node;
+
+  /**
+   * @brief     Constructs a frame instance.
+   * @param[in] kdTree The k-D trees of the simulation.
+   */
+  explicit Frame(const KdTree *kdTree);
+
+  /**
+   * @brief Destroys this frame instance.
+   */
+  virtual ~Frame();
+
+  /**
+   * @brief         Builds the agent k-D tree over the states in this frame.
+   * @param[in,out] order The agent numbers, in the order of the leaves of the
+   *                      previous agent k-D tree on entry and of this one on
+   *                      return.
+   */
+  void build(std::vector<unsigned int> &order); /* NOLINT(runtime/references) */
+
+  /**
+   * @brief     Recursive function to build an agent k-D tree.
+   * @param[in] begin The beginning agent k-D tree entry.
+   * @param[in] end   The ending agent k-D tree entry.
+   * @param[in] node  The current agent k-D tree node.
+   */
+  void buildRecursive(std::size_t begin, std::size_t end, std::size_t node);
+
+  /**
+   * @brief     Computes the neighbors and the new velocity of an agent in the
+   *            scratch of the calling thread.
+   * @param[in] item   The number of the agent.
+   * @param[in] thread The number of the calling thread.
+   */
+  virtual void compute(std::size_t item, std::size_t thread);
+
+  /**
+   * @brief         Recursive function to compute the agent neighbors of an
+   *                agent.
+   * @param[in,out] scratch The scratch in which the agent is computed.
+   * @param[in]     agentNo The number of the agent.
+   * @param[in,out] rangeSq The squared range around the agent.
+   * @param[in]     node    The current agent k-D tree node.
+   */
+  void queryRecursive(AgentScratch *scratch, std::size_t agentNo,
+                      float &rangeSq, /* NOLINT(runtime/references) */
+                      std::size_t node) const;
+
+  /**
+   * @brief     Moves the agent that the calling thread has just computed:
+   *            writes its state after the step to the next frame and to the
+   *            agent, and hands the agent its neighbors and constraints.
+   * @param[in] item   The number of the agent.
+   * @param[in] thread The number of the calling thread.
+   */
+  virtual void store(std::size_t item, std::size_t thread);
+
+  /* Not implemented. */
+  Frame(const Frame &other);
+
+  /* Not implemented. */
+  Frame &operator=(const Frame &other);
+
+  std::vector<AgentState, CacheLineAllocator<AgentState> > states_;
+  std::vector<Entry> entries_;
+  std::vector<Node> nodes_;
+  std::vector<AgentScratch *> scratch_;
+  Agent *const *agents_;
+  Frame *next_;
+  const KdTree *kdTree_;
+  float timeStep_;
+
+  friend class KdTree;
+  friend class RVOSimulator;
+};
 
 /**
  * @brief Defines k-D trees for agents and static obstacles in the simulation.
  */
 class KdTree {
  private:
-  class AgentTreeNode;
   class ObstacleTreeNode;
 
   /**
@@ -68,18 +184,26 @@ class KdTree {
   ~KdTree();
 
   /**
-   * @brief Builds an agent k-D tree.
+   * @brief     Adds the state of a new agent to the frame that the next step
+   *            reads.
+   * @param[in] state The state of the agent.
    */
-  void buildAgentTree();
+  void addAgent(const AgentState &state);
 
   /**
-   * @brief     Recursive function to build an agent k-D tree.
-   * @param[in] begin The beginning agent k-D tree node.
-   * @param[in] end   The ending agent k-D tree node.
-   * @param[in] node  The current agent k-D tree node.
+   * @brief     Builds an agent k-D tree in the frame that the next step
+   *            reads, and picks a frame that no thread is reading for the
+   *            states after the step.
+   * @param[in] threads The number of threads that will compute agents.
+   * @return    The frame that the step reads.
    */
-  void buildAgentTreeRecursive(std::size_t begin, std::size_t end,
-                               std::size_t node);
+  Frame *beginStep(std::size_t threads);
+
+  /**
+   * @brief Makes the frame that the step has written the frame that the next
+   *        step reads.
+   */
+  void endStep();
 
   /**
    * @brief Builds an obstacle k-D tree.
@@ -95,21 +219,12 @@ class KdTree {
       const std::vector<Obstacle *> &obstacles);
 
   /**
-   * @brief     Computes the agent neighbors of the specified agent.
-   * @param[in] agent        A pointer to the agent for which agent neighbors
-   *                         are to be computed.
-   * @param[in, out] rangeSq The squared range around the agent.
-   */
-  void computeAgentNeighbors(
-      Agent *agent, float &rangeSq) const; /* NOLINT(runtime/references) */
-
-  /**
    * @brief     Computes the obstacle neighbors of the specified agent.
-   * @param[in] agent   A pointer to the agent for which obstacle neighbors are
-   *                    to be computed.
+   * @param[in] agent   A pointer to the scratch of the agent for which
+   *                    obstacle neighbors are to be computed.
    * @param[in] rangeSq The squared range around the agent.
    */
-  void computeObstacleNeighbors(Agent *agent, float rangeSq) const;
+  void computeObstacleNeighbors(AgentScratch *agent, float rangeSq) const;
 
   /**
    * @brief     Deletes the specified obstacle tree node.
@@ -119,46 +234,13 @@ class KdTree {
 
   /**
    * @brief         Recursive function to compute the neighbors of the specified
-   *                agent.
-   * @param[in]     agent   A pointer to the agent for which neighbors are to be
-   *                        computed.
-   * @param[in,out] rangeSq The squared range around the agent.
-   * @param[in]     node    The current agent k-D tree node.
-   */
-  void queryAgentTreeRecursive(Agent *agent,
-                               float &rangeSq, /* NOLINT(runtime/references) */
-                               std::size_t node) const;
-
-  /**
-   * @brief         The agent search of computeAgentNeighbors for agent, with
-   *                the neighbor list written to out instead of to agent. The
-   *                parallel step computes into a per-thread agent so that a
-   *                second thread can redo the work of a stalled one. Must
-   *                stay identical to queryAgentTreeRecursive and
-   *                Agent::insertAgentNeighbor.
-   * @param[in]     agent   The agent whose neighbors are searched; only its
-   *                        identity is used.
-   * @param[in,out] out     Holds the position, maxNeighbors and the result.
-   * @param[in,out] rangeSq The squared range around the agent.
-   */
-  void computeAgentNeighborsInto(
-      const Agent *agent, Agent *out,
-      float &rangeSq) const; /* NOLINT(runtime/references) */
-
-  void queryAgentTreeRecursiveInto(
-      const Agent *agent, Agent *out,
-      float &rangeSq, /* NOLINT(runtime/references) */
-      std::size_t node) const;
-
-  /**
-   * @brief         Recursive function to compute the neighbors of the specified
    *                obstacle.
-   * @param[in]     agent   A pointer to the agent for which neighbors are to be
-   *                        computed.
+   * @param[in]     agent   A pointer to the scratch of the agent for which
+   *                        neighbors are to be computed.
    * @param[in,out] rangeSq The squared range around the agent.
    * @param[in]     node    The current obstacle k-D tree node.
    */
-  void queryObstacleTreeRecursive(Agent *agent, float rangeSq,
+  void queryObstacleTreeRecursive(AgentScratch *agent, float rangeSq,
                                   const ObstacleTreeNode *node) const;
 
   /**
@@ -191,18 +273,27 @@ class KdTree {
                                 float radius,
                                 const ObstacleTreeNode *node) const;
 
+  /**
+   * @brief Waits for the threads that fell behind in an earlier step. Call
+   *        before changing anything that computing an agent reads, other than
+   *        a frame.
+   */
+  void quiesce();
+
   /* Not implemented. */
   KdTree(const KdTree &other);
 
   /* Not implemented. */
   KdTree &operator=(const KdTree &other);
 
-  std::vector<Agent *> agents_;
-  std::vector<AgentTreeNode> agentTree_;
+  std::vector<unsigned int> agents_;
+  std::vector<Frame *> frames_;
+  std::vector<AgentScratch *> scratch_;
+  Frame *frame_;
   ObstacleTreeNode *obstacleTree_;
   RVOSimulator *simulator_;
 
-  friend class Agent;
+  friend class Frame;
   friend class RVOSimulator;
 };
 } /* namespace RVO */

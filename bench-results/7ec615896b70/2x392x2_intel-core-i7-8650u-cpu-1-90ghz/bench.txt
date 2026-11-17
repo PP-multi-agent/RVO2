@@ -1,0 +1,305 @@
+date=2026-11-02T14:30:17+02:00
+os=Ubuntu 24.04.2 LTS
+arch=x86_64
+cpu=Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz
+sockets=1
+cores_per_socket=4
+threads_per_core=2
+logical_cpus=8
+memory_mib=15924
+compiler=g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+openmp=on
+repeats=10
+suite=full
+head=e3e370584843
+results_commit=7ec615896b70
+worktree=clean
+machine=2x392x2_intel-core-i7-8650u-cpu-1-90ghz
+command=rvo-bench all
+
+threads=1
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.019 per_step_us=40.096
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=99.083 per_step_us=495.416
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=322.186 per_step_us=1610.928
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=840.329 per_step_us=4201.643
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=19.224 per_step_us=96.118
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=94.522 per_step_us=472.610
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=227.765 per_step_us=1138.824
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=494.567 per_step_us=2472.833
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=99.789 per_step_us=498.943
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=467.277 per_step_us=2336.387
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1243.293 per_step_us=6216.465
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2483.805 per_step_us=12419.026
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.800 per_step_us=44.002
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=103.905 per_step_us=519.524
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=303.309 per_step_us=1516.543
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=698.602 per_step_us=3493.008
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=18.667 per_step_us=93.337
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=89.823 per_step_us=449.117
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=226.712 per_step_us=1133.559
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=486.343 per_step_us=2431.714
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=117.727 per_step_us=588.633
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=466.939 per_step_us=2334.697
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1143.769 per_step_us=5718.845
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2417.301 per_step_us=12086.507
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=11.425 per_step_us=57.125
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=141.777 per_step_us=708.884
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=339.970 per_step_us=1699.852
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=694.608 per_step_us=3473.038
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=17.617 per_step_us=88.086
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=92.599 per_step_us=462.996
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=233.166 per_step_us=1165.829
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=684.000 per_step_us=3420.000
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=127.961 per_step_us=639.804
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=478.584 per_step_us=2392.918
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1138.940 per_step_us=5694.701
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2496.301 per_step_us=12481.505
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=7.750 per_step_us=38.751
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=98.264 per_step_us=491.318
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=319.227 per_step_us=1596.136
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=802.051 per_step_us=4010.255
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=28.905 per_step_us=144.525
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=169.551 per_step_us=847.756
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=292.076 per_step_us=1460.379
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=535.706 per_step_us=2678.528
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=114.608 per_step_us=573.041
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=450.069 per_step_us=2250.344
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1260.700 per_step_us=6303.499
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2438.930 per_step_us=12194.649
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.069 per_step_us=40.343
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=98.780 per_step_us=493.898
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=302.289 per_step_us=1511.447
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=723.292 per_step_us=3616.462
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=19.222 per_step_us=96.111
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=90.854 per_step_us=454.270
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=248.786 per_step_us=1243.929
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=486.270 per_step_us=2431.351
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=121.351 per_step_us=606.756
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=502.453 per_step_us=2512.263
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1796.202 per_step_us=8981.011
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2399.423 per_step_us=11997.113
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=7.998 per_step_us=39.988
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=112.175 per_step_us=560.876
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=296.052 per_step_us=1480.259
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=649.689 per_step_us=3248.446
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=18.550 per_step_us=92.750
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=87.850 per_step_us=439.252
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=226.501 per_step_us=1132.507
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=661.065 per_step_us=3305.323
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=191.387 per_step_us=956.935
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=544.441 per_step_us=2722.206
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1305.614 per_step_us=6528.069
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2328.504 per_step_us=11642.522
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=8.056 per_step_us=40.278
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=100.426 per_step_us=502.128
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=334.888 per_step_us=1674.438
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=845.048 per_step_us=4225.239
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=20.627 per_step_us=103.133
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=93.874 per_step_us=469.368
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=249.221 per_step_us=1246.107
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=476.255 per_step_us=2381.273
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=107.855 per_step_us=539.274
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=431.478 per_step_us=2157.388
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1124.506 per_step_us=5622.532
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2467.344 per_step_us=12336.721
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=10.050 per_step_us=50.248
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=104.049 per_step_us=520.246
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=306.643 per_step_us=1533.215
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=675.196 per_step_us=3375.979
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=18.920 per_step_us=94.601
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=95.813 per_step_us=479.067
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=237.282 per_step_us=1186.410
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=458.584 per_step_us=2292.920
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=93.895 per_step_us=469.477
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=426.066 per_step_us=2130.330
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1161.924 per_step_us=5809.618
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2542.079 per_step_us=12710.397
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=7.766 per_step_us=38.831
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=98.328 per_step_us=491.640
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=287.611 per_step_us=1438.054
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=699.996 per_step_us=3499.978
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=19.181 per_step_us=95.906
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=88.735 per_step_us=443.675
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=224.771 per_step_us=1123.854
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=546.061 per_step_us=2730.307
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=103.121 per_step_us=515.603
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=424.745 per_step_us=2123.726
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1309.700 per_step_us=6548.500
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2360.013 per_step_us=11800.067
+scenario=circle agents=100 steps=200 warmup=5 threads=1 elapsed_ms=7.505 per_step_us=37.523
+scenario=circle agents=400 steps=200 warmup=5 threads=1 elapsed_ms=94.189 per_step_us=470.944
+scenario=circle agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=291.892 per_step_us=1459.458
+scenario=circle agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=716.475 per_step_us=3582.375
+scenario=blocks agents=100 steps=200 warmup=5 threads=1 elapsed_ms=19.367 per_step_us=96.834
+scenario=blocks agents=400 steps=200 warmup=5 threads=1 elapsed_ms=90.878 per_step_us=454.388
+scenario=blocks agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=225.694 per_step_us=1128.471
+scenario=blocks agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=491.327 per_step_us=2456.633
+scenario=roadmap agents=100 steps=200 warmup=5 threads=1 elapsed_ms=141.620 per_step_us=708.101
+scenario=roadmap agents=400 steps=200 warmup=5 threads=1 elapsed_ms=557.773 per_step_us=2788.866
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=1 elapsed_ms=1161.703 per_step_us=5808.516
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=1 elapsed_ms=2591.840 per_step_us=12959.198
+
+median threads=1
+circle 100 threads=1 per_step_us min=37.523 median=40.187 max=57.125
+circle 400 threads=1 per_step_us min=470.944 median=498.772 max=708.884
+circle 1000 threads=1 per_step_us min=1438.054 median=1524.879 max=1699.852
+circle 2000 threads=1 per_step_us min=3248.446 median=3541.177 max=4225.239
+blocks 100 threads=1 per_step_us min=88.086 median=96.008 max=144.525
+blocks 400 threads=1 per_step_us min=439.252 median=458.692 max=847.756
+blocks 1000 threads=1 per_step_us min=1123.854 median=1152.327 max=1460.379
+blocks 2000 threads=1 per_step_us min=2292.920 median=2464.733 max=3420.000
+roadmap 100 threads=1 per_step_us min=469.477 median=580.837 max=956.935
+roadmap 400 threads=1 per_step_us min=2123.726 median=2335.542 max=2788.866
+roadmap 1000 threads=1 per_step_us min=5622.532 median=6013.042 max=8981.011
+roadmap 2000 threads=1 per_step_us min=11642.522 median=12265.685 max=12959.198
+
+threads=8
+scenario=circle agents=100 steps=200 warmup=5 threads=8 elapsed_ms=502.274 per_step_us=2511.372
+scenario=circle agents=400 steps=200 warmup=5 threads=8 elapsed_ms=386.270 per_step_us=1931.351
+scenario=circle agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=386.991 per_step_us=1934.954
+scenario=circle agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=326.018 per_step_us=1630.089
+scenario=blocks agents=100 steps=200 warmup=5 threads=8 elapsed_ms=8.921 per_step_us=44.603
+scenario=blocks agents=400 steps=200 warmup=5 threads=8 elapsed_ms=46.555 per_step_us=232.776
+scenario=blocks agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=88.732 per_step_us=443.659
+scenario=blocks agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=322.722 per_step_us=1613.609
+scenario=roadmap agents=100 steps=200 warmup=5 threads=8 elapsed_ms=48.941 per_step_us=244.707
+scenario=roadmap agents=400 steps=200 warmup=5 threads=8 elapsed_ms=386.189 per_step_us=1930.947
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=550.520 per_step_us=2752.598
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1563.976 per_step_us=7819.881
+scenario=circle agents=100 steps=200 warmup=5 threads=8 elapsed_ms=3.859 per_step_us=19.293
+scenario=circle agents=400 steps=200 warmup=5 threads=8 elapsed_ms=40.937 per_step_us=204.683
+scenario=circle agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=95.625 per_step_us=478.127
+scenario=circle agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=279.809 per_step_us=1399.047
+scenario=blocks agents=100 steps=200 warmup=5 threads=8 elapsed_ms=51.996 per_step_us=259.978
+scenario=blocks agents=400 steps=200 warmup=5 threads=8 elapsed_ms=41.313 per_step_us=206.567
+scenario=blocks agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=781.004 per_step_us=3905.021
+scenario=blocks agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=725.947 per_step_us=3629.736
+scenario=roadmap agents=100 steps=200 warmup=5 threads=8 elapsed_ms=84.868 per_step_us=424.342
+scenario=roadmap agents=400 steps=200 warmup=5 threads=8 elapsed_ms=191.555 per_step_us=957.777
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=469.792 per_step_us=2348.962
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1217.651 per_step_us=6088.257
+scenario=circle agents=100 steps=200 warmup=5 threads=8 elapsed_ms=4.034 per_step_us=20.171
+scenario=circle agents=400 steps=200 warmup=5 threads=8 elapsed_ms=36.067 per_step_us=180.333
+scenario=circle agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=105.168 per_step_us=525.838
+scenario=circle agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=298.791 per_step_us=1493.957
+scenario=blocks agents=100 steps=200 warmup=5 threads=8 elapsed_ms=182.021 per_step_us=910.105
+scenario=blocks agents=400 steps=200 warmup=5 threads=8 elapsed_ms=36.699 per_step_us=183.495
+scenario=blocks agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=187.522 per_step_us=937.612
+scenario=blocks agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=319.815 per_step_us=1599.077
+scenario=roadmap agents=100 steps=200 warmup=5 threads=8 elapsed_ms=89.677 per_step_us=448.383
+scenario=roadmap agents=400 steps=200 warmup=5 threads=8 elapsed_ms=521.361 per_step_us=2606.805
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=1360.901 per_step_us=6804.503
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1676.542 per_step_us=8382.711
+scenario=circle agents=100 steps=200 warmup=5 threads=8 elapsed_ms=4.198 per_step_us=20.991
+scenario=circle agents=400 steps=200 warmup=5 threads=8 elapsed_ms=45.582 per_step_us=227.908
+scenario=circle agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=92.264 per_step_us=461.321
+scenario=circle agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=409.687 per_step_us=2048.433
+scenario=blocks agents=100 steps=200 warmup=5 threads=8 elapsed_ms=9.811 per_step_us=49.054
+scenario=blocks agents=400 steps=200 warmup=5 threads=8 elapsed_ms=122.413 per_step_us=612.065
+scenario=blocks agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=324.576 per_step_us=1622.881
+scenario=blocks agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=521.139 per_step_us=2605.697
+scenario=roadmap agents=100 steps=200 warmup=5 threads=8 elapsed_ms=61.087 per_step_us=305.437
+scenario=roadmap agents=400 steps=200 warmup=5 threads=8 elapsed_ms=185.751 per_step_us=928.756
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=1907.850 per_step_us=9539.250
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1964.714 per_step_us=9823.572
+scenario=circle agents=100 steps=200 warmup=5 threads=8 elapsed_ms=22.892 per_step_us=114.461
+scenario=circle agents=400 steps=200 warmup=5 threads=8 elapsed_ms=77.418 per_step_us=387.091
+scenario=circle agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=104.131 per_step_us=520.655
+scenario=circle agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=320.781 per_step_us=1603.904
+scenario=blocks agents=100 steps=200 warmup=5 threads=8 elapsed_ms=26.188 per_step_us=130.939
+scenario=blocks agents=400 steps=200 warmup=5 threads=8 elapsed_ms=46.315 per_step_us=231.574
+scenario=blocks agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=184.357 per_step_us=921.785
+scenario=blocks agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=345.362 per_step_us=1726.812
+scenario=roadmap agents=100 steps=200 warmup=5 threads=8 elapsed_ms=63.453 per_step_us=317.266
+scenario=roadmap agents=400 steps=200 warmup=5 threads=8 elapsed_ms=989.137 per_step_us=4945.684
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=665.707 per_step_us=3328.534
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1460.601 per_step_us=7303.006
+scenario=circle agents=100 steps=200 warmup=5 threads=8 elapsed_ms=4.063 per_step_us=20.316
+scenario=circle agents=400 steps=200 warmup=5 threads=8 elapsed_ms=34.115 per_step_us=170.577
+scenario=circle agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=114.818 per_step_us=574.088
+scenario=circle agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=418.869 per_step_us=2094.345
+scenario=blocks agents=100 steps=200 warmup=5 threads=8 elapsed_ms=11.851 per_step_us=59.253
+scenario=blocks agents=400 steps=200 warmup=5 threads=8 elapsed_ms=266.187 per_step_us=1330.933
+scenario=blocks agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=143.681 per_step_us=718.407
+scenario=blocks agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=453.693 per_step_us=2268.466
+scenario=roadmap agents=100 steps=200 warmup=5 threads=8 elapsed_ms=40.804 per_step_us=204.019
+scenario=roadmap agents=400 steps=200 warmup=5 threads=8 elapsed_ms=184.835 per_step_us=924.173
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=515.073 per_step_us=2575.363
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1773.236 per_step_us=8866.182
+scenario=circle agents=100 steps=200 warmup=5 threads=8 elapsed_ms=4.290 per_step_us=21.449
+scenario=circle agents=400 steps=200 warmup=5 threads=8 elapsed_ms=33.186 per_step_us=165.929
+scenario=circle agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=105.958 per_step_us=529.792
+scenario=circle agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=275.311 per_step_us=1376.554
+scenario=blocks agents=100 steps=200 warmup=5 threads=8 elapsed_ms=10.061 per_step_us=50.303
+scenario=blocks agents=400 steps=200 warmup=5 threads=8 elapsed_ms=51.019 per_step_us=255.094
+scenario=blocks agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=347.483 per_step_us=1737.416
+scenario=blocks agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=339.746 per_step_us=1698.731
+scenario=roadmap agents=100 steps=200 warmup=5 threads=8 elapsed_ms=135.436 per_step_us=677.180
+scenario=roadmap agents=400 steps=200 warmup=5 threads=8 elapsed_ms=172.762 per_step_us=863.811
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=628.951 per_step_us=3144.753
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1184.280 per_step_us=5921.402
+scenario=circle agents=100 steps=200 warmup=5 threads=8 elapsed_ms=19.254 per_step_us=96.271
+scenario=circle agents=400 steps=200 warmup=5 threads=8 elapsed_ms=346.200 per_step_us=1731.000
+scenario=circle agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=336.342 per_step_us=1681.711
+scenario=circle agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=503.619 per_step_us=2518.094
+scenario=blocks agents=100 steps=200 warmup=5 threads=8 elapsed_ms=13.770 per_step_us=68.850
+scenario=blocks agents=400 steps=200 warmup=5 threads=8 elapsed_ms=40.477 per_step_us=202.386
+scenario=blocks agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=99.548 per_step_us=497.739
+scenario=blocks agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=192.750 per_step_us=963.749
+scenario=roadmap agents=100 steps=200 warmup=5 threads=8 elapsed_ms=384.906 per_step_us=1924.528
+scenario=roadmap agents=400 steps=200 warmup=5 threads=8 elapsed_ms=208.424 per_step_us=1042.118
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=486.027 per_step_us=2430.135
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1143.273 per_step_us=5716.363
+scenario=circle agents=100 steps=200 warmup=5 threads=8 elapsed_ms=6.954 per_step_us=34.770
+scenario=circle agents=400 steps=200 warmup=5 threads=8 elapsed_ms=30.197 per_step_us=150.985
+scenario=circle agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=105.924 per_step_us=529.622
+scenario=circle agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=263.362 per_step_us=1316.808
+scenario=blocks agents=100 steps=200 warmup=5 threads=8 elapsed_ms=10.864 per_step_us=54.318
+scenario=blocks agents=400 steps=200 warmup=5 threads=8 elapsed_ms=197.333 per_step_us=986.666
+scenario=blocks agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=155.185 per_step_us=775.923
+scenario=blocks agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1017.131 per_step_us=5085.657
+scenario=roadmap agents=100 steps=200 warmup=5 threads=8 elapsed_ms=285.797 per_step_us=1428.986
+scenario=roadmap agents=400 steps=200 warmup=5 threads=8 elapsed_ms=181.754 per_step_us=908.771
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=630.235 per_step_us=3151.176
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1011.695 per_step_us=5058.476
+scenario=circle agents=100 steps=200 warmup=5 threads=8 elapsed_ms=4.570 per_step_us=22.852
+scenario=circle agents=400 steps=200 warmup=5 threads=8 elapsed_ms=166.361 per_step_us=831.806
+scenario=circle agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=110.450 per_step_us=552.248
+scenario=circle agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=344.593 per_step_us=1722.966
+scenario=blocks agents=100 steps=200 warmup=5 threads=8 elapsed_ms=13.365 per_step_us=66.826
+scenario=blocks agents=400 steps=200 warmup=5 threads=8 elapsed_ms=63.965 per_step_us=319.823
+scenario=blocks agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=882.444 per_step_us=4412.222
+scenario=blocks agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=186.443 per_step_us=932.215
+scenario=roadmap agents=100 steps=200 warmup=5 threads=8 elapsed_ms=39.886 per_step_us=199.429
+scenario=roadmap agents=400 steps=200 warmup=5 threads=8 elapsed_ms=939.766 per_step_us=4698.830
+scenario=roadmap agents=1000 steps=200 warmup=5 threads=8 elapsed_ms=777.074 per_step_us=3885.370
+scenario=roadmap agents=2000 steps=200 warmup=5 threads=8 elapsed_ms=1986.722 per_step_us=9933.610
+
+median threads=8
+circle 100 threads=8 per_step_us min=19.293 median=22.151 max=2511.372
+circle 400 threads=8 per_step_us min=150.985 median=216.296 max=1931.351
+circle 1000 threads=8 per_step_us min=461.321 median=529.707 max=1934.954
+circle 2000 threads=8 per_step_us min=1316.808 median=1616.996 max=2518.094
+blocks 100 threads=8 per_step_us min=44.603 median=63.039 max=910.105
+blocks 400 threads=8 per_step_us min=183.495 median=243.935 max=1330.933
+blocks 1000 threads=8 per_step_us min=443.659 median=929.698 max=4412.222
+blocks 2000 threads=8 per_step_us min=932.215 median=1712.771 max=5085.657
+roadmap 100 threads=8 per_step_us min=199.429 median=370.804 max=1924.528
+roadmap 400 threads=8 per_step_us min=863.811 median=999.947 max=4945.684
+roadmap 1000 threads=8 per_step_us min=2348.962 median=3147.965 max=9539.250
+roadmap 2000 threads=8 per_step_us min=5058.476 median=7561.444 max=9933.610
+
+Efficiency
+circle 100 0.227
+circle 400 0.288
+circle 1000 0.360
+circle 2000 0.274
+blocks 100 0.190
+blocks 400 0.235
+blocks 1000 0.155
+blocks 2000 0.180
+roadmap 100 0.196
+roadmap 400 0.292
+roadmap 1000 0.239
+roadmap 2000 0.203
+overall 0.230

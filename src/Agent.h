@@ -36,7 +36,7 @@
 
 /**
  * @file  Agent.h
- * @brief Declares the Agent class.
+ * @brief Declares the Agent, AgentState and AgentScratch classes.
  */
 
 #include <cstddef>
@@ -47,13 +47,91 @@
 #include "Vector2.h"
 
 namespace RVO {
+class Frame;
 class KdTree;
 class Obstacle;
 
 /**
- * @brief Defines an agent in the simulation.
+ * @brief The size of a cache line, in bytes.
  */
-class Agent {
+const std::size_t RVO_CACHE_LINE = 64U;
+
+/**
+ * @brief Defines what a simulation step reads from an agent. A state fills
+ *        one cache line, so the states of two agents never share one.
+ */
+class AgentState {
+ public:
+  /**
+   * @brief Constructs an agent state instance.
+   */
+  AgentState();
+
+  Vector2 position_;
+  Vector2 prefVelocity_;
+  Vector2 velocity_;
+  std::size_t maxNeighbors_;
+  float maxSpeed_;
+  float neighborDist_;
+  float radius_;
+  float timeHorizon_;
+  float timeHorizonObst_;
+  char padding_[RVO_CACHE_LINE - 3U * sizeof(Vector2) - sizeof(std::size_t) -
+                5U * sizeof(float)];
+};
+
+/**
+ * @brief Defines an allocator that starts every allocation on a cache line.
+ */
+template <class T>
+class CacheLineAllocator {
+ public:
+  typedef T value_type;
+
+  template <class U>
+  struct rebind {
+    typedef CacheLineAllocator<U> other;
+  };
+
+  CacheLineAllocator() {}
+
+  template <class U>
+  CacheLineAllocator(const CacheLineAllocator<U> & /*other*/) {}
+
+  T *allocate(std::size_t count) {
+    /* Room to move up to a cache line, and for the pointer to give back. */
+    void *const block = ::operator new(count * sizeof(T) + RVO_CACHE_LINE +
+                                       sizeof(void *));
+    const std::size_t address =
+        (reinterpret_cast<std::size_t>(block) + sizeof(void *) +
+         RVO_CACHE_LINE - 1U) &
+        ~(RVO_CACHE_LINE - 1U);
+    reinterpret_cast<void **>(address)[-1] = block;
+    return reinterpret_cast<T *>(address);
+  }
+
+  void deallocate(T *pointer, std::size_t /*count*/) {
+    ::operator delete(reinterpret_cast<void **>(pointer)[-1]);
+  }
+};
+
+template <class T, class U>
+bool operator==(const CacheLineAllocator<T> & /*allocator1*/,
+                const CacheLineAllocator<U> & /*allocator2*/) {
+  return true;
+}
+
+template <class T, class U>
+bool operator!=(const CacheLineAllocator<T> & /*allocator1*/,
+                const CacheLineAllocator<U> & /*allocator2*/) {
+  return false;
+}
+
+/**
+ * @brief Defines an agent in the simulation: its state, and the neighbors and
+ *        constraints that the latest step found for it.
+ */
+class Agent : public AgentState {
  private:
   /**
    * @brief Constructs an agent instance.
@@ -65,66 +143,85 @@ class Agent {
    */
   ~Agent();
 
-  /**
-   * @brief     Computes the neighbors of this agent.
-   * @param[in] kdTree A pointer to the k-D trees for agents and static
-   *                   obstacles in the simulation.
-   */
-  void computeNeighbors(const KdTree *kdTree);
-
-  /**
-   * @brief     Computes the new velocity of this agent.
-   * @param[in] timeStep The time step of the simulation.
-   */
-  void computeNewVelocity(float timeStep);
-
-  /**
-   * @brief          Inserts an agent neighbor into the set of neighbors of this
-   *                 agent.
-   * @param[in]      agent   A pointer to the agent to be inserted.
-   * @param[in, out] rangeSq The squared range around this agent.
-   */
-  void insertAgentNeighbor(const Agent *agent,
-                           float &rangeSq); /* NOLINT(runtime/references) */
-
-  /**
-   * @brief          Inserts a static obstacle neighbor into the set of
-   *                 neighbors of this agent.
-   * @param[in]      obstacle The number of the static obstacle to be inserted.
-   * @param[in, out] rangeSq  The squared range around this agent.
-   */
-  void insertObstacleNeighbor(const Obstacle *obstacle, float rangeSq);
-
-  /**
-   * @brief     Updates the two-dimensional position and two-dimensional
-   *            velocity of this agent.
-   * @param[in] timeStep The time step of the simulation.
-   */
-  void update(float timeStep);
-
   /* Not implemented. */
   Agent(const Agent &other);
 
   /* Not implemented. */
   Agent &operator=(const Agent &other);
 
-  std::vector<std::pair<float, const Agent *> > agentNeighbors_;
+  std::vector<std::pair<float, std::size_t> > agentNeighbors_;
+  std::vector<std::pair<float, const Obstacle *> > obstacleNeighbors_;
+  std::vector<Line> orcaLines_;
+  std::size_t id_;
+
+  friend class AgentScratch;
+  friend class Frame;
+  friend class KdTree;
+  friend class RVOSimulator;
+};
+
+/**
+ * @brief Defines the storage in which one thread computes the neighbors and
+ *        the new velocity of one agent at a time. A thread writes nothing
+ *        else while it computes, so two threads can compute the same agent
+ *        at once and either result can be stored.
+ */
+class AgentScratch : public AgentState {
+ private:
+  /**
+   * @brief Constructs an agent scratch instance.
+   */
+  AgentScratch();
+
+  /**
+   * @brief     Computes the new velocity of the agent held in this scratch.
+   * @param[in] timeStep The time step of the simulation.
+   */
+  void computeNewVelocity(float timeStep);
+
+  /**
+   * @brief          Inserts an agent neighbor into the set of neighbors of the
+   *                 agent held in this scratch.
+   * @param[in]      position The position of the agent to be inserted.
+   * @param[in]      agentNo  The number of the agent to be inserted.
+   * @param[in, out] rangeSq  The squared range around the agent.
+   */
+  void insertAgentNeighbor(const Vector2 &position, std::size_t agentNo,
+                           float &rangeSq); /* NOLINT(runtime/references) */
+
+  /**
+   * @brief          Inserts a static obstacle neighbor into the set of
+   *                 neighbors of the agent held in this scratch.
+   * @param[in]      obstacle The number of the static obstacle to be inserted.
+   * @param[in, out] rangeSq  The squared range around the agent.
+   */
+  void insertObstacleNeighbor(const Obstacle *obstacle, float rangeSq);
+
+  /**
+   * @brief         Hands the neighbors and constraints in this scratch to an
+   *                agent and takes the previous ones of the agent in
+   *                exchange, so nothing is copied or allocated.
+   * @param[in,out] agent The agent that was computed in this scratch.
+   */
+  void store(Agent *agent);
+
+  /* Not implemented. */
+  AgentScratch(const AgentScratch &other);
+
+  /* Not implemented. */
+  AgentScratch &operator=(const AgentScratch &other);
+
+  std::vector<std::pair<float, std::size_t> > agentNeighbors_;
   std::vector<std::pair<float, const Obstacle *> > obstacleNeighbors_;
   std::vector<Line> orcaLines_;
   Vector2 newVelocity_;
-  Vector2 position_;
-  Vector2 prefVelocity_;
-  Vector2 velocity_;
-  std::size_t id_;
-  std::size_t maxNeighbors_;
-  float maxSpeed_;
-  float neighborDist_;
-  float radius_;
-  float timeHorizon_;
-  float timeHorizonObst_;
+  /* The state of every agent, by agent number, as the step reads it. */
+  const AgentState *states_;
+  /* Keeps the scratch of one thread off the cache lines of the next. */
+  char scratchPadding_[RVO_CACHE_LINE];
 
+  friend class Frame;
   friend class KdTree;
-  friend class RVOSimulator;
 };
 } /* namespace RVO */
 

@@ -73,6 +73,7 @@ class Obstacle {
   bool isConvex_;
 
   friend class Agent;
+  friend class AgentScratch;
   friend class KdTree;
   friend class RVOSimulator;
 };

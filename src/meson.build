@@ -40,15 +40,9 @@ sources = files(
     'Line.cc',
     'Obstacle.cc',
     'RVOSimulator.cc',
-    'StepPool.cc',
+    'Team.cc',
     'Vector2.cc',
 )
-
-# StepPool.cc starts its own workers on Linux when OpenMP is enabled.
-lib_deps = openmp_deps
-if openmp_deps.length() > 0 and host_os == 'linux'
-    lib_deps += [dependency('threads')]
-endif
 
 public_headers = files(
     'Export.h',
@@ -104,7 +98,7 @@ lib_rvo = library(
     include_directories: inc,
     cpp_args: compile_args,
     gnu_symbol_visibility: 'hidden',
-    dependencies: lib_deps,
+    dependencies: openmp_deps + [dependency('threads')],
     version: meson.project_version(),
     soversion: meson.project_version().split('.')[0],
     install: not meson.is_subproject(),

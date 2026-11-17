@@ -109,6 +109,7 @@ cat "${report}"
 
 declare -A bucket
 declare -A seen
+declare -A checksum
 keys=()
 
 reset_samples() {
@@ -119,7 +120,7 @@ reset_samples() {
 
 note_line() {
   local line="$1"
-  local scenario agents sample key
+  local scenario agents sample key sum
   scenario="$(printf '%s\n' "${line}" | sed -n 's/.*scenario=\([^ ]*\).*/\1/p')"
   agents="$(printf '%s\n' "${line}" | sed -n 's/.*agents=\([0-9][0-9]*\).*/\1/p')"
   sample="$(printf '%s\n' "${line}" | sed -n 's/.*per_step_us=\([0-9.][0-9.]*\).*/\1/p')"
@@ -133,6 +134,20 @@ note_line() {
     keys+=("${key}")
   fi
   bucket["${key}"]+="${sample}"$'\n'
+
+  # Aceeași sarcină trebuie să ajungă la aceleași poziții la orice rulare și
+  # cu orice număr de threaduri.
+  sum="$(printf '%s\n' "${line}" | sed -n 's/.*checksum=\([0-9a-f][0-9a-f]*\).*/\1/p')"
+  if [[ -z "${sum}" ]]; then
+    return
+  fi
+  if [[ -z "${checksum[${key}]:-}" ]]; then
+    checksum["${key}"]="${sum}"
+  elif [[ "${checksum[${key}]}" != "${sum}" ]]; then
+    echo "Pozițiile finale diferă la ${key}: checksum ${checksum[${key}]} și ${sum}." >&2
+    echo "Rularea paralelă nu mai dă rezultatul rulării pe un thread." >&2
+    exit 1
+  fi
 }
 
 run_threads() {
@@ -189,6 +204,9 @@ else
   log ""
   log "logical_cpus=1, so the all-thread run is the same as threads=1"
 fi
+
+log ""
+log "checksum: identical final positions in every run of each workload"
 
 if [[ "${full_suite}" -eq 1 && "${logical}" -gt 1 ]]; then
   # Efficiency is (one-thread median / parallel median) / logical CPUs.

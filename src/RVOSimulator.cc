@@ -38,6 +38,8 @@
 
 #include "RVOSimulator.h"
 
+#include <algorithm>
+#include <chrono>
 #include <limits>
 #include <utility>
 
@@ -45,7 +47,7 @@
 #include "KdTree.h"
 #include "Line.h"
 #include "Obstacle.h"
-#include "StepPool.h"
+#include "Team.h"
 #include "Vector2.h"
 
 #ifdef _OPENMP
@@ -53,14 +55,67 @@
 #endif /* _OPENMP */
 
 namespace RVO {
+namespace {
+/**
+ * @relates RVOSimulator
+ * @brief   Returns the number of threads for the parallel loops: the number
+ *          that OpenMP would use, and one if the library is built without
+ *          OpenMP.
+ * @return  The number of threads, including the calling thread.
+ */
+std::size_t threadCount() {
+#ifdef _OPENMP
+  return static_cast<std::size_t>(omp_get_max_threads());
+#else
+  return 1U;
+#endif /* _OPENMP */
+}
+
+/**
+ * @relates RVOSimulator
+ * @brief   RVOSimulator::forEachAgent() times its first calls on the calling
+ *          thread.
+ */
+const std::size_t RVO_PROBE_AGENTS = 4U;
+
+/**
+ * @relates RVOSimulator
+ * @brief   RVOSimulator::forEachAgent() stays on the calling thread when the
+ *          whole loop is expected to take less than this many microseconds.
+ *          There is nothing to gain from other threads below this, and a
+ *          loop that calls the application exactly once for every agent has
+ *          to wait for a thread that is not running.
+ */
+const double RVO_SERIAL_LOOP_US = 8.0;
+
+/**
+ * @relates RVOSimulator
+ * @brief   Defines the loop of RVOSimulator::forEachAgent().
+ */
+class AgentFunctionJob : public Team::Job {
+ public:
+  AgentFunctionJob(RVOSimulator::AgentFunction function, void *context,
+                   std::size_t first)
+      : function_(function), context_(context), first_(first) {}
+
+  virtual void compute(std::size_t item, std::size_t /*thread*/) {
+    function_(first_ + item, context_);
+  }
+
+ private:
+  RVOSimulator::AgentFunction function_;
+  void *context_;
+  std::size_t first_;
+};
+} /* namespace */
+
 const std::size_t RVO_ERROR = std::numeric_limits<std::size_t>::max();
 
 RVOSimulator::RVOSimulator()
     : defaultAgent_(NULL),
       kdTree_(new KdTree(this)),
       globalTime_(0.0F),
-      timeStep_(0.0F),
-      pool_(NULL) {}
+      timeStep_(0.0F) {}
 
 RVOSimulator::RVOSimulator(float timeStep, float neighborDist,
                            std::size_t maxNeighbors, float timeHorizon,
@@ -68,8 +123,7 @@ RVOSimulator::RVOSimulator(float timeStep, float neighborDist,
     : defaultAgent_(new Agent()),
       kdTree_(new KdTree(this)),
       globalTime_(0.0F),
-      timeStep_(timeStep),
-      pool_(NULL) {
+      timeStep_(timeStep) {
   defaultAgent_->maxNeighbors_ = maxNeighbors;
   defaultAgent_->maxSpeed_ = maxSpeed;
   defaultAgent_->neighborDist_ = neighborDist;
@@ -85,8 +139,7 @@ RVOSimulator::RVOSimulator(float timeStep, float neighborDist,
     : defaultAgent_(new Agent()),
       kdTree_(new KdTree(this)),
       globalTime_(0.0F),
-      timeStep_(timeStep),
-      pool_(NULL) {
+      timeStep_(timeStep) {
   defaultAgent_->velocity_ = velocity;
   defaultAgent_->maxNeighbors_ = maxNeighbors;
   defaultAgent_->maxSpeed_ = maxSpeed;
@@ -97,9 +150,6 @@ RVOSimulator::RVOSimulator(float timeStep, float neighborDist,
 }
 
 RVOSimulator::~RVOSimulator() {
-#if RVO_STEP_POOL
-  delete pool_;
-#endif /* RVO_STEP_POOL */
   delete defaultAgent_;
   delete kdTree_;
 
@@ -113,12 +163,6 @@ RVOSimulator::~RVOSimulator() {
 }
 
 std::size_t RVOSimulator::addAgent(const Vector2 &position) {
-#if RVO_STEP_POOL
-  if (pool_ != NULL) {
-    pool_->quiesce();
-  }
-#endif /* RVO_STEP_POOL */
-
   if (defaultAgent_ != NULL) {
     Agent *const agent = new Agent();
     agent->position_ = position;
@@ -131,6 +175,7 @@ std::size_t RVOSimulator::addAgent(const Vector2 &position) {
     agent->timeHorizon_ = defaultAgent_->timeHorizon_;
     agent->timeHorizonObst_ = defaultAgent_->timeHorizonObst_;
     agents_.push_back(agent);
+    kdTree_->addAgent(*agent);
 
     return agents_.size() - 1U;
   }
@@ -150,12 +195,6 @@ std::size_t RVOSimulator::addAgent(const Vector2 &position, float neighborDist,
                                    std::size_t maxNeighbors, float timeHorizon,
                                    float timeHorizonObst, float radius,
                                    float maxSpeed, const Vector2 &velocity) {
-#if RVO_STEP_POOL
-  if (pool_ != NULL) {
-    pool_->quiesce();
-  }
-#endif /* RVO_STEP_POOL */
-
   Agent *const agent = new Agent();
   agent->position_ = position;
   agent->velocity_ = velocity;
@@ -167,17 +206,12 @@ std::size_t RVOSimulator::addAgent(const Vector2 &position, float neighborDist,
   agent->timeHorizon_ = timeHorizon;
   agent->timeHorizonObst_ = timeHorizonObst;
   agents_.push_back(agent);
+  kdTree_->addAgent(*agent);
 
   return agents_.size() - 1U;
 }
 
 std::size_t RVOSimulator::addObstacle(const std::vector<Vector2> &vertices) {
-#if RVO_STEP_POOL
-  if (pool_ != NULL) {
-    pool_->quiesce();
-  }
-#endif /* RVO_STEP_POOL */
-
   if (vertices.size() > 1U) {
     const std::size_t obstacleNo = obstacles_.size();
 
@@ -219,130 +253,50 @@ std::size_t RVOSimulator::addObstacle(const std::vector<Vector2> &vertices) {
 }
 
 void RVOSimulator::doStep() {
-#if RVO_STEP_POOL
-  const int threads = omp_get_max_threads();
+  const std::size_t threads = threadCount();
+  Frame *const frame = kdTree_->beginStep(threads);
 
-  if (threads > 1) {
-    preparePool(threads);
-    kdTree_->buildAgentTree();
-    pool_->run();
-    globalTime_ += timeStep_;
-    return;
-  }
-#endif /* RVO_STEP_POOL */
-
-  kdTree_->buildAgentTree();
-
-#ifdef _OPENMP
-#pragma omp parallel for
-#endif /* _OPENMP */
-  for (std::size_t i = 0U; i < agents_.size(); ++i) {
-    agents_[i]->computeNeighbors(kdTree_);
-    agents_[i]->computeNewVelocity(timeStep_);
-  }
-
-#ifdef _OPENMP
-#pragma omp parallel for
-#endif /* _OPENMP */
-  for (std::size_t i = 0U; i < agents_.size(); ++i) {
-    agents_[i]->update(timeStep_);
-  }
+  /* Every agent is computed from the frame and moved as soon as its new
+   * velocity is known. */
+  Team::instance().runHedged(frame, agents_.size(), threads, frame);
+  kdTree_->endStep();
 
   globalTime_ += timeStep_;
 }
 
-#if RVO_STEP_POOL
-void RVOSimulator::preparePool(int threads) {
-  if (pool_ != NULL && pool_->threads() != threads) {
-    delete pool_;
-    pool_ = NULL;
+void RVOSimulator::forEachAgent(AgentFunction function, void *context) {
+  const std::size_t count = agents_.size();
+  std::size_t threads = threadCount();
+  std::size_t first = 0U;
+
+  if (threads > 1U && count > RVO_PROBE_AGENTS) {
+    typedef std::chrono::steady_clock Clock;
+    const Clock::time_point start = Clock::now();
+
+    for (; first < RVO_PROBE_AGENTS; ++first) {
+      function(first, context);
+    }
+
+    const double probeUs =
+        std::chrono::duration<double, std::micro>(Clock::now() - start)
+            .count();
+
+    if (probeUs * static_cast<double>(count - first) <
+        RVO_SERIAL_LOOP_US * static_cast<double>(RVO_PROBE_AGENTS)) {
+      threads = 1U;
+    }
   }
 
-  if (pool_ == NULL) {
-    pool_ = new StepPool(this, threads);
-  }
-
-  pool_->prepare();
+  /* About eight chunks for every thread: few enough that taking a chunk
+   * costs nothing next to its agents, enough to even out the threads. */
+  AgentFunctionJob job(function, context, first);
+  Team::instance().run(&job, count - first, threads,
+                       (count - first) / (8U * threads));
 }
-#endif /* RVO_STEP_POOL */
-
-void RVOSimulator::setAgentPrefVelocities(PrefVelocityFunction function,
-                                          void *context) {
-#if RVO_STEP_POOL
-  const int threads = omp_get_max_threads();
-
-  if (threads > 1) {
-    preparePool(threads);
-    pool_->setPrefVelocities(function, context);
-    return;
-  }
-#endif /* RVO_STEP_POOL */
-
-#ifdef _OPENMP
-#pragma omp parallel for
-#endif /* _OPENMP */
-  for (std::size_t i = 0U; i < agents_.size(); ++i) {
-    setPrefVelocityFrom(i, function, context);
-  }
-}
-
-void RVOSimulator::computeAgentInto(std::size_t agentNo, Agent *out) const {
-  const Agent *const agent = agents_[agentNo];
-
-  out->position_ = agent->position_;
-  out->velocity_ = agent->velocity_;
-  out->prefVelocity_ = agent->prefVelocity_;
-  out->id_ = agent->id_;
-  out->maxNeighbors_ = agent->maxNeighbors_;
-  out->maxSpeed_ = agent->maxSpeed_;
-  out->neighborDist_ = agent->neighborDist_;
-  out->radius_ = agent->radius_;
-  out->timeHorizon_ = agent->timeHorizon_;
-  out->timeHorizonObst_ = agent->timeHorizonObst_;
-
-  /* Agent::computeNeighbors, with the agent search run for agent. */
-  out->obstacleNeighbors_.clear();
-  const float range = out->timeHorizonObst_ * out->maxSpeed_ + out->radius_;
-  kdTree_->computeObstacleNeighbors(out, range * range);
-
-  out->agentNeighbors_.clear();
-
-  if (out->maxNeighbors_ > 0U) {
-    float rangeSq = out->neighborDist_ * out->neighborDist_;
-    kdTree_->computeAgentNeighborsInto(agent, out, rangeSq);
-  }
-
-  out->computeNewVelocity(timeStep_);
-}
-
-void RVOSimulator::publishAgent(std::size_t agentNo, const Agent *from) {
-  Agent *const agent = agents_[agentNo];
-
-  /* A copy, not a swap: swapping would rotate buffers between agents and
-   * threads, and every step would write into another core's cache. */
-  agent->agentNeighbors_ = from->agentNeighbors_;
-  agent->obstacleNeighbors_ = from->obstacleNeighbors_;
-  agent->orcaLines_ = from->orcaLines_;
-  agent->newVelocity_ = from->newVelocity_;
-}
-
-void RVOSimulator::updateAgent(std::size_t agentNo) {
-  agents_[agentNo]->update(timeStep_);
-}
-
-void RVOSimulator::setPrefVelocityFrom(std::size_t agentNo,
-                                       PrefVelocityFunction function,
-                                       void *context) {
-  agents_[agentNo]->prefVelocity_ = function(this, agentNo, context);
-}
-
-Agent *RVOSimulator::newScratchAgent() { return new Agent(); }
-
-void RVOSimulator::deleteScratchAgent(Agent *agent) { delete agent; }
 
 std::size_t RVOSimulator::getAgentAgentNeighbor(std::size_t agentNo,
                                                 std::size_t neighborNo) const {
-  return agents_[agentNo]->agentNeighbors_[neighborNo].second->id_;
+  return agents_[agentNo]->agentNeighbors_[neighborNo].second;
 }
 
 std::size_t RVOSimulator::getAgentMaxNeighbors(std::size_t agentNo) const {
@@ -416,15 +370,7 @@ std::size_t RVOSimulator::getPrevObstacleVertexNo(std::size_t vertexNo) const {
   return obstacles_[vertexNo]->previous_->id_;
 }
 
-void RVOSimulator::processObstacles() {
-#if RVO_STEP_POOL
-  if (pool_ != NULL) {
-    pool_->quiesce();
-  }
-#endif /* RVO_STEP_POOL */
-
-  kdTree_->buildObstacleTree();
-}
+void RVOSimulator::processObstacles() { kdTree_->buildObstacleTree(); }
 
 bool RVOSimulator::queryVisibility(const Vector2 &point1,
                                    const Vector2 &point2) const {
@@ -464,42 +410,51 @@ void RVOSimulator::setAgentDefaults(float neighborDist,
 void RVOSimulator::setAgentMaxNeighbors(std::size_t agentNo,
                                         std::size_t maxNeighbors) {
   agents_[agentNo]->maxNeighbors_ = maxNeighbors;
+  kdTree_->frame_->states_[agentNo].maxNeighbors_ = maxNeighbors;
 }
 
 void RVOSimulator::setAgentMaxSpeed(std::size_t agentNo, float maxSpeed) {
   agents_[agentNo]->maxSpeed_ = maxSpeed;
+  kdTree_->frame_->states_[agentNo].maxSpeed_ = maxSpeed;
 }
 
 void RVOSimulator::setAgentNeighborDist(std::size_t agentNo,
                                         float neighborDist) {
   agents_[agentNo]->neighborDist_ = neighborDist;
+  kdTree_->frame_->states_[agentNo].neighborDist_ = neighborDist;
 }
 
 void RVOSimulator::setAgentPosition(std::size_t agentNo,
                                     const Vector2 &position) {
   agents_[agentNo]->position_ = position;
+  kdTree_->frame_->states_[agentNo].position_ = position;
 }
 
 void RVOSimulator::setAgentPrefVelocity(std::size_t agentNo,
                                         const Vector2 &prefVelocity) {
   agents_[agentNo]->prefVelocity_ = prefVelocity;
+  kdTree_->frame_->states_[agentNo].prefVelocity_ = prefVelocity;
 }
 
 void RVOSimulator::setAgentRadius(std::size_t agentNo, float radius) {
   agents_[agentNo]->radius_ = radius;
+  kdTree_->frame_->states_[agentNo].radius_ = radius;
 }
 
 void RVOSimulator::setAgentTimeHorizon(std::size_t agentNo, float timeHorizon) {
   agents_[agentNo]->timeHorizon_ = timeHorizon;
+  kdTree_->frame_->states_[agentNo].timeHorizon_ = timeHorizon;
 }
 
 void RVOSimulator::setAgentTimeHorizonObst(std::size_t agentNo,
                                            float timeHorizonObst) {
   agents_[agentNo]->timeHorizonObst_ = timeHorizonObst;
+  kdTree_->frame_->states_[agentNo].timeHorizonObst_ = timeHorizonObst;
 }
 
 void RVOSimulator::setAgentVelocity(std::size_t agentNo,
                                     const Vector2 &velocity) {
   agents_[agentNo]->velocity_ = velocity;
+  kdTree_->frame_->states_[agentNo].velocity_ = velocity;
 }
 } /* namespace RVO */

@@ -96,9 +96,8 @@ void updateVisualization(RVO::RVOSimulator *simulator) {
 void setPreferredVelocities(RVO::RVOSimulator *simulator,
                             const std::vector<RVO::Vector2> &goals) {
   /* Set the preferred velocity to be a vector of unit magnitude (speed) in the
-   * direction of the goal. A normalize per agent is too little work to split
-   * across threads; doStep() is where the work is. */
-  for (std::size_t i = 0U; i < simulator->getNumAgents(); ++i) {
+   * direction of the goal. */
+  simulator->forEachAgent([simulator, &goals](std::size_t i) {
     RVO::Vector2 goalVector = goals[i] - simulator->getAgentPosition(i);
 
     if (RVO::absSq(goalVector) > 1.0F) {
@@ -106,7 +105,7 @@ void setPreferredVelocities(RVO::RVOSimulator *simulator,
     }
 
     simulator->setAgentPrefVelocity(i, goalVector);
-  }
+  });
 }
 
 bool reachedGoal(RVO::RVOSimulator *simulator,

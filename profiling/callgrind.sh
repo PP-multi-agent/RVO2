@@ -90,6 +90,6 @@ else
   run_both "${1}" "${2:-200}" "${3:-}"
 fi
 
-echo "Caută computeNewVelocity, computeNeighbors, buildAgentTree, update."
+echo "Caută computeNewVelocity, insertAgentNeighbor, Frame::queryRecursive, Frame::build."
 echo "La roadmap apare și queryVisibility."
 echo "threads= este pe prima linie a fiecărui raport. Accelerația este în bench.txt."
