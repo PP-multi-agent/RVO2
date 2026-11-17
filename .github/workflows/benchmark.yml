@@ -28,6 +28,7 @@ jobs:
           bash profiling/bench.sh
 
       - name: Run Callgrind profiler
+        if: "!contains(github.event.head_commit.message, '[skip callgrind]')"
         run: |
           bash profiling/callgrind.sh
 
